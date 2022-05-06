@@ -5,10 +5,12 @@ import styles from './Header.module.scss';
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <Button>Edit Profile</Button>
-      <Button>Create board</Button>
-      <Button>En/Ru</Button>
-      <Button danger>Logout</Button>
+      <Button type="button">Edit Profile</Button>
+      <Button type="button">Create board</Button>
+      <Button type="button">En/Ru</Button>
+      <Button type="button" danger>
+        Logout
+      </Button>
     </header>
   );
 };
