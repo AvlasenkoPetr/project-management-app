@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { fetchApi } from './fetchApi';
-import testSlice from './testSlice';
+import authorizeSlice from './authorizeSlice';
 
 const RootReducer = combineReducers({
   [fetchApi.reducerPath]: fetchApi.reducer,
-  testReducer: testSlice,
+  authorizeSlice: authorizeSlice,
 });
 
 const Store = () => {
