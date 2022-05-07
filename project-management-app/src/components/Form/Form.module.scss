@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  .form__wrapper{
+    width: 906px;
+    height: 709px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    form{
+      width: 70%;
+      .button__wrapper{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+    }
+  }
+}

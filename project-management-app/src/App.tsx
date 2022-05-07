@@ -1,15 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MainPage from './components/MainPage/MainPage';
+import './App.scss';
 import { useCustomSelector } from './customHooks/customHooks';
+import WelcomePage from './components/WelcomePage/WelcomePage';
+import LoginPage from './components/LoginPage/LoginPage';
+import SignUpPage from './components/SignUpPage/SignUpPage';
 
 const App: React.FC = () => {
-  const select = useCustomSelector((state) => state.testReducer);
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<div>{select.id}</div>} />
-        <Route path="/main/*" element={<div>MAin</div>} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   );
