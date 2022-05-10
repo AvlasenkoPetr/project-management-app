@@ -10,7 +10,7 @@ const MainPage: React.FC = () => {
   const selector = useCustomSelector((state) => state.authorizeSlice);
   const navigation = useNavigate();
   useEffect(() => {
-    !selector.isTokenValid && navigation('/welcome');
+    !selector.auth.token && navigation('/welcome');
   });
   return (
     <div className={styles.container}>
