@@ -1,0 +1,13 @@
+.section-heder {
+
+  .contents__heder {
+    position: fixed;
+    height: 55px;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    border-bottom: 1px solid #000;
+    transition: background 0.5s ease 0s;
+  }
+
+}
