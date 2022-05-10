@@ -1,22 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type initialStateType = {
-  isTokenValid: boolean;
+  auth: {
+    token: string;
+  };
 };
 
 const initialState: initialStateType = {
-  isTokenValid: false,
+  auth: {
+    token: '',
+  },
 };
 
 const authorizeSlice = createSlice({
   name: 'test',
   initialState,
   reducers: {
-    verifyToken(state, action: PayloadAction<initialStateType>) {
-      state.isTokenValid = action.payload.isTokenValid;
+    setToken(state, action: PayloadAction<initialStateType>) {
+      console.log(action);
+      state.auth.token = action.payload.auth.token;
     },
   },
 });
 
-export const { verifyToken } = authorizeSlice.actions;
+export const { setToken } = authorizeSlice.actions;
 export default authorizeSlice.reducer;
