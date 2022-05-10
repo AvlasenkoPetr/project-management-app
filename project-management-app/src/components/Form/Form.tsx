@@ -5,7 +5,9 @@ import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { hasFormSubmit } from '@testing-library/user-event/dist/utils';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
-import { verifyToken } from '../../store/authorizeSlice';
+import { setToken } from '../../store/authorizeSlice';
+import { fetchApi } from '../../store/fetchApi';
+import { SignInResponseType } from '../../store/fetchApiTypes';
 
 type Props = {
   children: string;
@@ -18,14 +20,24 @@ type Props = {
 const Form: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const dispatch = useCustomDispatch();
+  const [signUp, {}] = fetchApi.useSignUpMutation();
+  const [signIn, { error: signInError }] = fetchApi.useSignInMutation();
 
-  function FormSubmit(event: React.SyntheticEvent) {
+  async function FormSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
-    dispatch(
-      verifyToken({
-        isTokenValid: true,
-      })
-    );
+    // try {
+    //   const SignIn = await signIn({
+    //     login: 'a123@gmail.com',
+    //     password: '123456789',
+    //   }).unwrap();
+    //   dispatch(
+    //     setToken({
+    //       auth: {
+    //         token: SignIn.token,
+    //       },
+    //     })
+    //   );
+    // } catch (err) {}
     navigate('/');
   }
 
