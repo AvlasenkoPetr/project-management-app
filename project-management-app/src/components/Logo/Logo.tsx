@@ -4,9 +4,14 @@ import logo from '../../assets/img/Logo.png';
 
 const Logo: React.FC = () => {
   return (
-    <div className={styles['logo__wrapper']}>
+    <a
+      className={styles['logo__wrapper']}
+      href="https://rs.school/"
+      target="_blank"
+      rel="noreferrer"
+    >
       <img src={logo} alt="logo" />
-    </div>
+    </a>
   );
 };
 
