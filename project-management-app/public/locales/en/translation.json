@@ -1,0 +1,13 @@
+{
+  "mainPage":{
+    "buttons":{
+      "editProfile": "Edit Profile",
+      "createBoard": "Create Board",
+      "language": "En/Ru",
+      "logout": "Logout"
+    },
+    "board":{
+      "title": "Create Board"
+    }
+  }
+}

@@ -9,9 +9,9 @@ import styles from './MainPage.module.scss';
 const MainPage: React.FC = () => {
   const selector = useCustomSelector((state) => state.authorizeSlice);
   const navigation = useNavigate();
-  useEffect(() => {
-    !selector.auth.token && navigation('/welcome');
-  });
+  // useEffect(() => {
+  //   !selector.auth.token && navigation('/welcome');
+  // });
   return (
     <div className={styles.container}>
       <Header />
