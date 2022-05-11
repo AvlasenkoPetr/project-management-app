@@ -3,9 +3,11 @@
     align-items: flex-start;
     justify-content: start;
     flex-wrap: wrap;
-    padding-top: 55px;
+    position: relative;
+    top: 30px;
+    padding-top: 15px;
     height: 80vh;
-    overflow: scroll;
+    overflow-y: scroll;
     margin: 0 auto;
 
     .bc__contents {
