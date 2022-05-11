@@ -13,16 +13,8 @@ function BordContainer() {
   return (
     <div className="bord-container">
       <div className="bc__contents">
-        {/* <div>
-          <Board formA={array} setFormA={setArray} />
-        </div> */}
         <div>
-          <ModalWindows
-            active={modalActiv}
-            setActive={setModalActiv}
-            formA={array}
-            setFormA={setArray}
-          />
+          <ModalWindows active={modalActiv} setActive={setModalActiv} />
         </div>
         <Button className="btn-content" onClick={() => setModalActiv(true)}>
           <h3>{t('mainPage.board.title')}</h3>

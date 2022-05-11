@@ -9,14 +9,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // opacity: 1;
-    // transition: all 0.3s ease 0s;
-    // pointer-events: all;
 }
 
 .modal {
-    // pointer-events: none;
-    // opacity: 0;
     display: none;
 }
 
@@ -26,6 +21,7 @@
     padding: 10px;
     transform: scale(0.5);
     transition: all 0.3s ease 0s;
+    width: 50vw;
 }
 
 .modal-windows.active {
