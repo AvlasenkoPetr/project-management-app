@@ -6,8 +6,7 @@
     position: relative;
     top: 30px;
     padding-top: 15px;
-    height: 80vh;
-    overflow-y: scroll;
+    min-height: 80vh;
     margin: 0 auto;
 
     .bc__contents {
