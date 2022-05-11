@@ -1,0 +1,13 @@
+{
+  "mainPage":{
+    "buttons":{
+      "editProfile": "Редактировать Профиль",
+      "createBoard": "Создать доску",
+      "language": "Ru/En",
+      "logout": "Выйти"
+    }, 
+    "board":{
+      "title": "Создать доску"
+    }
+  }
+}
