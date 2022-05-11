@@ -1,62 +1,33 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ReactChild, ReactFragment, ReactPortal } from 'react';
 import { v4 as uuid } from 'uuid';
 import '../ComponentsBoard/BoardStyle.scss';
 import '../ComponentsBoard/ModalWindowsStyle.scss';
 interface Iactiv {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  formA: any;
-  setFormA: any;
 }
-interface Idata {
-  id: string;
-  handleSubmit: object;
-}
-function ModalWindows({ active, setActive, formA, setFormA }: Iactiv) {
-  const araySum: object[] = [
-    {
-      textMain: 'Тише',
-      textContent: 'мыши',
-      color: 'кот на крыше',
-      id: 'tl2zI5J3IbLwukybTEsIxXXb6',
-    },
-    {
-      textMain: 'А котята',
-      textContent: 'ещё',
-      color: 'выше',
-      id: 'ViWgVtvU2qRo6huLg18DdYuio',
-    },
-  ];
+
+function ModalWindows({ active, setActive }: Iactiv) {
+  const araySum: object[] = [];
   const [arrayConst, setarrayConst] = useState(araySum);
   const { register, handleSubmit } = useForm();
-  setFormA(arrayConst);
 
-  function onSubmit(data: any, e: any): void {
+  function onSubmit(data: any, event: any) {
     data.id = uuid();
     setarrayConst([...arrayConst, data]);
 
-    e.target.reset();
+    event.target.reset();
 
     setActive(false);
   }
 
-  interface Imap {
-    slice: any;
-    filter: any;
-    id: any;
-    delete: any;
-    textMain: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-    textContent: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-    color: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-  }
-  function Board(): JSX.Element {
-    function deleteArrray(id: any) {
-      setarrayConst((prevForm: any[]) => prevForm.filter((el: { id: any }) => el.id !== id));
+  function Board() {
+    function deleteArrray(id: string) {
+      setarrayConst((prevForm: any) => prevForm.filter((el: { id: string }) => el.id !== id));
     }
 
-    const listItems = formA.map((item: Imap, index: number) => (
+    const listItems = arrayConst.map((item: any) => (
       <div className="board__contents-stylys" key={item.id}>
         <div className="board__container" style={{ background: `${item.color}` }}>
           <button onClick={() => deleteArrray(item.id)}>X</button>

@@ -25,19 +25,19 @@ const Form: React.FC<Props> = (props) => {
 
   async function FormSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
-    // try {
-    //   const SignIn = await signIn({
-    //     login: 'a123@gmail.com',
-    //     password: '123456789',
-    //   }).unwrap();
-    //   dispatch(
-    //     setToken({
-    //       auth: {
-    //         token: SignIn.token,
-    //       },
-    //     })
-    //   );
-    // } catch (err) {}
+    try {
+      const SignIn = await signIn({
+        login: 'a123@gmail.com',
+        password: '123456789',
+      }).unwrap();
+      dispatch(
+        setToken({
+          auth: {
+            token: SignIn.token,
+          },
+        })
+      );
+    } catch (err) {}
     navigate('/');
   }
 
