@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../Button/Button';
 import styles from './Header.module.scss';
-import '../Header/HeaderComponents/HeaderStyles.scss';
 import { useTranslation } from 'react-i18next';
 import { useCustomDispatch, useCustomSelector } from '../../../customHooks/customHooks';
 import { toggleLanguage } from '../../../store/mainPageSlice';
+import HeaderButton from './HeaderButton/HeaderButton';
 
 const Header: React.FC = () => {
   const dark = '1';
@@ -32,16 +32,24 @@ const Header: React.FC = () => {
     console.log(selector.mainPageSlice.lang);
   };
 
+  const testCb = () => {
+    console.log(test);
+  };
+
   return (
-    <header className="contents__header" style={{ opacity: scroll }}>
-      <Button type="button">{t('mainPage.buttons.editProfile')}</Button>
+    <header className={styles.contents__header} style={{ opacity: scroll }}>
+      {/* <Button type="button">{t('mainPage.buttons.editProfile')}</Button>
       <Button type="button">{t('mainPage.buttons.createBoard')}</Button>
       <Button onClick={() => changeLanguage()} type="button">
         {t('mainPage.buttons.language')}
       </Button>
       <Button type="button" danger>
         {t('mainPage.buttons.logout')}
-      </Button>
+      </Button> */}
+      <HeaderButton cb={testCb}>{t('mainPage.buttons.editProfile')}</HeaderButton>
+      <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
+      <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
+      <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.logout')}</HeaderButton>
     </header>
   );
 };

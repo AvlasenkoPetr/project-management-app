@@ -8,5 +8,11 @@
   display: flex;
   
   background-color: var(--blue-light);
+
+  color: black;
+  font-family: 'Oswald';
+  font-size: 24px;
+  letter-spacing: 1px;
+
   transition: opacity 0.3s ease 0s;
 }
