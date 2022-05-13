@@ -14,3 +14,15 @@
     }
   }
 }
+
+@media(max-width: 768px) {
+  .logo__wrapper {
+    width: 100px;
+  }
+}
+
+@media(max-width: 425px) {
+  .logo__wrapper {
+    width: 15%;
+  }
+}
