@@ -1,7 +1,35 @@
-.footer{
+.footer {
+  height: 60px;
   padding: 20px;
+
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid black;
   align-items: center;
+
+  background-color: var(--blue-dark);
+
+  font-family: 'Oswald';
+  letter-spacing: 1px;
+  
+  &__links {
+    display: flex;
+    gap: 20px;
+    
+    a {
+      font-size: 20px;
+      color: var(--white-main);
+
+      &:hover {
+        color: var(--white-hover);
+      }
+    }
+  }
+  
+  &__year {
+    width: 140px;
+
+    font-size: 26px;
+    text-align: end;
+    color: var(--white-main);
+  }
 }

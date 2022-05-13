@@ -7,8 +7,8 @@ import { useCustomDispatch, useCustomSelector } from '../../../customHooks/custo
 import { toggleLanguage } from '../../../store/mainPageSlice';
 
 const Header: React.FC = () => {
-  const dark = 'rgba(0, 0, 0, 0.6)';
-  const light = 'rgba(0, 0, 0, 0.2)';
+  const dark = '1';
+  const light = '0.5';
   const [scroll, setScroll] = useState(dark);
   const { t, i18n } = useTranslation();
   const selector = useCustomSelector((state) => state);
@@ -33,18 +33,16 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="section-heder">
-      <header className="contents__heder" style={{ background: scroll }}>
-        <Button type="button">{t('mainPage.buttons.editProfile')}</Button>
-        <Button type="button">{t('mainPage.buttons.createBoard')}</Button>
-        <Button onClick={() => changeLanguage()} type="button">
-          {t('mainPage.buttons.language')}
-        </Button>
-        <Button type="button" danger>
-          {t('mainPage.buttons.logout')}
-        </Button>
-      </header>
-    </div>
+    <header className="contents__header" style={{ opacity: scroll }}>
+      <Button type="button">{t('mainPage.buttons.editProfile')}</Button>
+      <Button type="button">{t('mainPage.buttons.createBoard')}</Button>
+      <Button onClick={() => changeLanguage()} type="button">
+        {t('mainPage.buttons.language')}
+      </Button>
+      <Button type="button" danger>
+        {t('mainPage.buttons.logout')}
+      </Button>
+    </header>
   );
 };
 
