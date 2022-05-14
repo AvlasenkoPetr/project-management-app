@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
 import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
-import Form from '../Form/Form';
+import Form from '../../components/Form/Form';
 
 const LoginPage: React.FC = () => {
   const { t, i18n } = useTranslation();

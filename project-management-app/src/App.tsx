@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MainPage from './components/MainPage/MainPage';
 import './assets/styles/App.scss';
-import WelcomePage from './components/WelcomePage/WelcomePage';
-import LoginPage from './components/LoginPage/LoginPage';
-import SignUpPage from './components/SignUpPage/SignUpPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import MainPage from './pages/MainPage/MainPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 const App: React.FC = () => {
   return (
