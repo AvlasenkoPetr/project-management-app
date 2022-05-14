@@ -5,11 +5,12 @@
     border-radius: 10px;
 
     text-align: center;
+    color: var(--white-main);
     
     transition: .3s linear;
     
     &:hover {
-        background-color: var(--blue-light-hover);
+        background-color: var(--blue-dark-hover);
         color: var(--white-hover);
     }
 }
