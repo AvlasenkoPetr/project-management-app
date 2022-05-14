@@ -1,11 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { BoardType } from './fetchApiTypes';
 
 type initialStateType = {
   lang: 'ru' | 'en';
+  data: {
+    boards: Array<BoardType> | null;
+  };
 };
 
 const initialState: initialStateType = {
   lang: 'en',
+  data: {
+    boards: null,
+  },
 };
 
 const mainPageSlice = createSlice({
@@ -15,8 +22,12 @@ const mainPageSlice = createSlice({
     toggleLanguage: (state, action: PayloadAction<'en' | 'ru'>) => {
       state.lang = action.payload;
     },
+    setBoards: (state, action: PayloadAction<Array<BoardType> | null>) => {
+      state.data.boards = action.payload;
+      console.log(action.payload);
+    },
   },
 });
 
-export const { toggleLanguage } = mainPageSlice.actions;
+export const { toggleLanguage, setBoards } = mainPageSlice.actions;
 export default mainPageSlice.reducer;

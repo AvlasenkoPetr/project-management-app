@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../Button/Button';
+
 import styles from './Header.module.scss';
 import { useTranslation } from 'react-i18next';
 import { useCustomDispatch, useCustomSelector } from '../../../customHooks/customHooks';
-import { toggleLanguage } from '../../../store/mainPageSlice';
 import HeaderButton from './HeaderButton/HeaderButton';
+import { setBoards, toggleLanguage } from '../../../store/mainPageSlice';
+import { setToken, setIsLoading, logOut } from '../../../store/authorizeSlice';
+import { fetchApi } from '../../../store/fetchApi';
 
 const Header: React.FC = () => {
   const dark = '1';
@@ -13,6 +16,7 @@ const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const selector = useCustomSelector((state) => state);
   const dispatch = useCustomDispatch();
+  const { refetch } = fetchApi.useGetAllBoardsQuery('');
 
   const listenScrollEvent = () => {
     if (window.scrollY > 100) {
@@ -27,9 +31,16 @@ const Header: React.FC = () => {
     i18n.changeLanguage(selector.mainPageSlice.lang);
   }, [selector.mainPageSlice.lang]);
 
-  const changeLanguage = async () => {
+  const changeLanguage = () => {
     dispatch(toggleLanguage(selector.mainPageSlice.lang === 'en' ? 'ru' : 'en'));
     console.log(selector.mainPageSlice.lang);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('user');
+    dispatch(setBoards(null));
+    dispatch(logOut());
+    refetch();
   };
 
   const testCb = () => {
@@ -49,7 +60,7 @@ const Header: React.FC = () => {
       <HeaderButton cb={testCb}>{t('mainPage.buttons.editProfile')}</HeaderButton>
       <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
       <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
-      <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.logout')}</HeaderButton>
+      <HeaderButton cb={logout}>{t('mainPage.buttons.logout')}</HeaderButton>
     </header>
   );
 };
