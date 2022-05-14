@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../../Button/Button';
+// import Button from '../../Button/Button';
 
 import styles from './Header.module.scss';
 import { useTranslation } from 'react-i18next';
-import { useCustomDispatch, useCustomSelector } from '../../../customHooks/customHooks';
+// import { useCustomDispatch, useCustomSelector } from '../../../customHooks/customHooks';
 import HeaderButton from './HeaderButton/HeaderButton';
-import { setBoards, toggleLanguage } from '../../../store/mainPageSlice';
-import { setToken, setIsLoading, logOut } from '../../../store/authorizeSlice';
-import { fetchApi } from '../../../store/fetchApi';
+import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
+import { fetchApi } from '../../store/fetchApi';
+import { setBoards, toggleLanguage } from '../../store/mainPageSlice';
+import { logOut } from '../../store/authorizeSlice';
+// import { setBoards, toggleLanguage } from '../../../store/mainPageSlice';
+// import { setToken, setIsLoading, logOut } from '../../../store/authorizeSlice';
+// import { fetchApi } from '../../../store/fetchApi';
 
 const Header: React.FC = () => {
   const dark = '1';
@@ -49,14 +53,6 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.contents__header} style={{ opacity: scroll }}>
-      {/* <Button type="button">{t('mainPage.buttons.editProfile')}</Button>
-      <Button type="button">{t('mainPage.buttons.createBoard')}</Button>
-      <Button onClick={() => changeLanguage()} type="button">
-        {t('mainPage.buttons.language')}
-      </Button>
-      <Button type="button" danger>
-        {t('mainPage.buttons.logout')}
-      </Button> */}
       <HeaderButton cb={testCb}>{t('mainPage.buttons.editProfile')}</HeaderButton>
       <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
       <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>

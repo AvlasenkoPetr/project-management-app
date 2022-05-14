@@ -10,7 +10,7 @@ import {
   setUser,
 } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
-import Form from '../Form/Form';
+import Form from '../../components/Form/Form';
 
 const SignUp: React.FC = () => {
   const { t, i18n } = useTranslation();

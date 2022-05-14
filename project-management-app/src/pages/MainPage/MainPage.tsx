@@ -4,8 +4,8 @@ import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHo
 import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import { setBoards } from '../../store/mainPageSlice';
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
 import Main from './Main/Main';
 import styles from './MainPage.module.scss';
 
