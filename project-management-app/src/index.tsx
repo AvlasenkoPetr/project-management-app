@@ -10,7 +10,7 @@ const container = document.getElementById('app') as HTMLDivElement;
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
   <Provider store={Store()}>
-    <Suspense fallback="loading">
+    <Suspense fallback="LOADING">
       <App />
     </Suspense>
   </Provider>

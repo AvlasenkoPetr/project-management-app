@@ -21,3 +21,12 @@
     }
   }
 }
+
+.span{
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 20px;
+  &:hover{
+    color: red;
+  }
+}

@@ -9,5 +9,31 @@
     "board":{
       "title": "Create Board"
     }
+  },
+  "authForm":{
+    "inputs":{
+      "login": "Login",
+      "password": "Password",
+      "name": "Name",
+      "passwordRepeat": "Password (repeat)"
+    }
+  },
+  "loginPage":{
+    "buttons":{
+      "login": "Login"
+    },
+    "redirect": {
+      "text": "Already have an account?",
+      "span": "Login"
+    }
+  },
+  "signUpPage":{
+    "buttons":{
+      "signUp": "Sign Up"
+    },
+    "redirect": {
+      "text": "Still no account",
+      "span": "Register"
+    }
   }
 }

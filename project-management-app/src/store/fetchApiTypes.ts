@@ -28,7 +28,12 @@ export type SignInRequestType = {
   password: string;
 };
 
-export type SignUpType = {
+export type SignUpResponseType = {
+  name: string;
+  login: string;
+  id: string;
+};
+export type SignUpRequestType = {
   name: string;
   login: string;
   password: string;
@@ -37,6 +42,7 @@ export type SignUpType = {
 export type BoardType = {
   id: string;
   title: string;
+  description: string;
 };
 
 export type GetBoardByIdType = {
