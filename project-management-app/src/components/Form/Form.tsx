@@ -1,55 +1,57 @@
-import React, { FormEventHandler } from 'react';
+import React from 'react';
 import styles from './Form.module.scss';
 import Input from './Input/Input';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
-import { hasFormSubmit } from '@testing-library/user-event/dist/utils';
-import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
-import { setToken } from '../../store/authorizeSlice';
-import { fetchApi } from '../../store/fetchApi';
-import { SignInResponseType } from '../../store/fetchApiTypes';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   children: string;
+  isSignIn?: boolean;
+  isSignUp?: boolean;
   login: boolean;
   name?: boolean;
   password: boolean;
   passwordRepeat?: boolean;
+  onSubmit?: () => void;
 };
 
 const Form: React.FC<Props> = (props) => {
   const navigate = useNavigate();
-  const dispatch = useCustomDispatch();
-  const [signUp, {}] = fetchApi.useSignUpMutation();
-  const [signIn, { error: signInError }] = fetchApi.useSignInMutation();
+  const { t, i18n } = useTranslation();
 
   async function FormSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
-    try {
-      const SignIn = await signIn({
-        login: 'a123@gmail.com',
-        password: '123456789',
-      }).unwrap();
-      dispatch(
-        setToken({
-          auth: {
-            token: SignIn.token,
-          },
-        })
-      );
-    } catch (err) {}
-    navigate('/');
+    props.onSubmit && props.onSubmit();
   }
 
   return (
     <div className={styles.container}>
       <div className={styles['form__wrapper']}>
         <form onSubmit={FormSubmit}>
-          {props.login && <Input type="text">Login</Input>}
-          {props.name && <Input type="text">Name</Input>}
-          {props.password && <Input type="password">Password</Input>}
-          {props.passwordRepeat && <Input type="password">Password (repeat)</Input>}
+          {props.login && <Input type="text">{t('authForm.inputs.login')}</Input>}
+          {props.name && <Input type="text">{t('authForm.inputs.name')}</Input>}
+          {props.password && <Input type="password">{t('authForm.inputs.password')}</Input>}
+          {props.passwordRepeat && (
+            <Input type="password">{t('authForm.inputs.passwordRepeat')}</Input>
+          )}
           <Button type="submit">{props.children}</Button>
+          {props.isSignIn && (
+            <div>
+              {t('loginPage.redirect.text')}
+              <span className={styles.span} onClick={() => navigate('/login')}>
+                {t('loginPage.redirect.span')}
+              </span>
+            </div>
+          )}
+          {props.isSignUp && (
+            <div>
+              {t('signUpPage.redirect.text')}
+              <span className={styles.span} onClick={() => navigate('/signup')}>
+                {t('signUpPage.redirect.span')}
+              </span>
+            </div>
+          )}
         </form>
       </div>
     </div>

@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   BoardType,
   GetUserByIdResponseType,
-  SignUpType,
   UpdateUserByIdRequestType,
   UpdateUserByIdResponseType,
   GetBoardByIdType,
@@ -14,6 +13,8 @@ import {
   UpdateTaskRequestType,
   SignInResponseType,
   SignInRequestType,
+  SignUpResponseType,
+  SignUpRequestType,
 } from './fetchApiTypes';
 import type { ReducerType, StoreType } from './store';
 
@@ -24,7 +25,6 @@ export const fetchApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as ReducerType).authorizeSlice.auth.token;
       console.log('token', token);
-
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
@@ -51,7 +51,6 @@ export const fetchApi = createApi({
         body: body,
       }),
     }),
-    //Question??? Return token but not body:SignInType
     signIn: builder.mutation<SignInResponseType, SignInRequestType>({
       query: (body) => ({
         url: '/signin',
@@ -59,7 +58,7 @@ export const fetchApi = createApi({
         body: body,
       }),
     }),
-    signUp: builder.mutation<SignUpType, SignUpType>({
+    signUp: builder.mutation<SignUpResponseType, SignUpRequestType>({
       query: (body) => ({
         url: '/signup',
         method: 'POST',

@@ -9,5 +9,31 @@
     "board":{
       "title": "Создать доску"
     }
+  },
+  "authForm":{
+    "inputs":{
+      "login": "Логин",
+      "password": "Пароль",
+      "name": "Имя",
+      "passwordRepeat": "Пароль (повторить)"
+    }
+  },
+  "loginPage":{
+    "buttons":{
+      "login": "Войти"
+    },
+    "redirect": {
+      "text": "Уже есть аккаунт?",
+      "span": "Войти"
+    }
+  },
+  "signUpPage":{
+    "buttons":{
+      "signUp": "Зарегестрироваться"
+    },
+    "redirect": {
+      "text": "Нет аккаунта?",
+      "span": "Зарегестрироваться"
+    }
   }
 }
