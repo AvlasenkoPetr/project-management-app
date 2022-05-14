@@ -1,0 +1,15 @@
+.header__button {
+    margin: 5px;
+    width: 10%;
+
+    border-radius: 10px;
+
+    text-align: center;
+    
+    transition: .3s linear;
+    
+    &:hover {
+        background-color: var(--blue-light-hover);
+        color: var(--white-hover);
+    }
+}
