@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Form.module.scss';
 import Input from './Input/Input';
 import Button from '../Button/Button';
@@ -19,7 +19,7 @@ type Props = {
 const Form: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-
+  const [validation, setValidation] = useState('');
   async function FormSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     props.onSubmit && props.onSubmit();
@@ -32,9 +32,9 @@ const Form: React.FC<Props> = (props) => {
           {props.login && <Input type="text">{t('authForm.inputs.login')}</Input>}
           {props.name && <Input type="text">{t('authForm.inputs.name')}</Input>}
           {props.password && <Input type="password">{t('authForm.inputs.password')}</Input>}
-          {props.passwordRepeat && (
+          {/* {props.passwordRepeat && (
             <Input type="password">{t('authForm.inputs.passwordRepeat')}</Input>
-          )}
+          )} */}
           <Button type="submit">{props.children}</Button>
           {props.isSignIn && (
             <div>
