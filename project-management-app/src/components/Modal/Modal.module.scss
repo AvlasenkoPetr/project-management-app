@@ -1,0 +1,40 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    min-width: 30%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    background-color: white;
+    border: 4px solid var(--blue-dark);
+    border-radius: 20px;
+
+    font-family: 'Oswald';
+
+    &__header {
+        position: relative;
+        width: 100%;
+        padding-bottom: 10px;
+
+        border-bottom: 2px solid var(--blue-dark);
+
+        font-size: 26px;
+        text-align: center;
+        color: var(--blue-dark);
+    }
+}

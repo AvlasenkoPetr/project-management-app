@@ -4,10 +4,9 @@
   img {
     width: 100%;
     height: 50px;
-    transition: 0.1s linear;
     object-fit: contain;
     opacity: 0.8;
-    transition: .3s linear;
+    transition: .1s linear;
 
     &:hover {
       opacity: 1;

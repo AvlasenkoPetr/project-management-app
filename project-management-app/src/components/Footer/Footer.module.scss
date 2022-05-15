@@ -10,6 +10,7 @@
 
   font-family: 'Oswald';
   letter-spacing: 1px;
+
   
   &__links {
     display: flex;
@@ -18,7 +19,8 @@
     a {
       font-size: 20px;
       color: var(--white-main);
-
+      transition: .1s linear;
+      
       &:hover {
         color: var(--white-hover);
       }
@@ -27,7 +29,7 @@
   
   &__year {
     width: 140px;
-
+    
     font-size: 26px;
     text-align: end;
     color: var(--white-main);
@@ -37,7 +39,7 @@
 @media(max-width: 1024px) {
   .footer {
     padding: 10px;
-
+    
     &__links {
       gap: 15px;
 

@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
+import { fetchApi } from '../../../../../store/fetchApi';
 import { BoardType } from '../../../../../store/fetchApiTypes';
 import styles from './BoardItem.module.scss';
 
-interface IProps {
-  id: string;
-  title: string;
-  description: string;
-  deleteBoardFromPage: (id: string) => void;
-}
-
-export const BoardItem: React.FC<IProps> = ({ id, title, description, deleteBoardFromPage }) => {
+export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [deleteBoard, {}] = fetchApi.useDeleteBoardByIdMutation();
+  const { refetch } = fetchApi.useGetAllBoardsQuery('');
 
   const openBoardPage = () => {
     console.log(`open ${id}  board`);
   };
 
-  const deleteBoard = () => {
+  const deleteBoardOnPage = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setLoading(true);
-    // fetch delete board
-    setTimeout(() => {
-      // finally
+    try {
+      const response = await deleteBoard(id);
+    } catch {
+    } finally {
       setLoading(false);
-      deleteBoardFromPage(id);
-    }, 1000);
+      refetch();
+    }
   };
 
   return (
@@ -33,7 +31,7 @@ export const BoardItem: React.FC<IProps> = ({ id, title, description, deleteBoar
       {isLoading ? (
         <p className={styles.container__loader}>лоадер))</p>
       ) : (
-        <button className={styles.container__delete_button} onClick={deleteBoard} />
+        <button className={styles.container__delete_button} onClick={deleteBoardOnPage} />
       )}
     </div>
   );
