@@ -35,5 +35,14 @@
       "text": "Нет аккаунта?",
       "span": "Зарегестрироваться"
     }
+  },
+  "modals": {
+    "buttons": {
+      "createBoard": "Создать",
+      "cancel": "Отмена"
+    },
+    "titles": {
+      "createBoard": "Создать Доску"
+    }
   }
 }

@@ -12,26 +12,34 @@ export const AddBoardButton: React.FC = () => {
 
   const openModal = () => {
     setOpen(true);
-    // console.log('open modal');
-    // try {
-    //   const response = await addBoard({ title: 'Homework', description: 'My homework' });
-    // } catch {
-    // } finally {
-    //   refetch();
-    // }
   };
 
   const closeModal = () => {
     setOpen(false);
   };
 
+  const createBoard = async () => {
+    try {
+      const response = await addBoard({ title: 'Homework', description: 'My homework' });
+    } catch {
+    } finally {
+      refetch();
+    }
+  };
+
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} onClick={openModal}>
         <h2 className={styles.container__board_name}>{t('mainPage.board.title')}</h2>
-        <button className={styles.container__add_button} onClick={openModal} />
+        <button className={styles.container__add_button} />
       </div>
-      <Modal title="Создать доску" isOpen={isOpen} closeModal={closeModal}>
+      <Modal
+        title={t('modals.titles.createBoard')}
+        submitText={t('modals.buttons.createBoard')}
+        isOpen={isOpen}
+        closeModal={closeModal}
+        onSubmit={createBoard}
+      >
         <h1>Modal</h1>
       </Modal>
     </>
