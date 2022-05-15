@@ -7,31 +7,25 @@ import { setBoards } from '../../store/mainPageSlice';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Main from './Main/Main';
-import styles from './MainPage.module.scss';
+import styles from './BoardPage.module.scss';
+import { setBoardContent } from '../../store/boardPageSlice';
 
-const MainPage: React.FC = () => {
+const BoardPage: React.FC = () => {
   const selector = useCustomSelector((state) => state);
   const dispatch = useCustomDispatch();
   const navigation = useNavigate();
-
-  const { data, error } = fetchApi.useGetAllBoardsQuery('');
+  const { data, error, isLoading, refetch } = fetchApi.useGetBoardByIdQuery(
+    selector.boardPageSlice.id
+  );
   useEffect(() => {
-    if (data) {
-      dispatch(setBoards(data));
-    }
+    if (data) dispatch(setBoardContent(data));
   }, [data]);
   useEffect(() => {
-    if (error && !selector.authorizeSlice.auth.token) navigation('/login');
-  }, [error]);
-  useEffect(() => {
-    if (selector.mainPageSlice.data.boards) {
-      dispatch(setIsLoading(true));
-      navigation('/board');
-    }
-  }, [selector.mainPageSlice.data.boards]);
+    if (!selector.authorizeSlice.auth.token) navigation('/login');
+  }, [selector.authorizeSlice.auth.token]);
   return (
     <>
-      {selector.authorizeSlice.isLoading ? (
+      {!isLoading && data ? (
         <div className={styles.container}>
           <Header />
           <Main />
@@ -44,4 +38,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default BoardPage;

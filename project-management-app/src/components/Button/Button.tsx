@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Button } from 'antd';
 import styles from './Button.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
-  children: string;
+  children: string | ReactElement;
   onClick?: () => void;
   danger?: boolean;
   redirect?: string;
@@ -20,7 +20,12 @@ const CustomButton: React.FC<Props> = (props) => {
 
   return (
     <div className={styles['button-wrapper']}>
-      <Button htmlType={props.type} onClick={() => handleClick()} danger={props.danger}>
+      <Button
+        className={styles.button}
+        htmlType={props.type}
+        onClick={() => handleClick()}
+        danger={props.danger}
+      >
         {props.children}
       </Button>
     </div>

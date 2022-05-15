@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { fetchApi } from './fetchApi';
 import authorizeSlice from './authorizeSlice';
 import mainPageSlice from './mainPageSlice';
+import boardPageSlice from './boardPageSlice';
 
 const RootReducer = combineReducers({
   [fetchApi.reducerPath]: fetchApi.reducer,
   authorizeSlice: authorizeSlice,
   mainPageSlice: mainPageSlice,
+  boardPageSlice: boardPageSlice,
 });
 
 const Store = () => {
