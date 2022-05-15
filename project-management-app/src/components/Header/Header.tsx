@@ -52,11 +52,15 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={styles.contents__header} style={{ opacity: scroll }}>
-      <HeaderButton cb={testCb}>{t('mainPage.buttons.editProfile')}</HeaderButton>
-      <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
-      <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
-      <HeaderButton cb={logout}>{t('mainPage.buttons.logout')}</HeaderButton>
+    <header className={styles.container} style={{ opacity: scroll }}>
+      <div className={styles.container__buttons_group}>
+        <HeaderButton cb={testCb}>{t('mainPage.buttons.editProfile')}</HeaderButton>
+        <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
+      </div>
+      <div className={styles.container__buttons_group}>
+        <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
+        <HeaderButton cb={logout}>{t('mainPage.buttons.logout')}</HeaderButton>
+      </div>
     </header>
   );
 };

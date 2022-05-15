@@ -1,6 +1,6 @@
-.header__button {
+.container {
     margin: 5px;
-    width: 10%;
+    width: 190px;
 
     border-radius: 10px;
 
@@ -12,5 +12,12 @@
     &:hover {
         background-color: var(--blue-dark-hover);
         color: var(--white-hover);
+    }
+}
+
+@media(max-width: 1024px) {
+    .container {
+        width: 170px;
+        font-size: 22px;
     }
 }

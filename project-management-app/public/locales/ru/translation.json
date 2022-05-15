@@ -2,7 +2,7 @@
   "mainPage":{
     "buttons":{
       "editProfile": "Изменить Профиль",
-      "createBoard": "Создать доску",
+      "createBoard": "Создать Доску",
       "language": "Ru/En",
       "logout": "Выйти"
     }, 

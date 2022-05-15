@@ -4,9 +4,9 @@ import styles from './Footer.module.scss';
 
 const Footer: React.FC = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.container}>
       <Logo />
-      <div className={styles.footer__links}>
+      <div className={styles.container__links}>
         <a href="https://github.com/AvlasenkoPetr" target="_blank" rel="noreferrer">
           AvlasenkoPetr
         </a>
@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
           R5G1
         </a>
       </div>
-      <div className={styles.footer__year}>2022</div>
+      <div className={styles.container__year}>2022</div>
     </footer>
   );
 };

@@ -4,7 +4,9 @@ import styles from './BoardsList.module.scss';
 
 export const BoardsList: React.FC = () => {
   return (
-    <div className={styles.boardslist__container}>
+    <div className={styles.container}>
+      <BoardItem></BoardItem>
+      <BoardItem></BoardItem>
       <BoardItem></BoardItem>
       <BoardItem></BoardItem>
       <BoardItem></BoardItem>

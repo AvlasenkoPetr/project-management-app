@@ -10,7 +10,7 @@ interface IProps {
 const HeaderButton: React.FC<IProps> = ({ cb, children }) => {
   return (
     <button
-      className={styles.header__button}
+      className={styles.container}
       onClick={() => {
         if (cb) cb();
       }}

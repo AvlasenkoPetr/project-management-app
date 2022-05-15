@@ -1,4 +1,4 @@
-.contents__header {
+.container {
   position: fixed;
   z-index: 1;
 
@@ -6,6 +6,7 @@
   width: 100vw;
   
   display: flex;
+  justify-content: space-between;
   
   background-color: var(--blue-dark);
 
@@ -15,4 +16,8 @@
   letter-spacing: 1px;
 
   transition: opacity 0.3s ease 0s;
+
+  &__buttons_group {
+    display: flex;
+  }
 }
