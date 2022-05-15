@@ -7,7 +7,7 @@
       "logout": "Logout"
     },
     "board":{
-      "title": "Create Board"
+      "title": "Create board"
     }
   },
   "authForm":{
