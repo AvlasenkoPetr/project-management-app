@@ -24,7 +24,6 @@ const mainPageSlice = createSlice({
     },
     setBoards: (state, action: PayloadAction<Array<BoardType> | null>) => {
       state.data.boards = action.payload;
-      console.log(action.payload);
     },
   },
 });
