@@ -2,7 +2,7 @@
   "mainPage":{
     "buttons":{
       "editProfile": "Изменить Профиль",
-      "createBoard": "Создать доску",
+      "createBoard": "Создать Доску",
       "language": "Ru/En",
       "logout": "Выйти"
     }, 
@@ -34,6 +34,15 @@
     "redirect": {
       "text": "Нет аккаунта?",
       "span": "Зарегестрироваться"
+    }
+  },
+  "modals": {
+    "buttons": {
+      "createBoard": "Создать",
+      "cancel": "Отмена"
+    },
+    "titles": {
+      "createBoard": "Создать Доску"
     }
   }
 }

@@ -68,7 +68,7 @@ export const fetchApi = createApi({
     getAllBoards: builder.query<Array<BoardType>, unknown>({
       query: () => '/boards',
     }),
-    createNewBoard: builder.mutation<BoardType, { title: string }>({
+    createNewBoard: builder.mutation<BoardType, { title: string; description: string }>({
       query: (body) => ({
         url: '/boards',
         method: 'POST',

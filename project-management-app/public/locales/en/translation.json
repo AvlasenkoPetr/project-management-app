@@ -7,7 +7,7 @@
       "logout": "Logout"
     },
     "board":{
-      "title": "Create Board"
+      "title": "Create board"
     }
   },
   "authForm":{
@@ -34,6 +34,15 @@
     "redirect": {
       "text": "Still no account",
       "span": "Register"
+    }
+  },
+  "modals": {
+    "buttons": {
+      "createBoard": "Create",
+      "cancel": "Cancel"
+    },
+    "titles": {
+      "createBoard": "Create board"
     }
   }
 }
