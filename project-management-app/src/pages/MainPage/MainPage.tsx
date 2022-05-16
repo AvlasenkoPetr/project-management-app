@@ -9,25 +9,25 @@ import Header from '../../components/Header/Header';
 import Main from './Main/Main';
 import styles from './MainPage.module.scss';
 
-type localStorageType = {
-  token: string;
-};
-
 const MainPage: React.FC = () => {
   const selector = useCustomSelector((state) => state);
   const dispatch = useCustomDispatch();
   const navigation = useNavigate();
-  const token: localStorageType = JSON.parse(localStorage.getItem('user') as string);
-  if (token) dispatch(setToken(token.token));
+
   const { data, error } = fetchApi.useGetAllBoardsQuery('');
   useEffect(() => {
-    if (data) dispatch(setBoards(data));
+    if (data) {
+      dispatch(setBoards(data));
+    }
   }, [data]);
   useEffect(() => {
     if (error && !selector.authorizeSlice.auth.token) navigation('/login');
   }, [error]);
   useEffect(() => {
-    if (selector.mainPageSlice.data.boards) dispatch(setIsLoading(true));
+    if (selector.mainPageSlice.data.boards) {
+      dispatch(setIsLoading(true));
+      // navigation('/board');
+    }
   }, [selector.mainPageSlice.data.boards]);
   return (
     <>

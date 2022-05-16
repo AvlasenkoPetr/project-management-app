@@ -48,6 +48,7 @@ export type BoardType = {
 export type GetBoardByIdType = {
   id: string;
   title: string;
+  description: string;
   columns: GetColumnByIdType[];
 };
 

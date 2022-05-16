@@ -94,9 +94,12 @@ export const fetchApi = createApi({
     getAllColumns: builder.query<Array<ColumnType>, string>({
       query: (boardId) => `/boards/${boardId}/columns`,
     }),
-    createNewColumn: builder.mutation<ColumnType, { title: string; order: number }>({
-      query: (body) => ({
-        url: '/boards',
+    createNewColumn: builder.mutation<
+      ColumnType,
+      { body: { title: string; order: number }; boardId: string }
+    >({
+      query: ({ body, boardId }) => ({
+        url: `/boards/${boardId}/columns`,
         method: 'POST',
         body: body,
       }),
