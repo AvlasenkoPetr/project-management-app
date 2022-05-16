@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { GetBoardByIdType } from './fetchApiTypes';
 
 const initialState: GetBoardByIdType = {
-  id: 'be8a02f3-3ad7-406d-b29c-a2961e1f69d6',
+  id: '',
   description: '',
   title: '',
   columns: [],

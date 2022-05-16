@@ -26,7 +26,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     if (selector.mainPageSlice.data.boards) {
       dispatch(setIsLoading(true));
-      navigation('/board');
+      // navigation('/board');
     }
   }, [selector.mainPageSlice.data.boards]);
   return (

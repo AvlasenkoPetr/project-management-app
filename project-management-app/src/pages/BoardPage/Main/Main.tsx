@@ -1,6 +1,7 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
 import { useCustomSelector } from '../../../customHooks/customHooks';
 import { fetchApi } from '../../../store/fetchApi';
@@ -8,11 +9,12 @@ import styles from './Main.module.scss';
 
 const Main: React.FC = () => {
   const selector = useCustomSelector((state) => state.boardPageSlice);
+  const navigation = useNavigate();
   const [isFormActive, setToggleForm] = useState(false);
   const [inputText, setInputText] = useState('');
   const [createNewColumn, {}] = fetchApi.useCreateNewColumnMutation();
   const [deleteColumn, {}] = fetchApi.useDeleteColumnMutation();
-  const { refetch } = fetchApi.useGetBoardByIdQuery(selector.id);
+  const { error, refetch } = fetchApi.useGetBoardByIdQuery(selector.id);
   const handleSumbit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     setToggleForm(false);
@@ -40,8 +42,15 @@ const Main: React.FC = () => {
     refetch();
   };
 
+  const returnToMainPage = () => {
+    navigation('/');
+  };
+
   return (
     <main className={styles.main}>
+      <Button onClick={returnToMainPage} type="button">
+        Return
+      </Button>
       <h2>{selector.title}</h2>
       <div className={styles.board}>
         {selector.columns.map((column) => {

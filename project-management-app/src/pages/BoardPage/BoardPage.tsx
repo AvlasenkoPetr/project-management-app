@@ -18,6 +18,9 @@ const BoardPage: React.FC = () => {
     selector.boardPageSlice.id
   );
   useEffect(() => {
+    if (error) navigation('/');
+  }, [error]);
+  useEffect(() => {
     if (data) dispatch(setBoardContent(data));
   }, [data]);
   useEffect(() => {
