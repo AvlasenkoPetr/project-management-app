@@ -1,16 +1,23 @@
-.header__button {
+.container {
     margin: 5px;
-    width: 10%;
+    width: 190px;
 
     border-radius: 10px;
 
     text-align: center;
     color: var(--white-main);
     
-    transition: .3s linear;
+    transition: .1s linear;
     
     &:hover {
         background-color: var(--blue-dark-hover);
         color: var(--white-hover);
+    }
+}
+
+@media(max-width: 1024px) {
+    .container {
+        width: 170px;
+        font-size: 22px;
     }
 }

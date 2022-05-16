@@ -31,15 +31,11 @@ const MainPage: React.FC = () => {
   }, [selector.mainPageSlice.data.boards]);
   return (
     <>
-      {selector.authorizeSlice.isLoading ? (
-        <div className={styles.container}>
-          <Header />
-          <Main />
-          <Footer />
-        </div>
-      ) : (
-        <div>Загружаемся</div>
-      )}
+      <div className={styles.container}>
+        <Header />
+        {selector.authorizeSlice.isLoading ? <Main /> : <div>Загружаемся</div>}
+        <Footer />
+      </div>
     </>
   );
 };
