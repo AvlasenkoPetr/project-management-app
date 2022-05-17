@@ -6,6 +6,7 @@ type initialStateType = {
   data: {
     boards: Array<BoardType> | null;
   };
+  isModalHide: boolean;
 };
 
 const initialState: initialStateType = {
@@ -13,6 +14,7 @@ const initialState: initialStateType = {
   data: {
     boards: null,
   },
+  isModalHide: true,
 };
 
 const mainPageSlice = createSlice({
@@ -25,8 +27,11 @@ const mainPageSlice = createSlice({
     setBoards: (state, action: PayloadAction<Array<BoardType> | null>) => {
       state.data.boards = action.payload;
     },
+    setIsModalHide: (state, action: PayloadAction<boolean>) => {
+      state.isModalHide = action.payload;
+    },
   },
 });
 
-export const { toggleLanguage, setBoards } = mainPageSlice.actions;
+export const { toggleLanguage, setBoards, setIsModalHide } = mainPageSlice.actions;
 export default mainPageSlice.reducer;
