@@ -5,6 +5,7 @@ import { useCustomDispatch } from './customHooks/customHooks';
 import BoardPage from './pages/BoardPage/BoardPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MainPage from './pages/MainPage/MainPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import { setToken } from './store/authorizeSlice';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/editprofile" element={<ProfilePage />} />
         <Route path="/board" element={<BoardPage />} />
       </Routes>
     </BrowserRouter>
