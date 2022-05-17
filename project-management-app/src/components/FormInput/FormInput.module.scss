@@ -1,0 +1,50 @@
+.container {
+    position: relative;
+
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    font-family: "Oswald";
+
+    &__description {
+        width: 100%;
+        text-align: center;
+        font-size: 26px;
+        color: var(--black);
+    }
+
+    &__input {
+        width: 60%;
+        padding: 5px 10px;
+
+        font-size: 22px;
+    
+        border-radius: 10px;
+        border: 3px solid var(--blue-dark);
+
+        transition: .1s linear;
+
+        &:hover {
+            border-color: var(--blue-dark-hover);
+        }
+        
+        &:focus {
+            border-color: var(--orange);
+        }
+    }
+
+    &__error-message {
+        position: absolute;
+        bottom: -25px;
+    
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0.8px;
+        text-align: center;
+        color: var(--red);
+    }
+}

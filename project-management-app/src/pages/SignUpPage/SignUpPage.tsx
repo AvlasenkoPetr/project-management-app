@@ -11,6 +11,7 @@ import {
 } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import Form from '../../components/Form/Form';
+import styles from './SignUp.module.scss';
 
 const SignUp: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -59,9 +60,11 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit} login password name passwordRepeat isSignIn>
-      {t('signUpPage.buttons.signUp')}
-    </Form>
+    <div className={styles.container}>
+      <Form onSubmit={onSubmit} login password name passwordRepeat isSignIn>
+        {t('signUpPage.buttons.signUp')}
+      </Form>
+    </div>
   );
 };
 

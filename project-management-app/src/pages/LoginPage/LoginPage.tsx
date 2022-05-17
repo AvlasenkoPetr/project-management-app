@@ -5,6 +5,7 @@ import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHo
 import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import Form from '../../components/Form/Form';
+import styles from './LoginPage.module.scss';
 
 const LoginPage: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -31,9 +32,11 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit} login password isSignUp>
-      {t('loginPage.buttons.login')}
-    </Form>
+    <div className={styles.container}>
+      <Form onSubmit={onSubmit} login password isSignUp>
+        {t('loginPage.buttons.login')}
+      </Form>
+    </div>
   );
 };
 
