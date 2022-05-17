@@ -9,6 +9,7 @@ import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHo
 import { fetchApi } from '../../store/fetchApi';
 import { setBoards, toggleLanguage } from '../../store/mainPageSlice';
 import { logOut } from '../../store/authorizeSlice';
+import { useNavigate } from 'react-router-dom';
 // import { setBoards, toggleLanguage } from '../../../store/mainPageSlice';
 // import { setToken, setIsLoading, logOut } from '../../../store/authorizeSlice';
 // import { fetchApi } from '../../../store/fetchApi';
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
   const selector = useCustomSelector((state) => state);
   const dispatch = useCustomDispatch();
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
+  const navigation = useNavigate();
 
   const listenScrollEvent = () => {
     if (window.scrollY > 100) {
@@ -45,16 +47,21 @@ const Header: React.FC = () => {
     dispatch(setBoards(null));
     dispatch(logOut());
     refetch();
+    navigation('/login');
   };
 
   const testCb = () => {
     console.log(test);
   };
 
+  const profilePage = () => {
+    navigation('/editprofile');
+  };
+
   return (
     <header className={styles.container} style={{ opacity: scroll }}>
       <div className={styles.container__buttons_group}>
-        <HeaderButton cb={testCb}>{t('mainPage.buttons.editProfile')}</HeaderButton>
+        <HeaderButton cb={profilePage}>{t('mainPage.buttons.editProfile')}</HeaderButton>
         <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
       </div>
       <div className={styles.container__buttons_group}>

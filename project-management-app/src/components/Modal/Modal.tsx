@@ -6,7 +6,7 @@ import { t } from 'i18next';
 interface IProps {
   title: string;
   submitText: string;
-  isOpen: boolean;
+  isModalHide: boolean;
   closeModal: () => void;
   onSubmit: () => void;
 }
@@ -14,7 +14,7 @@ interface IProps {
 export const Modal: React.FC<IProps> = ({
   title,
   submitText,
-  isOpen,
+  isModalHide,
   closeModal,
   onSubmit,
   children,
@@ -24,7 +24,7 @@ export const Modal: React.FC<IProps> = ({
 
   return (
     <>
-      {isOpen && (
+      {!isModalHide && (
         <Portal>
           <div className={styles.overlay} onClick={closeModal}>
             <div className={styles.container} onClick={(e) => e.stopPropagation()}>
