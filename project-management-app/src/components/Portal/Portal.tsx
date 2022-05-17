@@ -9,7 +9,7 @@ export const Portal: React.FC = ({ children }) => {
     return () => {
       document.body.removeChild(el);
     };
-  }, []);
+  }, [children]);
 
   const el = document.createElement('div');
   return ReactDOM.createPortal(children, el);

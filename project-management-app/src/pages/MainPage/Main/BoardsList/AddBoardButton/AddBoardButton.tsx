@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal } from '../../../../../components/Modal/Modal';
+import { useCustomDispatch, useCustomSelector } from '../../../../../customHooks/customHooks';
 import { fetchApi } from '../../../../../store/fetchApi';
+import { setIsModalHide } from '../../../../../store/mainPageSlice';
 import styles from './AddBoardButton.module.scss';
 
 export const AddBoardButton: React.FC = () => {
@@ -9,16 +11,19 @@ export const AddBoardButton: React.FC = () => {
   const [addBoard, {}] = fetchApi.useCreateNewBoardMutation();
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
   const [isOpen, setOpen] = useState<boolean>(false);
+  const dispatch = useCustomDispatch();
+  const selector = useCustomSelector((state) => state.mainPageSlice);
 
   const openModal = () => {
-    setOpen(true);
+    dispatch(setIsModalHide(false));
   };
 
   const closeModal = () => {
-    setOpen(false);
+    dispatch(setIsModalHide(true));
   };
 
   const createBoard = async () => {
+    closeModal();
     try {
       const response = await addBoard({ title: 'Homework', description: 'My homework' });
     } catch {
@@ -36,7 +41,7 @@ export const AddBoardButton: React.FC = () => {
       <Modal
         title={t('modals.titles.createBoard')}
         submitText={t('modals.buttons.createBoard')}
-        isOpen={isOpen}
+        isModalHide={selector.isModalHide}
         closeModal={closeModal}
         onSubmit={createBoard}
       >

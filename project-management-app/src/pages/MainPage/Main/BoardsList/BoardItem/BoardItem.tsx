@@ -4,6 +4,7 @@ import { useCustomDispatch } from '../../../../../customHooks/customHooks';
 import { setBoardId } from '../../../../../store/boardPageSlice';
 import { fetchApi } from '../../../../../store/fetchApi';
 import { BoardType } from '../../../../../store/fetchApiTypes';
+import { setIsModalHide } from '../../../../../store/mainPageSlice';
 import styles from './BoardItem.module.scss';
 
 export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
