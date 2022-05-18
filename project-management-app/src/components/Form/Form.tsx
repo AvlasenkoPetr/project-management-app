@@ -1,5 +1,4 @@
 import styles from './Form.module.scss';
-import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
@@ -121,7 +120,7 @@ const Form: React.FC<Props> = (props) => {
         {/* <Button type="submit">{props.children}</Button> */}
         <ButtonBlueDark>{props.children}</ButtonBlueDark>
         {props.isSignUp && (
-          <div>
+          <div className={styles.question}>
             {t('loginPage.redirect.text')}
             <span className={styles.span} onClick={() => navigate('/login')}>
               {t('loginPage.redirect.span')}
@@ -129,7 +128,7 @@ const Form: React.FC<Props> = (props) => {
           </div>
         )}
         {props.isSignIn && (
-          <div>
+          <div className={styles.question}>
             {t('signUpPage.redirect.text')}
             <span className={styles.span} onClick={() => navigate('/signup')}>
               {t('signUpPage.redirect.span')}

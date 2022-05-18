@@ -2,13 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
-import {
-  setCanLogin,
-  setIsLoading,
-  setPassword,
-  setToken,
-  setUser,
-} from '../../store/authorizeSlice';
+import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import Form from '../../components/Form/Form';
 import styles from './SignUp.module.scss';

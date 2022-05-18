@@ -37,8 +37,8 @@
       "signUp": "Sign Up"
     },
     "redirect": {
-      "text": "Still no account",
-      "span": "Register"
+      "text": "Don't have an account?",
+      "span": "Create"
     }
   },
   "modals": {
