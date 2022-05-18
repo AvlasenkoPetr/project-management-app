@@ -16,6 +16,11 @@
       "password": "Password",
       "name": "Name",
       "passwordRepeat": "Password (repeat)"
+    },
+    "errors":{
+      "empty": "field must be filled",
+      "wrong": "incorrect data",
+      "exist": "user already exist"
     }
   },
   "loginPage":{
@@ -32,8 +37,8 @@
       "signUp": "Sign Up"
     },
     "redirect": {
-      "text": "Still no account",
-      "span": "Register"
+      "text": "Don't have an account?",
+      "span": "Create"
     }
   },
   "modals": {

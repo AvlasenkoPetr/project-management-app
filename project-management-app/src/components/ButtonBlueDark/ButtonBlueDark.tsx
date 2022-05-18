@@ -1,13 +1,13 @@
 import React from 'react';
 import { ReactNode } from 'react';
-import styles from './HeaderButton.module.scss';
+import styles from './ButtonBlueDark.module.scss';
 
 interface IProps {
   cb?: () => void;
   children: ReactNode;
 }
 
-const HeaderButton: React.FC<IProps> = ({ cb, children }) => {
+const ButtonBlueDark: React.FC<IProps> = ({ cb, children }) => {
   return (
     <button
       className={styles.container}
@@ -20,4 +20,4 @@ const HeaderButton: React.FC<IProps> = ({ cb, children }) => {
   );
 };
 
-export default HeaderButton;
+export default ButtonBlueDark;
