@@ -2,38 +2,17 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
-import {
-  setCanLogin,
-  setIsLoading,
-  setPassword,
-  setToken,
-  setUser,
-} from '../../store/authorizeSlice';
+import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import Form from '../../components/Form/Form';
+import styles from './SignUp.module.scss';
 
 const SignUp: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useCustomDispatch();
   const selector = useCustomSelector((state) => state.authorizeSlice);
-  const [signUp, {}] = fetchApi.useSignUpMutation();
   const [signIn, {}] = fetchApi.useSignInMutation();
-  const onSubmit = async () => {
-    const user = {
-      name: 'andreyq',
-      password: '123',
-      login: '1aaawsswwaws0@gmail.com',
-    };
-    try {
-      const response = await signUp(user).unwrap();
-      dispatch(setUser(response));
-      dispatch(setPassword(user.password));
-      dispatch(setCanLogin(true));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     if (selector.isLoading) navigate('/');
@@ -59,9 +38,11 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit} login password name passwordRepeat isSignIn>
-      {t('signUpPage.buttons.signUp')}
-    </Form>
+    <div className={styles.container}>
+      <Form login password name passwordRepeat isSignUp>
+        {t('signUpPage.buttons.signUp')}
+      </Form>
+    </div>
   );
 };
 
