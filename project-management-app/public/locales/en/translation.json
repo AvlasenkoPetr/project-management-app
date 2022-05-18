@@ -16,6 +16,11 @@
       "password": "Password",
       "name": "Name",
       "passwordRepeat": "Password (repeat)"
+    },
+    "errors":{
+      "empty": "field must be filled",
+      "wrong": "incorrect data",
+      "exist": "user already exist"
     }
   },
   "loginPage":{

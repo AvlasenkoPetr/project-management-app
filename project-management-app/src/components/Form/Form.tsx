@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import styles from './Form.module.scss';
-import Input from './Input/Input';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { FormInput } from '../FormInput/FormInput';
+import { fetchApi } from '../../store/fetchApi';
+import {
+  setCanLogin,
+  setIsLoading,
+  setPassword,
+  setToken,
+  setUser,
+} from '../../store/authorizeSlice';
+import { useCustomDispatch } from '../../customHooks/customHooks';
+import ButtonBlueDark from '../ButtonBlueDark/ButtonBlueDark';
 
 type Props = {
   children: string;
@@ -15,26 +23,66 @@ type Props = {
   name?: boolean;
   password: boolean;
   passwordRepeat?: boolean;
-  onSubmit?: () => void;
 };
 
 interface ISubmitData {
   [key: string]: any;
 }
 
+interface IAuthError {
+  data: {
+    statusCode: number;
+    message: string;
+  };
+  status: number;
+}
+
 const Form: React.FC<Props> = (props) => {
   const navigate = useNavigate();
+  const [signUp, {}] = fetchApi.useSignUpMutation();
+  const [signIn, {}] = fetchApi.useSignInMutation();
+  const dispatch = useCustomDispatch();
   const { t } = useTranslation();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setError,
   } = useForm();
 
   async function formSubmit(data: ISubmitData) {
-    console.log('submit');
-    console.log(data);
-    // props.onSubmit && props.onSubmit();
+    if (props.isSignUp) {
+      const newUser = {
+        name: data.name,
+        login: data.login,
+        password: data.password,
+      };
+      try {
+        const response = await signUp(newUser).unwrap();
+        dispatch(setUser(response));
+        dispatch(setPassword(newUser.password));
+        dispatch(setCanLogin(true));
+      } catch (err) {
+        setError('login', { message: t('authForm.errors.exist') });
+      }
+    }
+
+    if (props.isSignIn) {
+      const user = {
+        login: data.login,
+        password: data.password,
+      };
+      try {
+        const response = await signIn(user).unwrap();
+        dispatch(setToken(response.token));
+        dispatch(setIsLoading(true));
+        localStorage.setItem('user', JSON.stringify(response));
+      } catch (err) {
+        setError('login', { message: t('authForm.errors.wrong') });
+        setError('password', { message: t('authForm.errors.wrong') });
+      }
+    }
   }
 
   return (
@@ -70,8 +118,9 @@ const Form: React.FC<Props> = (props) => {
         {/* {props.passwordRepeat && (
             <Input type="password">{t('authForm.inputs.passwordRepeat')}</Input>
           )} */}
-        <Button type="submit">{props.children}</Button>
-        {props.isSignIn && (
+        {/* <Button type="submit">{props.children}</Button> */}
+        <ButtonBlueDark>{props.children}</ButtonBlueDark>
+        {props.isSignUp && (
           <div>
             {t('loginPage.redirect.text')}
             <span className={styles.span} onClick={() => navigate('/login')}>
@@ -79,7 +128,7 @@ const Form: React.FC<Props> = (props) => {
             </span>
           </div>
         )}
-        {props.isSignUp && (
+        {props.isSignIn && (
           <div>
             {t('signUpPage.redirect.text')}
             <span className={styles.span} onClick={() => navigate('/signup')}>
