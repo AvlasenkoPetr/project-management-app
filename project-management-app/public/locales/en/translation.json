@@ -41,6 +41,12 @@
       "span": "Create"
     }
   },
+  "boardPage":{
+    "buttons":{
+      "returnToMainPage": "Return",
+      "addNewColumn": "+ Add new column "
+    }
+  },
   "modals": {
     "buttons": {
       "createBoard": "Create",

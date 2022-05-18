@@ -28,15 +28,11 @@ const BoardPage: React.FC = () => {
   }, [selector.authorizeSlice.auth.token]);
   return (
     <>
-      {!isLoading && data ? (
-        <div className={styles.container}>
-          <Header />
-          <Main />
-          <Footer />
-        </div>
-      ) : (
-        <div>Загружаемся</div>
-      )}
+      <div className={styles.container}>
+        <Header />
+        {!isLoading && data ? <Main /> : <div>Загружаемся</div>}
+        <Footer />
+      </div>
     </>
   );
 };

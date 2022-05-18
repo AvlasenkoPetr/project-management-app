@@ -41,6 +41,12 @@
       "span": "Зарегистрироваться"
     }
   },
+  "boardPage":{
+    "buttons":{
+      "returnToMainPage": "Назад",
+      "addNewColumn": "+ Добавить колонку"
+    }
+  },
   "modals": {
     "buttons": {
       "createBoard": "Создать",
