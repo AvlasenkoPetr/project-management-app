@@ -1,5 +1,5 @@
 import { CloseOutlined } from '@ant-design/icons';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
@@ -13,6 +13,7 @@ import styles from './Main.module.scss';
 const Main: React.FC = () => {
   const { t } = useTranslation();
   const mainSelector = useCustomSelector((state) => state.mainPageSlice);
+  const [isOpen, setOpen] = useState<boolean>(false);
   const dispatch = useCustomDispatch();
   const selector = useCustomSelector((state) => state.boardPageSlice);
   const navigation = useNavigate();
@@ -24,7 +25,8 @@ const Main: React.FC = () => {
   };
 
   const closeModal = () => {
-    dispatch(setIsModalHide(true));
+    setOpen(false);
+    // dispatch(setIsModalHide(true));
   };
 
   const createColumn = async () => {
@@ -47,7 +49,8 @@ const Main: React.FC = () => {
   };
 
   const openModal = () => {
-    dispatch(setIsModalHide(false));
+    setOpen(true);
+    // dispatch(setIsModalHide(false));
   };
 
   return (
@@ -71,8 +74,9 @@ const Main: React.FC = () => {
           <Modal
             title={t('modals.titles.createBoard')}
             submitText={t('modals.buttons.createBoard')}
-            isModalHide={mainSelector.isModalHide}
+            // isModalHide={mainSelector.isModalHide}
             closeModal={closeModal}
+            isOpen={isOpen}
             onSubmit={createColumn}
           >
             <h1>Modal</h1>
