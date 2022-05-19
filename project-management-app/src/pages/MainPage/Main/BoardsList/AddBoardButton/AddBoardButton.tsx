@@ -15,19 +15,21 @@ export const AddBoardButton: React.FC = () => {
   const selector = useCustomSelector((state) => state.mainPageSlice);
 
   const openModal = () => {
-    dispatch(setIsModalHide(false));
+    // dispatch(setIsModalHide(false));
+    setOpen(true);
   };
 
   const closeModal = () => {
-    dispatch(setIsModalHide(true));
+    // dispatch(setIsModalHide(true));
+    setOpen(false);
   };
 
   const createBoard = async () => {
-    closeModal();
     try {
       const response = await addBoard({ title: 'Homework', description: 'My homework' });
     } catch {
     } finally {
+      closeModal();
       refetch();
     }
   };
@@ -41,7 +43,7 @@ export const AddBoardButton: React.FC = () => {
       <Modal
         title={t('modals.titles.createBoard')}
         submitText={t('modals.buttons.createBoard')}
-        isModalHide={selector.isModalHide}
+        isOpen={isOpen}
         closeModal={closeModal}
         onSubmit={createBoard}
       >
