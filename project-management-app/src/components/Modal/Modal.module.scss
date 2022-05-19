@@ -36,6 +36,16 @@
     h3 {
         color: var(--blue-dark);
     }
+
+    form {
+        width: 60%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+    }
     
     &__header {
         position: relative;
