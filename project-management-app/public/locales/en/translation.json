@@ -44,10 +44,15 @@
   "modals": {
     "buttons": {
       "createBoard": "Create",
+      "deleteBoard": "Delete",
       "cancel": "Cancel"
     },
     "titles": {
-      "createBoard": "Create board"
+      "createBoard": "Create board",
+      "deleteBoard": "Delete board"
+    },
+    "questions": {
+      "deleteBoard": "Are you sure you want to delete the board?"
     }
   }
 }

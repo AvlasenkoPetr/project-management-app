@@ -44,10 +44,15 @@
   "modals": {
     "buttons": {
       "createBoard": "Создать",
+      "deleteBoard": "Удалить",
       "cancel": "Отмена"
     },
     "titles": {
-      "createBoard": "Создать Доску"
+      "createBoard": "Создать Доску",
+      "deleteBoard": "Удалить доску"
+    },
+    "questions": {
+      "deleteBoard": "Вы уверены что хотите удалить доску?"
     }
   }
 }
