@@ -68,7 +68,7 @@ const Main: React.FC = () => {
           <Button onClick={openModal} type="button">
             {t('boardPage.buttons.addNewColumn')}
           </Button>
-          <Modal
+          {/* <Modal
             title={t('modals.titles.createBoard')}
             submitText={t('modals.buttons.createBoard')}
             isModalHide={mainSelector.isModalHide}
@@ -76,7 +76,7 @@ const Main: React.FC = () => {
             onSubmit={createColumn}
           >
             <h1>Modal</h1>
-          </Modal>
+          </Modal> */}
         </div>
       </div>
     </main>

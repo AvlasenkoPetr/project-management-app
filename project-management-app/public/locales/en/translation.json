@@ -15,7 +15,9 @@
       "login": "Login",
       "password": "Password",
       "name": "Name",
-      "passwordRepeat": "Password (repeat)"
+      "passwordRepeat": "Password (repeat)",
+      "title": "Title",
+      "description": "Description"
     },
     "errors":{
       "empty": "field must be filled",
