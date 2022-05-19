@@ -10,8 +10,8 @@ i18n
   .init({
     fallbackLng: 'en',
     detection: {
-      order: ['localStorage', 'cookie'],
-      caches: ['localStorage', 'cookie'],
+      order: ['localStorage'],
+      caches: ['localStorage'],
     },
     interpolation: {
       escapeValue: false,

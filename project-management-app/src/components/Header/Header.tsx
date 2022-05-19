@@ -11,6 +11,7 @@ import { setBoards, toggleLanguage } from '../../store/mainPageSlice';
 import { logOut } from '../../store/authorizeSlice';
 import { useNavigate } from 'react-router-dom';
 import { HeaderButton } from './HeaderButton/HeaderButton';
+import i18next from 'i18next';
 // import { setBoards, toggleLanguage } from '../../../store/mainPageSlice';
 // import { setToken, setIsLoading, logOut } from '../../../store/authorizeSlice';
 // import { fetchApi } from '../../../store/fetchApi';
@@ -40,6 +41,7 @@ const Header: React.FC = () => {
 
   const changeLanguage = () => {
     dispatch(toggleLanguage(selector.mainPageSlice.lang === 'en' ? 'ru' : 'en'));
+    localStorage.setItem('lang', selector.mainPageSlice.lang === 'en' ? 'ru' : 'en');
     console.log(selector.mainPageSlice.lang);
   };
 
