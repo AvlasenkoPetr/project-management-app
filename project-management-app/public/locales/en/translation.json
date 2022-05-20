@@ -15,7 +15,9 @@
       "login": "Login",
       "password": "Password",
       "name": "Name",
-      "passwordRepeat": "Password (repeat)"
+      "passwordRepeat": "Password (repeat)",
+      "title": "Title",
+      "description": "Description"
     },
     "errors":{
       "empty": "field must be filled",
@@ -41,13 +43,24 @@
       "span": "Create"
     }
   },
+  "boardPage":{
+    "buttons":{
+      "returnToMainPage": "Return",
+      "addNewColumn": "+ Add new column "
+    }
+  },
   "modals": {
     "buttons": {
       "createBoard": "Create",
+      "deleteBoard": "Delete",
       "cancel": "Cancel"
     },
     "titles": {
-      "createBoard": "Create board"
+      "createBoard": "Create board",
+      "deleteBoard": "Delete board"
+    },
+    "questions": {
+      "deleteBoard": "Are you sure you want to delete the board?"
     }
   }
 }

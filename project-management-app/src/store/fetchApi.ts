@@ -24,7 +24,6 @@ export const fetchApi = createApi({
     baseUrl: 'https://boiling-dusk-69324.herokuapp.com',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as ReducerType).authorizeSlice.auth.token;
-      console.log('token', token);
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }

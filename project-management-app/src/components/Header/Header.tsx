@@ -10,6 +10,8 @@ import { fetchApi } from '../../store/fetchApi';
 import { setBoards, toggleLanguage } from '../../store/mainPageSlice';
 import { logOut } from '../../store/authorizeSlice';
 import { useNavigate } from 'react-router-dom';
+import { HeaderButton } from './HeaderButton/HeaderButton';
+import i18next from 'i18next';
 // import { setBoards, toggleLanguage } from '../../../store/mainPageSlice';
 // import { setToken, setIsLoading, logOut } from '../../../store/authorizeSlice';
 // import { fetchApi } from '../../../store/fetchApi';
@@ -39,6 +41,7 @@ const Header: React.FC = () => {
 
   const changeLanguage = () => {
     dispatch(toggleLanguage(selector.mainPageSlice.lang === 'en' ? 'ru' : 'en'));
+    localStorage.setItem('lang', selector.mainPageSlice.lang === 'en' ? 'ru' : 'en');
     console.log(selector.mainPageSlice.lang);
   };
 
@@ -61,12 +64,12 @@ const Header: React.FC = () => {
   return (
     <header className={styles.container} style={{ opacity: scroll }}>
       <div className={styles.container__buttons_group}>
-        <ButtonBlueDark cb={profilePage}>{t('mainPage.buttons.editProfile')}</ButtonBlueDark>
-        <ButtonBlueDark cb={testCb}>{t('mainPage.buttons.createBoard')}</ButtonBlueDark>
+        <HeaderButton cb={profilePage}>{t('mainPage.buttons.editProfile')}</HeaderButton>
+        <HeaderButton cb={testCb}>{t('mainPage.buttons.createBoard')}</HeaderButton>
       </div>
       <div className={styles.container__buttons_group}>
-        <ButtonBlueDark cb={changeLanguage}>{t('mainPage.buttons.language')}</ButtonBlueDark>
-        <ButtonBlueDark cb={logout}>{t('mainPage.buttons.logout')}</ButtonBlueDark>
+        <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
+        <HeaderButton cb={logout}>{t('mainPage.buttons.logout')}</HeaderButton>
       </div>
     </header>
   );

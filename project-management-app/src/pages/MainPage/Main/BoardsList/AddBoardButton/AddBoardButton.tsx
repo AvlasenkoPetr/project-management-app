@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { ISubmitData } from '../../../../../components/Form/Form';
+import { FormInput } from '../../../../../components/FormInput/FormInput';
 import { Modal } from '../../../../../components/Modal/Modal';
 import { useCustomDispatch, useCustomSelector } from '../../../../../customHooks/customHooks';
 import { fetchApi } from '../../../../../store/fetchApi';
 import { setIsModalHide } from '../../../../../store/mainPageSlice';
 import styles from './AddBoardButton.module.scss';
+
+interface INewBoardBody {
+  title: string;
+  description: string;
+}
 
 export const AddBoardButton: React.FC = () => {
   const { t } = useTranslation();
@@ -13,21 +21,40 @@ export const AddBoardButton: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const dispatch = useCustomDispatch();
   const selector = useCustomSelector((state) => state.mainPageSlice);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({
+    reValidateMode: 'onBlur',
+  });
 
   const openModal = () => {
-    dispatch(setIsModalHide(false));
+    // dispatch(setIsModalHide(false));
+    setOpen(true);
   };
 
   const closeModal = () => {
-    dispatch(setIsModalHide(true));
+    // dispatch(setIsModalHide(true));
+    setOpen(false);
   };
 
-  const createBoard = async () => {
-    closeModal();
+  const createBoardBody = (data: ISubmitData) => {
+    const newBoard = {
+      title: data.title,
+      description: data.description,
+    };
+    createBoard(newBoard);
+  };
+
+  const createBoard = async (newBoard: INewBoardBody) => {
     try {
-      const response = await addBoard({ title: 'Homework', description: 'My homework' });
+      const response = await addBoard(newBoard);
     } catch {
     } finally {
+      closeModal();
+      reset();
       refetch();
     }
   };
@@ -41,11 +68,26 @@ export const AddBoardButton: React.FC = () => {
       <Modal
         title={t('modals.titles.createBoard')}
         submitText={t('modals.buttons.createBoard')}
-        isModalHide={selector.isModalHide}
+        isOpen={isOpen}
         closeModal={closeModal}
-        onSubmit={createBoard}
+        onSubmit={handleSubmit(createBoardBody)}
       >
-        <h1>Modal</h1>
+        <form>
+          <FormInput
+            text={t('authForm.inputs.title')}
+            type="text"
+            name="title"
+            register={register}
+            errors={errors}
+          ></FormInput>
+          <FormInput
+            text={t('authForm.inputs.description')}
+            type="text"
+            name="description"
+            register={register}
+            errors={errors}
+          ></FormInput>
+        </form>
       </Modal>
     </>
   );

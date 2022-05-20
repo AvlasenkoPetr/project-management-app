@@ -1,58 +1,20 @@
 .main{
   margin-top: 60px;
   margin-left: 20px;
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  margin-bottom: 30px;
+  .return-btn__wrapper{
+    display: flex;
+    justify-content: flex-start;
+  }
   .board{
     display: flex;
-    .column{
-      padding: 10px;
-      margin-right: 20px;
-      background: rgb(221, 236, 255);
-      border-radius: 10px;
-      width: 200px;
-      &-header{
-        display: flex;
-        justify-content: space-between;
-        div{
-          margin: 0;
-          padding: 0;
-          button{
-            max-height: 15px;
-            margin: 0;
-            padding: 5px;
-          }
-        }
-      }
-    }
-    .add-new-column__wrapper{
-      max-width: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      & div:first-child{
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        & button{
-          width: 100%;
-          display: flex;
-        }
-      }
-      form{
-        width: 100%;
-        & div{
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          & button{
-            width: 100%;
-            display: flex;
-          }
-        }
-        .buttons-wrapper{
-          display: flex;
-        }
-      }
+    flex: 1 1;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      width: 2px;
     }
   }
 }

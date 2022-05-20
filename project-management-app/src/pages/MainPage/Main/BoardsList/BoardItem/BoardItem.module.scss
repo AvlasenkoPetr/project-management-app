@@ -27,8 +27,6 @@
     }
 
     &__board_name {
-        font-family: 'Oswald';
-        font-size: 32px;
         color: inherit;
         letter-spacing: 1px;
     }
@@ -76,10 +74,6 @@
         width: 45%;
         height: 200px;
 
-        &__board_name {
-            font-size: 28px;
-        }
-
         &__board_description {
             font-size: 20px;
         }
@@ -91,11 +85,6 @@
         width: 80%;
         height: 220px;
 
-        &__board_name {
-            font-size: 26px;
-            text-align: center;
-        }
-
         &__board_description {
             font-size: 18px;
         }
@@ -105,10 +94,6 @@
 @media(max-width: 425px) {
     .container {
         width: 90%;
-
-        &__board_name {
-            font-size: 22px;
-        }
 
         &__board_description {
             font-size: 16px;

@@ -29,10 +29,22 @@
     font-family: 'Oswald';
     letter-spacing: 0.8px;
     
+    h2 {
+        color: var(--black);
+    }
+
     h3 {
-        font-size: 26px;
-        text-align: center;
         color: var(--blue-dark);
+    }
+
+    form {
+        width: 60%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
     }
     
     &__header {
@@ -96,6 +108,45 @@
         &:hover {
             border-color: var(--orange);
             color: var(--orange);
+        }
+    }
+}
+
+@media(max-width: 768px) {
+    .container {
+        margin: 0 50px;
+
+        &__main_buttons {
+            gap: 35px;
+        }
+
+        &__button {
+            min-width: 80px;
+            padding: 5px 25px;
+        
+            font-size: 22px;
+        }
+    }
+}
+
+@media(max-width: 425px) {
+    .container {
+        margin: 0 50px;
+
+        &__main_buttons {
+            gap: 25px;
+        }
+
+        &__button {
+            min-width: 80px;
+            padding: 2px 5px;
+        
+            font-size: 20px;
+        }
+
+        &__close_button {
+            width: 20px;
+            height: 20px;
         }
     }
 }

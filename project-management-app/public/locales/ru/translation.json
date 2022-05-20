@@ -15,7 +15,9 @@
       "login": "Логин",
       "password": "Пароль",
       "name": "Имя",
-      "passwordRepeat": "Пароль (повторить)"
+      "passwordRepeat": "Пароль (повторить)",
+      "title": "Название",
+      "description": "Описание"
     },
     "errors":{
       "empty": "поле должно быть заполнено",
@@ -41,13 +43,24 @@
       "span": "Зарегистрироваться"
     }
   },
+  "boardPage":{
+    "buttons":{
+      "returnToMainPage": "Назад",
+      "addNewColumn": "+ Добавить колонку"
+    }
+  },
   "modals": {
     "buttons": {
       "createBoard": "Создать",
+      "deleteBoard": "Удалить",
       "cancel": "Отмена"
     },
     "titles": {
-      "createBoard": "Создать Доску"
+      "createBoard": "Создать Доску",
+      "deleteBoard": "Удалить доску"
+    },
+    "questions": {
+      "deleteBoard": "Вы уверены что хотите удалить доску?"
     }
   }
 }

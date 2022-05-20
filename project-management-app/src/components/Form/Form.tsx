@@ -24,7 +24,7 @@ type Props = {
   passwordRepeat?: boolean;
 };
 
-interface ISubmitData {
+export interface ISubmitData {
   [key: string]: any;
 }
 
@@ -117,7 +117,6 @@ const Form: React.FC<Props> = (props) => {
         {/* {props.passwordRepeat && (
             <Input type="password">{t('authForm.inputs.passwordRepeat')}</Input>
           )} */}
-        {/* <Button type="submit">{props.children}</Button> */}
         <ButtonBlueDark>{props.children}</ButtonBlueDark>
         {props.isSignUp && (
           <div className={styles.question}>
