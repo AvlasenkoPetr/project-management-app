@@ -21,7 +21,7 @@ import type { ReducerType, StoreType } from './store';
 export const fetchApi = createApi({
   reducerPath: 'fetchApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://boiling-dusk-69324.herokuapp.com',
+    baseUrl: 'https://sheltered-tundra-50546.herokuapp.com',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as ReducerType).authorizeSlice.auth.token;
       if (token) {
