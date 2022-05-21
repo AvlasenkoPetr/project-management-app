@@ -8,6 +8,17 @@ import '../ComponentsProfile/form-style.scss';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { FormInput } from '../../../components/FormInput/FormInput';
+import { Modal } from '../../../components/Modal/Modal';
+
+type Props = {
+  children?: string;
+  isSignIn?: boolean;
+  isSignUp?: boolean;
+  login?: boolean;
+  name?: boolean;
+  password?: boolean;
+};
+
 interface data {
   login?: string | undefined;
   name?: string | undefined;
@@ -29,15 +40,16 @@ interface IarayDecoded {
   login: string;
 }
 
-const ComponentsProfile: React.FC = () => {
+const ComponentsProfile: React.FC<Props> = (props) => {
   const arayTest: data[] = [];
   const [arrayConst, setarrayConst] = useState(arayTest);
   const [statusToken, setStatusToken] = useState<any>([]);
-
+  const [checked, setChecked] = useState<boolean>(false);
   const [statusRegistration, setStatusRegistration] = useState(
     'Введите пароль для подтверждения пользователь'
   );
-  const [statusConfirmation, setStatusConfirmation] = useState(false);
+  const [statusConfirmation, setStatusConfirmation] = useState<boolean>(false);
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   const dispatch = useCustomDispatch();
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
@@ -51,11 +63,11 @@ const ComponentsProfile: React.FC = () => {
 
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
     setError,
   } = useForm({
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   async function getUser() {
@@ -119,13 +131,11 @@ const ComponentsProfile: React.FC = () => {
       body: JSON.stringify(user),
     });
     if (rawResponse.ok) {
-      console.log(rawResponse.status);
       setStatusRegistration(`Пользователь успешно изменён`);
     } else {
       console.log('error', rawResponse.status);
+      setStatusRegistration(`Internal Server Error`);
     }
-    // const content = await rawResponse.json();
-    // console.log(content);
   }
 
   async function onSubmit(data: ISubmitData) {
@@ -138,75 +148,50 @@ const ComponentsProfile: React.FC = () => {
     statusConfirmation == false ? checkUser(upUser) : updateUser(upUser);
   }
 
-  function IsDisabled() {
-    if (isValid) {
-      return (
-        <button className="form-main__input-btn" type="submit">
-          Submit
-        </button>
-      );
-    } else {
-      return <div className="form-main__input-btn-disable">Submit</div>;
-    }
-  }
-
-  function CreateUser() {
+  function ChangeUser() {
     return (
       <div>
-        <label className="form-main__label-input">
-          Login:
+        <FormInput
+          type="text"
+          text={t('authForm.inputs.login')}
+          name="login"
+          register={register}
+          errors={errors}
+          defaultValue={statusToken.login}
+        ></FormInput>
+        <FormInput
+          type="text"
+          text={t('authForm.inputs.name')}
+          name="name"
+          register={register}
+          errors={errors}
+          defaultValue={statusToken.name}
+        ></FormInput>
+        <div className="form-main__input-container">
+          <label className="form-main__label-content" htmlFor="scales">
+            Изменить пароль
+          </label>
           <input
-            className="form-main__input-text"
-            type="text"
-            defaultValue={statusToken.login}
-            {...register('login', {
-              required: 'Поля обязательно к заполнению',
-              minLength: {
-                value: 4,
-                message: 'минимум 4 символa',
-              },
-            })}
-            placeholder="Login"
+            type="checkbox"
+            className="form-main__input-checkbox"
+            checked={checked}
+            onChange={(e) => setChecked(e.target.checked)}
+            id="scales"
           />
-        </label>
-        <div style={{ color: 'red' }}>
-          {errors?.login && <p>{errors?.login?.message || 'Error'}</p>}
         </div>
-        <label className="form-main__label-input">
-          Name:
-          <input
-            className="form-main__input-text"
-            type="text"
-            defaultValue={statusToken.name}
-            {...register('name', {
-              required: 'Поля обязательно к заполнению',
-              minLength: {
-                value: 4,
-                message: 'минимум 4 символa',
-              },
-            })}
-            placeholder="Name"
-          />
-        </label>
-        <div style={{ color: 'red' }}>
-          {errors?.name && <p>{errors?.name?.message || 'Error'}</p>}
-        </div>
-        <label className="form-main__label-input">
-          New pass:
-          <input
-            className="form-main__input-text"
-            type="password"
-            {...register('passwordNew', {
-              required: 'Поля обязательно к заполнению',
-              minLength: {
-                value: 4,
-                message: 'минимум 4 символa',
-              },
-            })}
-          />
-        </label>
-        <div style={{ color: 'red' }}>
-          {errors?.passwordNew && <p>{errors?.passwordNew?.message || 'Error'}</p>}
+
+        <div>
+          {checked ? (
+            <FormInput
+              type="password"
+              text={t('authForm.inputs.password')}
+              name="passwordNew"
+              register={register}
+              errors={errors}
+            ></FormInput>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     );
@@ -215,50 +200,59 @@ const ComponentsProfile: React.FC = () => {
   function AuthorizationUser() {
     return (
       <div>
-        <label className="form-main__label-input">
-          Password:
-          <input
-            className="form-main__input-text"
-            type="password"
-            {...register('password', {
-              required: 'Поля обязательно к заполнению',
-              minLength: {
-                value: 4,
-                message: 'минимум 4 символa',
-              },
-            })}
-            placeholder="Подтвердите пользователя"
-          />
-        </label>
-        <div style={{ color: 'red' }}>
-          {errors?.password && <p>{errors?.password?.message || errors}</p>}
-        </div>
+        <FormInput
+          type="password"
+          text={t('authForm.inputs.password')}
+          name="password"
+          register={register}
+          errors={errors}
+        ></FormInput>
       </div>
     );
   }
 
+  const openModal = () => {
+    // dispatch(setIsModalHide(false));
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    // dispatch(setIsModalHide(true));
+    setOpen(false);
+  };
+
   return (
     <div className="form-main">
-      <p style={{ color: 'blue' }}>{statusRegistration}</p>
+      <p className="form-main__attention" style={{ color: 'blue' }}>
+        {statusRegistration}
+      </p>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-main__container">
           <div className="form-main__input-content">
-            {statusConfirmation == false ? <AuthorizationUser /> : <CreateUser />}
+            {statusConfirmation == false ? <AuthorizationUser /> : <ChangeUser />}
           </div>
         </div>
         <button className="form-main__input-btn" type="submit">
           Submit
         </button>
       </form>
-      <br />
       <button
         style={statusConfirmation == false ? { display: 'none' } : { display: 'block' }}
         className="form-main__input-btn"
-        onClick={onDelete}
+        onClick={openModal}
       >
-        <p>Delete acaunt</p>
+        <p className="form-main__attention">Delete acaunt</p>
       </button>
-      {/* <FormInput login password /> */}
+      <Modal
+        title={t('Are you sure')}
+        submitText={t('modals.buttons.deleteBoard')}
+        onSubmit={onDelete}
+        closeModal={closeModal}
+        isOpen={isOpen}
+      >
+        <h4>irretrievable account deletion</h4>
+      </Modal>
     </div>
   );
 };

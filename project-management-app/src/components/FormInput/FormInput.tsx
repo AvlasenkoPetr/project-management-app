@@ -9,13 +9,21 @@ interface IProps {
   name: string;
   errors: ErrorsBlock;
   register: UseFormRegister<FieldValues>;
+  defaultValue?: readonly string[] | undefined;
 }
 
 export interface ErrorsBlock {
   [key: string]: any;
 }
 
-export const FormInput: React.FC<IProps> = ({ text, type, name, register, errors }) => {
+export const FormInput: React.FC<IProps> = ({
+  text,
+  type,
+  name,
+  defaultValue,
+  register,
+  errors,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -24,7 +32,9 @@ export const FormInput: React.FC<IProps> = ({ text, type, name, register, errors
       <input
         className={styles.container__input}
         type={type}
+        defaultValue={defaultValue}
         {...register(name, { required: t('authForm.errors.empty') })}
+        data-testid={type}
       />
       <p className={styles['container__error-message']}>{errors[name] && errors[name].message}</p>
     </label>
