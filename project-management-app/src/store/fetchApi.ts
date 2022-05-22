@@ -21,7 +21,7 @@ import type { ReducerType, StoreType } from './store';
 export const fetchApi = createApi({
   reducerPath: 'fetchApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://sheltered-tundra-50546.herokuapp.com',
+    baseUrl: 'https://powerful-tundra-27687.herokuapp.com/',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as ReducerType).authorizeSlice.auth.token;
       if (token) {
@@ -93,10 +93,7 @@ export const fetchApi = createApi({
     getAllColumns: builder.query<Array<ColumnType>, string>({
       query: (boardId) => `/boards/${boardId}/columns`,
     }),
-    createNewColumn: builder.mutation<
-      ColumnType,
-      { body: { title: string; order: number }; boardId: string }
-    >({
+    createNewColumn: builder.mutation<ColumnType, { body: { title: string }; boardId: string }>({
       query: ({ body, boardId }) => ({
         url: `/boards/${boardId}/columns`,
         method: 'POST',
