@@ -21,7 +21,9 @@ const BoardPage: React.FC = () => {
     if (error) navigation('/');
   }, [error]);
   useEffect(() => {
-    if (data) dispatch(setBoardContent(data));
+    if (data) {
+      dispatch(setBoardContent(data));
+    }
   }, [data]);
   useEffect(() => {
     if (!selector.authorizeSlice.auth.token) navigation('/login');

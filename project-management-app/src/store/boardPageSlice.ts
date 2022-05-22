@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GetBoardByIdType } from './fetchApiTypes';
+import { GetBoardByIdType, GetColumnByIdType } from './fetchApiTypes';
 
 const initialState: GetBoardByIdType = {
   id: '',
@@ -16,12 +16,16 @@ const boardPageSlice = createSlice({
       state.id = action.payload;
     },
     setBoardContent: (state, action: PayloadAction<GetBoardByIdType>) => {
+      const columns = [...action.payload.columns];
       state.description = action.payload.description;
-      state.columns = action.payload.columns;
+      state.columns = columns.sort((a, b) => a.order - b.order);
       state.title = action.payload.title;
+    },
+    setNewOrderColumns: (state, action: PayloadAction<GetColumnByIdType[]>) => {
+      state.columns = [...action.payload];
     },
   },
 });
 
-export const { setBoardId, setBoardContent } = boardPageSlice.actions;
+export const { setBoardId, setBoardContent, setNewOrderColumns } = boardPageSlice.actions;
 export default boardPageSlice.reducer;
