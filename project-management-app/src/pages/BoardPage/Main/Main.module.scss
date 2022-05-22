@@ -11,10 +11,13 @@
   }
   .board{
     display: flex;
-    flex: 1 1;
     overflow-x: scroll;
     &::-webkit-scrollbar {
       width: 2px;
+    }
+    &-wrapper{
+      display: flex;
+      flex: 1 1;
     }
   }
 }

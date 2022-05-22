@@ -9,6 +9,10 @@ import { fetchApi } from '../../../store/fetchApi';
 import { setIsModalHide } from '../../../store/mainPageSlice';
 import Column from './Column/Column';
 import styles from './Main.module.scss';
+import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react-beautiful-dnd';
+import { GetColumnByIdType } from '../../../store/fetchApiTypes';
+import { setNewOrderColumns } from '../../../store/boardPageSlice';
+import { fireEvent } from '@testing-library/react';
 
 const Main: React.FC = () => {
   const { t } = useTranslation();
@@ -17,8 +21,9 @@ const Main: React.FC = () => {
   const dispatch = useCustomDispatch();
   const selector = useCustomSelector((state) => state.boardPageSlice);
   const navigation = useNavigate();
-  const [createNewColumn] = fetchApi.useCreateNewColumnMutation();
+  const [createNewColumn, { error: customError }] = fetchApi.useCreateNewColumnMutation();
   const { refetch } = fetchApi.useGetBoardByIdQuery(selector.id);
+  console.log(customError);
   const returnToMainPage = () => {
     refetch();
     navigation('/');
@@ -53,6 +58,19 @@ const Main: React.FC = () => {
     // dispatch(setIsModalHide(false));
   };
 
+  const onDragEnd = (result: DropResult): void => {
+    const { destination, source, draggableId, type } = result;
+    if (!destination) return;
+    console.log(source);
+    if (type === 'column') {
+      const newColumnOrder = Array.from(selector.columns);
+      const spliceColumn = newColumnOrder.splice(source.index, 1) as GetColumnByIdType[];
+      newColumnOrder.splice(destination.index, 0, ...spliceColumn);
+      dispatch(setNewOrderColumns(newColumnOrder));
+      return;
+    }
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles['return-btn__wrapper']}>
@@ -61,17 +79,32 @@ const Main: React.FC = () => {
         </Button>
       </div>
       <h2>{selector.title}</h2>
-      <div className={styles.board}>
-        {selector.columns.map((column) => {
-          return (
-            <Column key={column.id} order={column.order} id={column.id} title={column.title} />
-          );
-        })}
+      <div className={styles['board-wrapper']}>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="all-columns" direction="horizontal" type="column">
+            {(provided: DroppableProvided) => (
+              <div className={styles.board} {...provided.droppableProps} ref={provided.innerRef}>
+                {selector.columns.map((column, index: number) => {
+                  return (
+                    <Column
+                      index={index}
+                      key={column.id}
+                      order={column.order}
+                      id={column.id}
+                      title={column.title}
+                    />
+                  );
+                })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
         <div className={styles['add-new-column__wrapper']}>
           <Button onClick={openModal} type="button">
             {t('boardPage.buttons.addNewColumn')}
           </Button>
-          {/* <Modal
+          <Modal
             title={t('modals.titles.createBoard')}
             submitText={t('modals.buttons.createBoard')}
             // isModalHide={mainSelector.isModalHide}
@@ -80,7 +113,7 @@ const Main: React.FC = () => {
             onSubmit={createColumn}
           >
             <h1>Modal</h1>
-          </Modal> */}
+          </Modal>
         </div>
       </div>
     </main>

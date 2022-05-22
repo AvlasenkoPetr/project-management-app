@@ -70,12 +70,17 @@ const ColumnHeader: React.FC<Props> = (props) => {
           </button>
         </div>
       )}
-      <input
-        className={isTextAreaShow ? styles['show'] : styles['hide']}
-        onClick={() => toggleTextArea(true)}
-        onChange={changeTextAreaValue}
-        value={textareaValue}
-      ></input>
+      {isTextAreaShow ? (
+        <input
+          className={isTextAreaShow ? styles['show'] : styles['hide']}
+          onChange={changeTextAreaValue}
+          value={textareaValue}
+        ></input>
+      ) : (
+        <p className={styles['placeholder']} onClick={() => toggleTextArea(true)}>
+          {textareaValue}
+        </p>
+      )}
       <button className={styles['deleteColumn']} onClick={() => deleteColumnFn(props.id)}>
         <img src={closeBtnSvg} alt="" />
       </button>
