@@ -16,8 +16,9 @@ const boardPageSlice = createSlice({
       state.id = action.payload;
     },
     setBoardContent: (state, action: PayloadAction<GetBoardByIdType>) => {
+      const columns = [...action.payload.columns];
       state.description = action.payload.description;
-      state.columns = action.payload.columns;
+      state.columns = columns.sort((a, b) => a.order - b.order);
       state.title = action.payload.title;
     },
     setNewOrderColumns: (state, action: PayloadAction<GetColumnByIdType[]>) => {

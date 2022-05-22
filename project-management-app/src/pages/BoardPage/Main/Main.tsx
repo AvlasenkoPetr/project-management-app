@@ -23,7 +23,7 @@ const Main: React.FC = () => {
   const navigation = useNavigate();
   const [createNewColumn, { error: customError }] = fetchApi.useCreateNewColumnMutation();
   const { refetch } = fetchApi.useGetBoardByIdQuery(selector.id);
-  console.log(customError);
+  const [updateColumn, { error: UpdateError }] = fetchApi.useUpdateColumnMutation();
   const returnToMainPage = () => {
     refetch();
     navigation('/');
@@ -38,11 +38,9 @@ const Main: React.FC = () => {
     closeModal();
     console.log();
     try {
-      const sortSelectorColumns = [...selector.columns].sort((a, b) => b.order - a.order);
       const board = {
         body: {
           title: 'ha',
-          order: sortSelectorColumns.length ? sortSelectorColumns[0].order + 1 : 1,
         },
         boardId: selector.id,
       };
@@ -58,15 +56,28 @@ const Main: React.FC = () => {
     // dispatch(setIsModalHide(false));
   };
 
-  const onDragEnd = (result: DropResult): void => {
+  const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId, type } = result;
     if (!destination) return;
-    console.log(source);
     if (type === 'column') {
-      const newColumnOrder = Array.from(selector.columns);
+      const newColumnOrder = [...selector.columns];
       const spliceColumn = newColumnOrder.splice(source.index, 1) as GetColumnByIdType[];
       newColumnOrder.splice(destination.index, 0, ...spliceColumn);
-      dispatch(setNewOrderColumns(newColumnOrder));
+      const a = newColumnOrder.map((column, index) => {
+        return { ...column, order: index + 1 };
+      });
+      for (let i = 0; i < a.length; i++) {
+        const obj = {
+          boardId: selector.id,
+          columnId: a[i].id,
+          body: {
+            title: a[i].title,
+            order: a[i].order,
+          },
+        };
+        updateColumn(obj);
+      }
+      dispatch(setNewOrderColumns(a));
       return;
     }
   };
