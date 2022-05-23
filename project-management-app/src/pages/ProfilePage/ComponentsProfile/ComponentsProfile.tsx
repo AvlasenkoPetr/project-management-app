@@ -71,13 +71,16 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   });
 
   async function getUser() {
-    const rawResponse = await fetch(`https://boiling-dusk-69324.herokuapp.com/users/${keyUserId}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${keyToken}`,
-        Accept: 'application/json',
-      },
-    });
+    const rawResponse = await fetch(
+      `https://powerful-tundra-27687.herokuapp.com/users/${keyUserId}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${keyToken}`,
+          Accept: 'application/json',
+        },
+      }
+    );
     setStatusToken(await rawResponse.json());
   }
 
@@ -85,13 +88,16 @@ const ComponentsProfile: React.FC<Props> = (props) => {
     getUser();
   }, []);
   async function onDelete() {
-    const rawResponse = await fetch(`https://boiling-dusk-69324.herokuapp.com/users/${keyUserId}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${keyToken}`,
-        Accept: '*/*',
-      },
-    });
+    const rawResponse = await fetch(
+      `https://powerful-tundra-27687.herokuapp.com/users/${keyUserId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${keyToken}`,
+          Accept: '*/*',
+        },
+      }
+    );
     if (rawResponse.ok) {
       console.log(rawResponse.status);
       localStorage.removeItem('user');
@@ -121,15 +127,18 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   }
 
   async function updateUser(user: Iuser) {
-    const rawResponse = await fetch(`https://boiling-dusk-69324.herokuapp.com/users/${keyUserId}`, {
-      method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${keyToken}`,
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
+    const rawResponse = await fetch(
+      `https://powerful-tundra-27687.herokuapp.com/users/${keyUserId}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${keyToken}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      }
+    );
     if (rawResponse.ok) {
       setStatusRegistration(`Пользователь успешно изменён`);
     } else {
