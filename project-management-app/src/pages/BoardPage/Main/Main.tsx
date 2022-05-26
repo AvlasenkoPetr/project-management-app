@@ -10,13 +10,14 @@ import { setIsModalHide } from '../../../store/mainPageSlice';
 import Column from './Column/Column';
 import styles from './Main.module.scss';
 import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react-beautiful-dnd';
-import { GetColumnByIdType } from '../../../store/fetchApiTypes';
-import { setNewOrderColumns } from '../../../store/boardPageSlice';
+import { GetColumnByIdType, TaskType, UpdateTaskRequestType } from '../../../store/fetchApiTypes';
+import { setNewOrderColumns, setNewOrderTasks } from '../../../store/boardPageSlice';
 import { fireEvent } from '@testing-library/react';
 
 const Main: React.FC = () => {
   const { t } = useTranslation();
   const mainSelector = useCustomSelector((state) => state.mainPageSlice);
+  const authSelector = useCustomSelector((state) => state.authorizeSlice);
   const [isOpen, setOpen] = useState<boolean>(false);
   const dispatch = useCustomDispatch();
   const selector = useCustomSelector((state) => state.boardPageSlice);
@@ -24,6 +25,7 @@ const Main: React.FC = () => {
   const [createNewColumn, { error: customError }] = fetchApi.useCreateNewColumnMutation();
   const { refetch } = fetchApi.useGetBoardByIdQuery(selector.id);
   const [updateColumn, { error: UpdateError }] = fetchApi.useUpdateColumnMutation();
+  const [updateTask, {}] = fetchApi.useUpdateTaskMutation();
   const returnToMainPage = () => {
     refetch();
     navigation('/');
@@ -59,6 +61,104 @@ const Main: React.FC = () => {
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId, type } = result;
     if (!destination) return;
+
+    if (destination.droppableId === source.droppableId && destination.index === source.index)
+      return;
+
+    if (type === 'DEFAULT') {
+      const columnStart = selector.columns.filter((item) => item.id == source.droppableId);
+      const columnFinish = selector.columns.filter((item) => item.id == destination.droppableId);
+      if (JSON.stringify(columnStart) === JSON.stringify(columnFinish)) {
+        const newTasksById = [...columnStart[0].tasks];
+        const spliceTask = newTasksById.splice(source.index, 1) as TaskType[];
+        newTasksById.splice(destination.index, 0, ...spliceTask);
+        const a = newTasksById.map((task, index) => {
+          return { ...task, order: index + 1 };
+        });
+        for (let i = 0; i < a.length; i++) {
+          const obj: UpdateTaskRequestType = {
+            boardId: selector.id,
+            columnId: columnStart[0].id,
+            taskId: a[i].id,
+            body: {
+              title: a[i].title,
+              order: a[i].order,
+              description: a[i].description,
+              userId: authSelector.auth.id,
+              boardId: selector.id,
+              columnId: columnStart[0].id,
+            },
+          };
+          try {
+            updateTask(obj);
+          } catch {}
+        }
+        dispatch(
+          setNewOrderTasks({
+            columnId: columnStart[0].id,
+            tasks: a,
+          })
+        );
+        return;
+      }
+
+      const startTaskById = [...columnStart[0].tasks];
+      const spliceTask = startTaskById.splice(source.index, 1) as TaskType[];
+      for (let i = 0; i < startTaskById.length; i++) {
+        const obj: UpdateTaskRequestType = {
+          boardId: selector.id,
+          columnId: columnStart[0].id,
+          taskId: startTaskById[i].id,
+          body: {
+            title: startTaskById[i].title,
+            order: startTaskById[i].order,
+            description: startTaskById[i].description,
+            userId: authSelector.auth.id,
+            boardId: selector.id,
+            columnId: columnStart[0].id,
+          },
+        };
+        try {
+          updateTask(obj);
+        } catch {}
+      }
+      dispatch(
+        setNewOrderTasks({
+          columnId: columnStart[0].id,
+          tasks: startTaskById,
+        })
+      );
+      const finishTaskById = [...columnFinish[0].tasks];
+      finishTaskById.splice(destination.index, 0, ...spliceTask);
+      const a = finishTaskById.map((task, index) => {
+        return { ...task, order: index + 1 };
+      });
+      for (let i = 0; i < a.length; i++) {
+        const obj: UpdateTaskRequestType = {
+          boardId: selector.id,
+          columnId: columnStart[0].id,
+          taskId: a[i].id,
+          body: {
+            title: a[i].title,
+            order: a[i].order,
+            description: a[i].description,
+            userId: authSelector.auth.id,
+            boardId: selector.id,
+            columnId: columnFinish[0].id,
+          },
+        };
+        try {
+          updateTask(obj);
+        } catch {}
+      }
+      dispatch(
+        setNewOrderTasks({
+          columnId: columnFinish[0].id,
+          tasks: a,
+        })
+      );
+    }
+
     if (type === 'column') {
       const newColumnOrder = [...selector.columns];
       const spliceColumn = newColumnOrder.splice(source.index, 1) as GetColumnByIdType[];
@@ -103,6 +203,7 @@ const Main: React.FC = () => {
                       order={column.order}
                       id={column.id}
                       title={column.title}
+                      tasks={column.tasks}
                     />
                   );
                 })}

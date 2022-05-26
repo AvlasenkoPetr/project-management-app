@@ -61,6 +61,8 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const keyToken = getLocal.token;
   const keyUserId = decoded.userId;
 
+  console.log(keyToken, keyUserId);
+
   const {
     register,
     formState: { errors },

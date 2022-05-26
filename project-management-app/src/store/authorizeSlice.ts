@@ -30,6 +30,9 @@ const authorizeSlice = createSlice({
     setToken(state, action: PayloadAction<string>) {
       state.auth.token = action.payload;
     },
+    setUserId(state, action: PayloadAction<string>) {
+      state.auth.id = action.payload;
+    },
     setUser(state, action: PayloadAction<SignUpResponseType>) {
       state.auth.id = action.payload.id;
       state.auth.login = action.payload.login;
@@ -54,6 +57,6 @@ const authorizeSlice = createSlice({
   },
 });
 
-export const { setToken, setUser, setPassword, setIsLoading, setCanLogin, logOut } =
+export const { setToken, setUserId, setUser, setPassword, setIsLoading, setCanLogin, logOut } =
   authorizeSlice.actions;
 export default authorizeSlice.reducer;

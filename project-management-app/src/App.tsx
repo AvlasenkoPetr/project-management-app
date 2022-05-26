@@ -8,8 +8,9 @@ import MainPage from './pages/MainPage/MainPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
-import { setToken } from './store/authorizeSlice';
+import { setToken, setUserId } from './store/authorizeSlice';
 import { toggleLanguage } from './store/mainPageSlice';
+import jwt_decode from 'jwt-decode';
 import i18n from './utilits/i18n';
 
 type localStorageType = {
@@ -20,9 +21,16 @@ const App: React.FC = () => {
   const selector = useCustomSelector((state) => state);
   const dispatch = useCustomDispatch();
   const token: localStorageType = JSON.parse(localStorage.getItem('user') as string);
+
   const lang = localStorage.getItem('lang') as 'ru' | 'en';
   if (lang) dispatch(toggleLanguage(lang));
-  if (token) dispatch(setToken(token.token));
+  if (token) {
+    const decoded = jwt_decode(token.token) as any;
+    const keyToken = token.token;
+    const keyUserId = decoded.userId;
+    dispatch(setToken(token.token));
+    dispatch(setUserId(keyUserId));
+  }
 
   return (
     <BrowserRouter>
