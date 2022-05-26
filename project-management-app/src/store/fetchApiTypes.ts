@@ -69,9 +69,10 @@ export type TaskType = {
   id: string;
   title: string;
   order: number;
-  done: boolean;
   description: string;
   userId: string;
+  columnId: string;
+  boardId: string;
   files: {
     filename: string;
     fileSize: number;
@@ -83,7 +84,6 @@ export type CreateNewTaskRequestType = {
   columnId: string;
   body: {
     title: string;
-    order: number;
     description: string;
     userId: string;
   };

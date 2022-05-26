@@ -129,10 +129,7 @@ export const fetchApi = createApi({
         body: body,
       }),
     }),
-    getTaskById: builder.query<
-      TaskResponseType,
-      { boardId: string; columnId: string; taskId: string }
-    >({
+    getTaskById: builder.query<TaskType, { boardId: string; columnId: string; taskId: string }>({
       query: ({ boardId, columnId, taskId }) =>
         `/boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
     }),
