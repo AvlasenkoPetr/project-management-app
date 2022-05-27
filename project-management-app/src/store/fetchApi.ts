@@ -23,6 +23,7 @@ export const fetchApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://powerful-tundra-27687.herokuapp.com/',
     prepareHeaders: (headers, { getState }) => {
+      headers.set('Access-Control-Allow-Origin', '*');
       const token = (getState() as ReducerType).authorizeSlice.auth.token;
       if (token) {
         headers.set('authorization', `Bearer ${token}`);

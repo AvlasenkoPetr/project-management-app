@@ -47,17 +47,22 @@
     "buttons":{
       "returnToMainPage": "Return",
       "addNewColumn": "+ Add new column "
+    },
+    "column":{
+      "title": "Create column"
     }
   },
   "modals": {
     "buttons": {
       "createBoard": "Create",
       "deleteBoard": "Delete",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "createColumn": "Create"
     },
     "titles": {
       "createBoard": "Create board",
-      "deleteBoard": "Delete board"
+      "deleteBoard": "Delete board",
+      "createColumn": "Create column"
     },
     "questions": {
       "deleteBoard": "Are you sure you want to delete the board?"

@@ -47,17 +47,22 @@
     "buttons":{
       "returnToMainPage": "Назад",
       "addNewColumn": "+ Добавить колонку"
+    },
+    "column":{
+      "title": "Создать колонку"
     }
   },
   "modals": {
     "buttons": {
       "createBoard": "Создать",
+      "createColumn": "Создать",
       "deleteBoard": "Удалить",
       "cancel": "Отмена"
     },
     "titles": {
       "createBoard": "Создать Доску",
-      "deleteBoard": "Удалить доску"
+      "deleteBoard": "Удалить доску",
+      "createColumn": "Создать колонку"
     },
     "questions": {
       "deleteBoard": "Вы уверены что хотите удалить доску?"
