@@ -47,20 +47,30 @@
     "buttons":{
       "returnToMainPage": "Return",
       "addNewColumn": "+ Add new column "
+    },
+    "column":{
+      "title": "Create column"
     }
   },
   "modals": {
     "buttons": {
       "createBoard": "Create",
       "deleteBoard": "Delete",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "createColumn": "Create",
+      "createTask": "Create",
+      "deleteTask": "Delete"
     },
     "titles": {
       "createBoard": "Create board",
-      "deleteBoard": "Delete board"
+      "deleteBoard": "Delete board",
+      "createColumn": "Create column",
+      "createTask": "Create Task",
+      "deleteTask": "Delete Task"
     },
     "questions": {
-      "deleteBoard": "Are you sure you want to delete the board?"
+      "deleteBoard": "Are you sure you want to delete the board?",
+      "deleteTask": "Are you sure you want to delete the task?"
     }
   }
 }
