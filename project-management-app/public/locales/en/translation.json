@@ -1,4 +1,16 @@
 {
+  "welcomePage": {
+    "buttons":{
+      "signUp": "Sign Up",
+      "login": "Log In",
+      "toMain": "Go to Main"
+    },
+    "titles": {
+      "course": "Course",
+      "project": "Project",
+      "team": "Team"
+    }
+  },
   "mainPage":{
     "buttons":{
       "editProfile": "Edit Profile",

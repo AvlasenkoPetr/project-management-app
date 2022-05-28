@@ -1,4 +1,16 @@
 {
+  "welcomePage": {
+    "buttons":{
+      "signUp": "Создать профиль",
+      "login": "Войти",
+      "toMain": "На главную"
+    },
+    "titles": {
+      "course": "Курс",
+      "project": "Проект",
+      "team": "Командa"
+    }
+  },
   "mainPage":{
     "buttons":{
       "editProfile": "Изменить Профиль",

@@ -46,7 +46,7 @@ const Header: React.FC = () => {
     dispatch(setBoards(null));
     dispatch(logOut());
     refetch();
-    navigation('/login');
+    navigation('/welcome');
   };
 
   const profilePage = () => {
