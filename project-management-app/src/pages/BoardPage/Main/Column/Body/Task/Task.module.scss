@@ -4,4 +4,14 @@
   margin-bottom: 10px;
   border-radius: 10px;
   background: white;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  button{
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+  }
 }

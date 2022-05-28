@@ -26,6 +26,7 @@ const ColumnHeader: React.FC<Props> = (props) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const deleteColumnFn = async () => {
+    setOpen(false);
     await deleteColumn({
       boardId: selector.id,
       columnId: props.id,
