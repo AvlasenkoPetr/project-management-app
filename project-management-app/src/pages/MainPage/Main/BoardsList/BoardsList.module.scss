@@ -2,28 +2,79 @@
     display: flex;
     flex-wrap: wrap;
 
-    column-gap: 4%;
+    column-gap: 3.72vw;
     row-gap: 50px;
+}
+
+.add_container {
+    width: 20.46vw;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    border: 5px solid var(--blue-dark);
+    border-radius: 20px;
+
+    color: var(--blue-dark);
+
+    cursor: pointer;
+        
+    &:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+
+        .add_container__add_button {
+            background-image: url(../../../../assets/svg/add-orange.svg);
+        }
+    }
+
+    &__board_name {
+        font-family: 'Oswald';
+        font-size: 32px;
+        color: inherit;
+        letter-spacing: 1px;
+    }
+
+    &__add_button {
+        height: 70px;
+        width: 70px;
+
+        background-image: url(../../../../assets/svg/add-blue-dark.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 @media(max-width: 1440px) {
     .container {
-        column-gap: 5%;
+        column-gap: 4.65vw;
         row-gap: 30px;
     }
-}
 
-@media(max-width: 1024px) {
-    .container {
-        column-gap: 10%;
-        row-gap: 20px;
+    .add_container {
+        width: 27.9vw;
+        height: 250px;
     }
 }
 
 @media(max-width: 1024px) {
     .container {
-        column-gap: 10%;
+        column-gap: 9.3vw;
         row-gap: 20px;
+    }
+
+    .add_container {
+        width: 41.85vw;
+        height: 200px;
+
+        &__board_name {
+            font-size: 28px;
+        }
     }
 }
 
@@ -31,5 +82,25 @@
     .container {
         justify-content: center;
         row-gap: 30px;
+    }
+
+    .add_container {
+        width: 74.4vw;
+        height: 220px;
+
+        &__board_name {
+            font-size: 26px;
+            text-align: center;
+        }
+    }
+}
+
+@media(max-width: 425px) {
+    .container {
+        width: 83.7vw;
+
+        &__board_name {
+            font-size: 22px;
+        }
     }
 }

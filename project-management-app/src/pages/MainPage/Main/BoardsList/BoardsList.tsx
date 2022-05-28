@@ -1,11 +1,13 @@
 import React from 'react';
 import { useCustomSelector } from '../../../../customHooks/customHooks';
 import { BoardType } from '../../../../store/fetchApiTypes';
-import { AddBoardButton } from './AddBoardButton/AddBoardButton';
+import { AddBoardButton } from '../../../../components/AddBoardButton/AddBoardButton';
 import { BoardItem } from './BoardItem/BoardItem';
 import styles from './BoardsList.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const BoardsList: React.FC = () => {
+  const { t } = useTranslation();
   const boards: BoardType[] | null = useCustomSelector((state) => state.mainPageSlice.data.boards);
 
   return (
@@ -21,7 +23,12 @@ export const BoardsList: React.FC = () => {
             />
           );
         })}
-      <AddBoardButton />
+      <AddBoardButton>
+        <div className={styles.add_container}>
+          <h2 className={styles.add_container__board_name}>{t('mainPage.board.title')}</h2>
+          <button className={styles.add_container__add_button} />
+        </div>
+      </AddBoardButton>
     </div>
   );
 };
