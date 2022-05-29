@@ -13,13 +13,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
 }
 
 .content_section {
   width: 30%;
   height: 75vh;
-  // padding: 50px;
+  padding: 0 50px;
 
   display: flex;
   flex-direction: column;
@@ -30,8 +29,10 @@
 
   &__title {
     width: 100%;
-    margin-top: 29vh;
-    margin-bottom: 35vh;
+    // margin-top: 29vh;
+    // margin-bottom: 35vh;
+    margin-top: 55%;
+    margin-bottom: 70%;
 
     font-size: 74px;
     font-weight: 600;
@@ -42,17 +43,44 @@
 
   &__description {
     flex: 1;
-    font-size: 34px;
+
+    color: var(--blue-light);
+    font-size: 32px;
+    text-align: justify;
+    // word-break: break-all;
+    hyphens: auto;
   }
 
   &:hover {
     .content_section__title {
-      margin-top: 50px;
-      margin-bottom: 50px;
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
   }
 }
 
 .content_section:not(:last-of-type) {
   border-right: 5px solid var(--blue-dark);
+}
+
+@media(max-width: 1440px) {
+  .content_section {
+
+    padding: 0 30px;
+
+    &__title {
+      font-size: 54px;
+    }
+
+    &__description {
+      font-size: 30px;
+    }
+
+    // &:hover {
+    //   .content_section__title {
+    //     margin-top: 25px;
+    //     margin-bottom: 25px;
+    //   }
+    // }
+  }
 }
