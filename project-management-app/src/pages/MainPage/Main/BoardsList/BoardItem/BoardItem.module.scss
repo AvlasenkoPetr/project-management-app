@@ -24,6 +24,9 @@
         .container__delete_button {
             background-image: url(../../../../../assets/svg/close-orange.svg);
         }
+        .container__edit_button {
+            background-image: url(../../../../../assets/svg/edit-orange.svg);
+        }
     }
 
     &__board_name {
@@ -36,6 +39,20 @@
         font-size: 20px;
         color: inherit;
         letter-spacing: 1px;
+    }
+
+    &__edit_button {
+        position: absolute;
+        top: 15px;
+        right: 45px;
+
+        height: 20px;
+        width: 20px;
+
+        background-image: url(../../../../../assets/svg/edit-blue-light.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     &__delete_button {

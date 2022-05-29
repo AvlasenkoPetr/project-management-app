@@ -84,7 +84,10 @@ export const fetchApi = createApi({
         method: 'DELETE',
       }),
     }),
-    updateBoardById: builder.mutation<BoardType, { id: string; body: { title: string } }>({
+    updateBoardById: builder.mutation<
+      BoardType,
+      { id: string; body: { title: string; description: string } }
+    >({
       query: ({ id, body }) => ({
         url: `/boards/${id}`,
         method: 'PUT',
