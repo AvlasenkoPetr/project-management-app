@@ -76,14 +76,16 @@
       "deleteBoard": "Удалить",
       "cancel": "Отмена",
       "createTask": "Создать",
-      "deleteTask": "Удалить"
+      "deleteTask": "Удалить",
+      "editTask": "Изменить"
     },
     "titles": {
       "createBoard": "Создать Доску",
       "deleteBoard": "Удалить доску",
       "createColumn": "Создать колонку",
       "createTask": "Создать задачу",
-      "deleteTask": "Удалить задачу"
+      "deleteTask": "Удалить задачу",
+      "editTask": "Изменить задачу"
     },
     "questions": {
       "deleteBoard": "Вы уверены что хотите удалить доску?",

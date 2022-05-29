@@ -20,6 +20,12 @@ const LoginPage: React.FC = () => {
     if (selector.isLoading) navigate('/');
   });
 
+  useEffect(() => {
+    if (selector.auth.token) {
+      navigate('/');
+    }
+  }, [selector.auth.token]);
+
   return (
     <div className={styles.container}>
       <Form login password isSignIn>

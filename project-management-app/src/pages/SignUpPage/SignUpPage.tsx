@@ -19,6 +19,12 @@ const SignUp: React.FC = () => {
   });
 
   useEffect(() => {
+    if (selector.auth.token) {
+      navigate('/');
+    }
+  }, [selector.auth.token]);
+
+  useEffect(() => {
     if (selector.canLogin) autoLogin();
   }, [selector.canLogin]);
 
