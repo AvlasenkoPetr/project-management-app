@@ -20,7 +20,7 @@
     "buttons":{
       "editProfile": "Изменить Профиль",
       "createBoard": "Создать Доску",
-      "language": "Ru/En",
+      "language": "РУС",
       "logout": "Выйти"
     }, 
     "board":{
@@ -91,5 +91,8 @@
       "deleteBoard": "Вы уверены что хотите удалить доску?",
       "deleteTask": "Вы уверены что хотите удалить задачу?"
     }
+  },
+  "other": {
+    "returnButton": "Назад"
   }
 }

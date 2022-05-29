@@ -14,6 +14,7 @@ import { GetColumnByIdType, TaskType, UpdateTaskRequestType } from '../../../sto
 import { setNewOrderColumns, setNewOrderTasks } from '../../../store/boardPageSlice';
 import { fireEvent } from '@testing-library/react';
 import { AddColumnButton } from './AddColumnButton/AddColumnButton';
+import { ReturnButton } from '../../../components/ReturnButton/ReturnButton';
 
 const Main: React.FC = () => {
   const { t } = useTranslation();
@@ -184,13 +185,9 @@ const Main: React.FC = () => {
   };
 
   return (
-    <main className={styles.main}>
-      <div className={styles['return-btn__wrapper']}>
-        <Button onClick={returnToMainPage} type="button">
-          {t('boardPage.buttons.returnToMainPage')}
-        </Button>
-      </div>
-      <h2>{selector.title}</h2>
+    <main className={styles.container}>
+      <ReturnButton />
+      <h2 className={styles.container_title}>{selector.title}</h2>
       <div className={styles['board-wrapper']}>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="all-columns" direction="horizontal" type="column">

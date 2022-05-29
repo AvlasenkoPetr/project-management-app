@@ -19,7 +19,6 @@ export const AddColumnButton: React.FC = () => {
   const { t } = useTranslation();
   const [addColumn, {}] = fetchApi.useCreateNewColumnMutation();
   const [isOpen, setOpen] = useState<boolean>(false);
-  const dispatch = useCustomDispatch();
   const selector = useCustomSelector((state) => state.boardPageSlice);
   const { refetch } = fetchApi.useGetBoardByIdQuery(selector.id);
   const {
@@ -32,12 +31,10 @@ export const AddColumnButton: React.FC = () => {
   });
 
   const openModal = () => {
-    // dispatch(setIsModalHide(false));
     setOpen(true);
   };
 
   const closeModal = () => {
-    // dispatch(setIsModalHide(true));
     setOpen(false);
   };
 

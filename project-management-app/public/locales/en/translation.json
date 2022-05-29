@@ -20,7 +20,7 @@
     "buttons":{
       "editProfile": "Edit Profile",
       "createBoard": "Create Board",
-      "language": "En/Ru",
+      "language": "ENG",
       "logout": "Logout"
     },
     "board":{
@@ -91,5 +91,8 @@
       "deleteBoard": "Are you sure you want to delete the board?",
       "deleteTask": "Are you sure you want to delete the task?"
     }
+  },
+  "other": {
+    "returnButton": "Return"
   }
 }
