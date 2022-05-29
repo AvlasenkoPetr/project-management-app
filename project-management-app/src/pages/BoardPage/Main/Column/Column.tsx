@@ -19,7 +19,7 @@ const Column: React.FC<Props> = (props) => {
     <Draggable key={props.id} draggableId={props.id} index={props.index}>
       {(provided: DraggableProvided) => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <div className={styles.container} key={props.id}>
+          <div className={styles.column} key={props.id}>
             <ColumnHeader title={props.title} order={props.order} id={props.id} />
             <ColumnBody tasks={props.tasks} id={props.id} />
           </div>
