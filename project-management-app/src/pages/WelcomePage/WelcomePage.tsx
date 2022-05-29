@@ -27,24 +27,24 @@ const WelcomePage: React.FC = () => {
           <div className={styles.content_section__title}>{t('welcomePage.titles.team')}</div>
           <div className={styles.content_section__description}>
             <div className={styles.content_section__team_container}>
-              <img src={require('../../assets/img/img.jpg')} alt="img" />
+              <img src={require('../../assets/img/img.jpg')} alt="petr" />
               <div className={styles.content_section__team_container__content}>
                 <h2>Avlasenko Petr</h2>
                 <p>Нихера не сделал</p>
               </div>
             </div>
             <div className={styles.content_section__team_container}>
-              <img src={require('../../assets/img/img.jpg')} alt="img" />
+              <img src={require('../../assets/img/andrey.jpg')} alt="andrey" />
               <div className={styles.content_section__team_container__content}>
-                <h2>Avlasenko Petr</h2>
-                <p>Нихера не сделал</p>
+                <h2>Skrinnik Andrey</h2>
+                <p>Сделал все</p>
               </div>
             </div>
             <div className={styles.content_section__team_container}>
-              <img src={require('../../assets/img/img.jpg')} alt="img" />
+              <img src={require('../../assets/img/vlad.jpg')} alt="vlad" />
               <div className={styles.content_section__team_container__content}>
-                <h2>Avlasenko Petr</h2>
-                <p>Нихера не сделал</p>
+                <h2>Klimashevsky Vladislav</h2>
+                <p>Чето делал</p>
               </div>
             </div>
           </div>
