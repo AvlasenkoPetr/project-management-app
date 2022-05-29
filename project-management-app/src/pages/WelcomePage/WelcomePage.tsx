@@ -26,7 +26,27 @@ const WelcomePage: React.FC = () => {
         <div className={styles.content_section}>
           <div className={styles.content_section__title}>{t('welcomePage.titles.team')}</div>
           <div className={styles.content_section__description}>
-            {t('welcomePage.description.team')}
+            <div className={styles.content_section__team_container}>
+              <img src={require('../../assets/img/img.jpg')} alt="img" />
+              <div className={styles.content_section__team_container__content}>
+                <h2>Avlasenko Petr</h2>
+                <p>Нихера не сделал</p>
+              </div>
+            </div>
+            <div className={styles.content_section__team_container}>
+              <img src={require('../../assets/img/img.jpg')} alt="img" />
+              <div className={styles.content_section__team_container__content}>
+                <h2>Avlasenko Petr</h2>
+                <p>Нихера не сделал</p>
+              </div>
+            </div>
+            <div className={styles.content_section__team_container}>
+              <img src={require('../../assets/img/img.jpg')} alt="img" />
+              <div className={styles.content_section__team_container__content}>
+                <h2>Avlasenko Petr</h2>
+                <p>Нихера не сделал</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
