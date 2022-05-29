@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { ISubmitData } from '../../../../../components/Form/Form';
-import { FormInput } from '../../../../../components/FormInput/FormInput';
-import { Modal } from '../../../../../components/Modal/Modal';
-import { useCustomDispatch, useCustomSelector } from '../../../../../customHooks/customHooks';
-import { fetchApi } from '../../../../../store/fetchApi';
-import { setIsModalHide } from '../../../../../store/mainPageSlice';
-import styles from './AddBoardButton.module.scss';
+import { ISubmitData } from '../Form/Form';
+import { FormInput } from '../FormInput/FormInput';
+import { Modal } from '../Modal/Modal';
+import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
+import { fetchApi } from '../../store/fetchApi';
 
-interface INewBoardBody {
+export interface INewBoardBody {
   title: string;
   description: string;
 }
 
-export const AddBoardButton: React.FC = () => {
+export const AddBoardButton: React.FC = ({ children }) => {
   const { t } = useTranslation();
   const [addBoard, {}] = fetchApi.useCreateNewBoardMutation();
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
   const [isOpen, setOpen] = useState<boolean>(false);
-  const dispatch = useCustomDispatch();
-  const selector = useCustomSelector((state) => state.mainPageSlice);
   const {
     register,
     formState: { errors },
@@ -31,12 +27,10 @@ export const AddBoardButton: React.FC = () => {
   });
 
   const openModal = () => {
-    // dispatch(setIsModalHide(false));
     setOpen(true);
   };
 
   const closeModal = () => {
-    // dispatch(setIsModalHide(true));
     setOpen(false);
   };
 
@@ -61,10 +55,7 @@ export const AddBoardButton: React.FC = () => {
 
   return (
     <>
-      <div className={styles.container} onClick={openModal}>
-        <h2 className={styles.container__board_name}>{t('mainPage.board.title')}</h2>
-        <button className={styles.container__add_button} />
-      </div>
+      <div onClick={openModal}>{children}</div>
       <Modal
         title={t('modals.titles.createBoard')}
         submitText={t('modals.buttons.createBoard')}
