@@ -59,14 +59,16 @@
       "cancel": "Cancel",
       "createColumn": "Create",
       "createTask": "Create",
-      "deleteTask": "Delete"
+      "deleteTask": "Delete",
+      "editTask": "Edit"
     },
     "titles": {
       "createBoard": "Create board",
       "deleteBoard": "Delete board",
       "createColumn": "Create column",
       "createTask": "Create Task",
-      "deleteTask": "Delete Task"
+      "deleteTask": "Delete Task",
+      "editTask": "Edit Task"
     },
     "questions": {
       "deleteBoard": "Are you sure you want to delete the board?",
