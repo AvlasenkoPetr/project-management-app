@@ -105,9 +105,12 @@ const ColumnBody: React.FC<Props> = (props) => {
                   index={index}
                   columnId={props.id}
                   boardId={selector.id}
+                  order={task.order}
                   key={task.id}
                   id={task.id}
                   title={task.title}
+                  description={task.description}
+                  userId={UserId}
                 />
               );
             })}
