@@ -13,6 +13,7 @@ import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react
 import { GetColumnByIdType, TaskType, UpdateTaskRequestType } from '../../../store/fetchApiTypes';
 import { setNewOrderColumns, setNewOrderTasks } from '../../../store/boardPageSlice';
 import { fireEvent } from '@testing-library/react';
+import { AddColumnButton } from './AddColumnButton/AddColumnButton';
 
 const Main: React.FC = () => {
   const { t } = useTranslation();
@@ -212,21 +213,7 @@ const Main: React.FC = () => {
             )}
           </Droppable>
         </DragDropContext>
-        <div className={styles['add-new-column__wrapper']}>
-          <Button onClick={openModal} type="button">
-            {t('boardPage.buttons.addNewColumn')}
-          </Button>
-          <Modal
-            title={t('modals.titles.createBoard')}
-            submitText={t('modals.buttons.createBoard')}
-            // isModalHide={mainSelector.isModalHide}
-            closeModal={closeModal}
-            isOpen={isOpen}
-            onSubmit={createColumn}
-          >
-            <h1>Modal</h1>
-          </Modal>
-        </div>
+        <AddColumnButton />
       </div>
     </main>
   );
