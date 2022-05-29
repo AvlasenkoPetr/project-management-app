@@ -1,5 +1,5 @@
 .container {
-    width: 22%;
+    width: 20.46vw;
     height: 300px;
 
     position: relative;
@@ -81,14 +81,14 @@
 
 @media(max-width: 1440px) {
     .container {
-        width: 30%;
+        width: 27.9vw;
         height: 250px;
     }
 }
 
 @media(max-width: 1024px) {
     .container {
-        width: 45%;
+        width: 41.85vw;
         height: 200px;
 
         &__board_description {
@@ -99,7 +99,7 @@
 
 @media(max-width: 768px) {
     .container {
-        width: 80%;
+        width: 74.4vw;
         height: 220px;
 
         &__board_description {
@@ -110,7 +110,7 @@
 
 @media(max-width: 425px) {
     .container {
-        width: 90%;
+        width: 83.7vw;
 
         &__board_description {
             font-size: 16px;
