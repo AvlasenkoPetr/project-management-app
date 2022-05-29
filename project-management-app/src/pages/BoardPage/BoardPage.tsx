@@ -9,6 +9,7 @@ import Header from '../../components/Header/Header';
 import Main from './Main/Main';
 import styles from './BoardPage.module.scss';
 import { setBoardContent } from '../../store/boardPageSlice';
+import { Loader } from '../../components/Loader/Loader';
 
 const BoardPage: React.FC = () => {
   const selector = useCustomSelector((state) => state);
@@ -32,7 +33,7 @@ const BoardPage: React.FC = () => {
     <>
       <div className={styles.container}>
         <Header />
-        {!isLoading && data ? <Main /> : <div>Загружаемся</div>}
+        {!isLoading && data ? <Main /> : <Loader />}
         <Footer />
       </div>
     </>

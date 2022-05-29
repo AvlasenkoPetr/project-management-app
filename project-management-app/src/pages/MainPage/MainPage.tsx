@@ -8,6 +8,7 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Main from './Main/Main';
 import styles from './MainPage.module.scss';
+import { Loader } from '../../components/Loader/Loader';
 
 const MainPage: React.FC = () => {
   const selector = useCustomSelector((state) => state);
@@ -33,7 +34,7 @@ const MainPage: React.FC = () => {
     <>
       <div className={styles.container}>
         <Header />
-        {selector.authorizeSlice.isLoading ? <Main /> : <div>Загружаемся</div>}
+        {selector.authorizeSlice.isLoading ? <Main /> : <Loader />}
         <Footer />
       </div>
     </>
