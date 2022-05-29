@@ -5,12 +5,13 @@ import Store from './store/store';
 import { Provider } from 'react-redux';
 import { Suspense } from 'react';
 import './utilits/i18n';
+import { Loader } from './components/Loader/Loader';
 
 const container = document.getElementById('app') as HTMLDivElement;
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
   <Provider store={Store()}>
-    <Suspense fallback="LOADING">
+    <Suspense fallback={<Loader />}>
       <App />
     </Suspense>
   </Provider>
