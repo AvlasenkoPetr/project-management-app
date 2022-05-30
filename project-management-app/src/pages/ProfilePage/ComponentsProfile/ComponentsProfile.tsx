@@ -124,7 +124,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
 
   async function checkUser(user: Iuser) {
     const userTest = {
-      login: statusToken.login.join(''),
+      login: [statusToken.login].join(''),
       password: user.password,
     };
     try {
