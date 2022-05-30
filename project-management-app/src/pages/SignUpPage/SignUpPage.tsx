@@ -6,6 +6,7 @@ import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import Form from '../../components/Form/Form';
 import styles from './SignUp.module.scss';
+import Footer from '../../components/Footer/Footer';
 
 const SignUp: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -46,6 +47,7 @@ const SignUp: React.FC = () => {
       <Form login password name passwordRepeat isSignUp>
         {t('signUpPage.buttons.signUp')}
       </Form>
+      <Footer />
     </div>
   );
 };

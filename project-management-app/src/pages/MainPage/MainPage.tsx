@@ -22,7 +22,7 @@ const MainPage: React.FC = () => {
     }
   }, [data]);
   useEffect(() => {
-    if (error && !selector.authorizeSlice.auth.token) navigation('/login');
+    if (error && !selector.authorizeSlice.auth.token) navigation('/welcome');
   }, [error]);
   useEffect(() => {
     if (selector.mainPageSlice.data.boards) {

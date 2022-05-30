@@ -1,12 +1,23 @@
-.form__wrapper{
-  width: 35%;
-  height: 65%;
+.form__container {
+  width: 100%;
+  flex: 1;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  border: 10px solid var(--blue-light);
+  background-color: var(--white-hover);
+}
+
+.form__wrapper{
+  width: 35%;
+  height: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 10px solid var(--blue-dark);
   border-radius: 25px;
   background-color: var(--white-hover);
 
