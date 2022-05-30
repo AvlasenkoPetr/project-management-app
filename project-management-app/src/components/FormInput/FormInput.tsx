@@ -54,6 +54,12 @@ export const FormInput: React.FC<IProps> = ({
           errors[name].type === 'minLength' &&
           `${t('authForm.errors.short')} ${min}`}
       </p>
+      <p className={styles['container__error-message']}>
+        {errors[name] && errors[name].type === 'wrongPassword' && errors[name].message}
+      </p>
+      <p className={styles['container__error-message']}>
+        {errors[name] && errors[name].type === 'exist' && errors[name].message}
+      </p>
     </label>
   );
 };

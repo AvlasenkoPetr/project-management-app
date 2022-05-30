@@ -73,6 +73,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const [signIn, {}] = fetchApi.useSignInMutation();
 
+  const [signIn, { error: customError }] = fetchApi.useSignInMutation();
   const getLocal = JSON.parse(localStorage.getItem('user') || '');
   const decoded: decodedType = jwt_decode(getLocal.token);
   const keyToken = getLocal.token;
@@ -138,7 +139,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
       setUserVerified(true);
       setStatusConfirmation(true);
     } catch (err) {
-      setError('password', { message: 'неверный пароль' });
+      setError('password', { message: t('authForm.errors.wrong'), type: 'wrongPassword' });
     }
   }
 
@@ -259,7 +260,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
           {t('editPage.buttons.submit')}
         </button>
         <div className={isDataChangedHide ? 'response__message_hide' : 'response__message_show'}>
-          {isDataChanged ? 'Пользователь успешно изменён' : 'Internal Server Error'}
+          {isDataChanged ? t('other.responseStatusDone') : t('other.responseStatusReject')}
         </div>
         <div
           style={statusConfirmation == false ? { display: 'none' } : { display: 'block' }}

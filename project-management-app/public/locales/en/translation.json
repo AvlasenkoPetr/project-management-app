@@ -136,6 +136,8 @@
   "other": {
     "returnButton": "Return",
     "createdBy": "Task created by",
-    "creatorDeleted": "Task creator deleted"
+    "creatorDeleted": "Task creator deleted",
+    "responseStatusDone": "User successful edited",
+    "responseStatusReject": "Internal Server Error"
   }
 }

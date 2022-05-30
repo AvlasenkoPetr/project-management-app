@@ -63,7 +63,7 @@ const Form: React.FC<Props> = (props) => {
         dispatch(setPassword(newUser.password));
         dispatch(setCanLogin(true));
       } catch (err) {
-        setError('login', { message: t('authForm.errors.exist') });
+        setError('login', { message: t('authForm.errors.exist'), type: 'exist' });
       }
     }
 
@@ -78,8 +78,8 @@ const Form: React.FC<Props> = (props) => {
         dispatch(setIsLoading(true));
         localStorage.setItem('user', JSON.stringify(response));
       } catch (err) {
-        setError('login', { message: t('authForm.errors.wrong') });
-        setError('password', { message: t('authForm.errors.wrong') });
+        setError('login', { message: t('authForm.errors.wrong'), type: 'wrongPassword' });
+        setError('password', { message: t('authForm.errors.wrong'), type: 'wrongPassword' });
       }
     }
   }

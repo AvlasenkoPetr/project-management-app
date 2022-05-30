@@ -136,6 +136,8 @@
   "other": {
     "returnButton": "Назад",
     "createdBy": "Задачу создал",
-    "creatorDeleted": "Создатель задачи удален"
+    "creatorDeleted": "Создатель задачи удален",
+    "responseStatusDone": "Пользователь успешно изменен",
+    "responseStatusReject": "Ошибка сервера"
   }
 }
