@@ -60,7 +60,6 @@ const ComponentsProfile: React.FC<Props> = (props) => {
     login: [''],
     name: [''],
   });
-  console.log(statusToken);
   const [checked, setChecked] = useState<boolean>(false);
   const [statusRegistration, setStatusRegistration] = useState(
     'Введите пароль для подтверждения пользователь'
