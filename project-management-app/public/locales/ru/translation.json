@@ -1,4 +1,13 @@
 {
+  "components": {
+    "header":{
+      "logoutModal":{
+        "title": "Вы уверены?",
+        "description": "Вы уверены, что хотите выйти?",
+        "submitBtn": "Подтвердить"
+      }
+    }
+  },
   "welcomePage": {
     "buttons":{
       "signUp": "Создать профиль",
