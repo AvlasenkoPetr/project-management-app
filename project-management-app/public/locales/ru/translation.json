@@ -27,6 +27,7 @@
   },
   "mainPage":{
     "buttons":{
+      "welcome": "На главную",
       "editProfile": "Изменить Профиль",
       "createBoard": "Создать Доску",
       "language": "РУС",
@@ -89,7 +90,8 @@
       "cancel": "Отмена",
       "createTask": "Создать",
       "deleteTask": "Удалить",
-      "editTask": "Изменить"
+      "editTask": "Изменить",
+      "logout": "Подтвердить"
     },
     "titles": {
       "createBoard": "Создать Доску",
@@ -98,11 +100,13 @@
       "createColumn": "Создать колонку",
       "createTask": "Создать задачу",
       "deleteTask": "Удалить задачу",
-      "editTask": "Изменить задачу"
+      "editTask": "Изменить задачу",
+      "logout": "Выйти"
     },
     "questions": {
       "deleteBoard": "Вы уверены что хотите удалить доску?",
-      "deleteTask": "Вы уверены что хотите удалить задачу?"
+      "deleteTask": "Вы уверены что хотите удалить задачу?",
+      "logout": "Вы уверены, что хотите выйти?"
     }
   },
   "editPage": {

@@ -27,6 +27,7 @@
   },
   "mainPage":{
     "buttons":{
+      "welcome": "Go to main",
       "editProfile": "Edit Profile",
       "createBoard": "Create Board",
       "language": "ENG",
@@ -89,7 +90,8 @@
       "createColumn": "Create",
       "createTask": "Create",
       "deleteTask": "Delete",
-      "editTask": "Edit"
+      "editTask": "Edit",
+      "logout": "Submit"
     },
     "titles": {
       "createBoard": "Create board",
@@ -98,11 +100,13 @@
       "createColumn": "Create column",
       "createTask": "Create Task",
       "deleteTask": "Delete Task",
-      "editTask": "Edit Task"
+      "editTask": "Edit Task",
+      "logout": "Logout"
     },
     "questions": {
       "deleteBoard": "Are you sure you want to delete the board?",
-      "deleteTask": "Are you sure you want to delete the task?"
+      "deleteTask": "Are you sure you want to delete the task?",
+      "logout": "Are you sure you want to logout?"
     }
   },
   "editPage": {
