@@ -30,7 +30,7 @@ export const TextArea: React.FC<IProps> = ({
     <label className={styles.container}>
       <p className={styles.container__description}>{text}</p>
       <textarea
-        className={styles.container__input}
+        className={styles.container__textarea}
         defaultValue={defaultValue}
         {...register(name, { required: t('authForm.errors.empty') })}
         data-testid={type}
