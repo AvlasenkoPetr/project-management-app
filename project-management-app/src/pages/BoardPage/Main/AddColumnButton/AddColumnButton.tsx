@@ -32,12 +32,10 @@ export const AddColumnButton: React.FC = () => {
   });
 
   const openModal = () => {
-    // dispatch(setIsModalHide(false));
     setOpen(true);
   };
 
   const closeModal = () => {
-    // dispatch(setIsModalHide(true));
     setOpen(false);
   };
 
@@ -48,7 +46,6 @@ export const AddColumnButton: React.FC = () => {
       },
       boardId: selector.id,
     };
-    console.log(newColumn);
     createColumn(newColumn);
   };
 

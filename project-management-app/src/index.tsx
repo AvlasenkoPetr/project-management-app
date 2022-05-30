@@ -8,7 +8,7 @@ import './utilits/i18n';
 import { Loader } from './components/Loader/Loader';
 
 const container = document.getElementById('app') as HTMLDivElement;
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);
 root.render(
   <Provider store={Store()}>
     <Suspense fallback={<Loader />}>

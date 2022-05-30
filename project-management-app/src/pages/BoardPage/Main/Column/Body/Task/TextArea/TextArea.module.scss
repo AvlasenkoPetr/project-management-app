@@ -17,11 +17,13 @@
         color: var(--black);
     }
 
-    &__input {
+    &__textarea {
         width: 100%;
         padding: 5px 10px;
-
+        outline: none;
         font-size: 22px;
+        resize: none;
+        min-height: 100px;
     
         border-radius: 10px;
         border: 3px solid var(--blue-dark);

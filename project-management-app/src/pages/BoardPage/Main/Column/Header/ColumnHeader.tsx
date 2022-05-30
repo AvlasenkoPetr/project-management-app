@@ -59,12 +59,10 @@ const ColumnHeader: React.FC<Props> = (props) => {
   };
 
   const openModal = () => {
-    // dispatch(setIsModalHide(false));
     setOpen(true);
   };
 
   const closeModal = () => {
-    // dispatch(setIsModalHide(true));
     setOpen(false);
   };
 
