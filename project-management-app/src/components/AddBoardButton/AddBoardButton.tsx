@@ -76,6 +76,7 @@ export const AddBoardButton: React.FC = ({ children }) => {
             name="description"
             register={register}
             errors={errors}
+            max={40}
           ></FormInput>
         </form>
       </Modal>

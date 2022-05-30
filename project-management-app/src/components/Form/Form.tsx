@@ -94,6 +94,7 @@ const Form: React.FC<Props> = (props) => {
             name="login"
             register={register}
             errors={errors}
+            max={16}
           />
         )}
         {props.name && (
@@ -103,6 +104,7 @@ const Form: React.FC<Props> = (props) => {
             name="name"
             register={register}
             errors={errors}
+            max={16}
           />
         )}
         {props.password && (
@@ -112,11 +114,10 @@ const Form: React.FC<Props> = (props) => {
             name="password"
             register={register}
             errors={errors}
+            max={16}
+            min={8}
           />
         )}
-        {/* {props.passwordRepeat && (
-            <Input type="password">{t('authForm.inputs.passwordRepeat')}</Input>
-          )} */}
         <ButtonBlueDark>{props.children}</ButtonBlueDark>
         {props.isSignUp && (
           <div className={styles.question}>

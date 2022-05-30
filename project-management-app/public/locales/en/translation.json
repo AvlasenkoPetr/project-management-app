@@ -12,7 +12,7 @@
     "buttons":{
       "signUp": "Sign Up",
       "login": "Log In",
-      "toMain": "Go to Main"
+      "toMain": "Back to boards"
     },
     "titles": {
       "course": "Course",
@@ -23,6 +23,16 @@
       "course": "RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013. Everyone can study at RS School, regardless of age, professional employment, or place of residence. The mentors and trainers of our school are front-end and javascript developers from different companies and countries.",
       "project": "Project Management System – an application that helps an individual person in a team or group of developers achieve their goals. Work together, manage projects and take productivity to the next level!",
       "team": "Everything done by Andrey"
+    },
+    "names": {
+      "petr": "Avlasenko Petr",
+      "andrey": "Skrinnik Andrey",
+      "vlad": "Klimashevsky Vladislav"
+    },
+    "done": {
+      "petr": "Design, layout, header, welcome page, main page, modal windows, validation",
+      "andrey": "Setting redux, adding and setting libraries, authorization, tasks page",
+      "vlad": "Edit user page, header design on scroll"
     }
   },
   "mainPage":{
@@ -49,7 +59,9 @@
     "errors":{
       "empty": "field must be filled",
       "wrong": "incorrect data",
-      "exist": "user already exist"
+      "exist": "user already exist",
+      "short": "mininmum allowed length:",
+      "long": "maximum allowed length:"
     }
   },
   "loginPage":{
