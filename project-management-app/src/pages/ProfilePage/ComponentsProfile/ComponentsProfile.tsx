@@ -45,9 +45,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const [arrayConst, setarrayConst] = useState(arayTest);
   const [statusToken, setStatusToken] = useState<any>([]);
   const [checked, setChecked] = useState<boolean>(false);
-  const [statusRegistration, setStatusRegistration] = useState(
-    'Введите пароль для подтверждения пользователь'
-  );
+  const [userVerified, setUserVerified] = useState<boolean>(false);
   const [statusConfirmation, setStatusConfirmation] = useState<boolean>(false);
   const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -67,8 +65,12 @@ const ComponentsProfile: React.FC<Props> = (props) => {
     handleSubmit,
     setError,
   } = useForm({
-    mode: 'onBlur',
+    reValidateMode: 'onBlur',
   });
+
+  // useEffect(() => {
+  //   setStatusRegistration(t('editPage.titles.checkPassword'))
+  // }, [])
 
   async function getUser() {
     const rawResponse = await fetch(
@@ -87,6 +89,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   useEffect(() => {
     getUser();
   }, []);
+
   async function onDelete() {
     const rawResponse = await fetch(
       `https://powerful-tundra-27687.herokuapp.com/users/${keyUserId}`,
@@ -117,10 +120,11 @@ const ComponentsProfile: React.FC<Props> = (props) => {
       dispatch(setToken(response.token));
       dispatch(setIsLoading(true));
       localStorage.setItem('user', JSON.stringify(response));
-      setStatusRegistration(`Tекущий пользователь`);
+      // setStatusRegistration(`Tекущий пользователь`);
+      setUserVerified(true);
       setStatusConfirmation(true);
     } catch (err) {
-      setStatusRegistration(`Неправильный пароль`);
+      setError('password', { message: 'неверный пароль' });
     }
   }
 
@@ -138,9 +142,9 @@ const ComponentsProfile: React.FC<Props> = (props) => {
       }
     );
     if (rawResponse.ok) {
-      setStatusRegistration(`Пользователь успешно изменён`);
+      // setStatusRegistration(`Пользователь успешно изменён`);
     } else {
-      setStatusRegistration(`Internal Server Error`);
+      // setStatusRegistration(`Internal Server Error`);
     }
   }
 
@@ -156,7 +160,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
 
   function ChangeUser() {
     return (
-      <div>
+      <>
         <FormInput
           type="text"
           text={t('authForm.inputs.login')}
@@ -174,8 +178,8 @@ const ComponentsProfile: React.FC<Props> = (props) => {
           defaultValue={statusToken.name}
         ></FormInput>
         <div className="form-main__input-container">
-          <label className="form-main__label-content" htmlFor="scales">
-            Изменить пароль
+          <label className="form-main__input-container" htmlFor="scales">
+            {t('editPage.buttons.changePassword')}
           </label>
           <input
             type="checkbox"
@@ -185,35 +189,28 @@ const ComponentsProfile: React.FC<Props> = (props) => {
             id="scales"
           />
         </div>
-
-        <div>
-          {checked ? (
-            <FormInput
-              type="password"
-              text={t('authForm.inputs.password')}
-              name="passwordNew"
-              register={register}
-              errors={errors}
-            ></FormInput>
-          ) : (
-            ''
-          )}
-        </div>
-      </div>
+        {checked && (
+          <FormInput
+            type="password"
+            text={t('authForm.inputs.password')}
+            name="passwordNew"
+            register={register}
+            errors={errors}
+          ></FormInput>
+        )}
+      </>
     );
   }
 
   function AuthorizationUser() {
     return (
-      <div>
-        <FormInput
-          type="password"
-          text={t('authForm.inputs.password')}
-          name="password"
-          register={register}
-          errors={errors}
-        ></FormInput>
-      </div>
+      <FormInput
+        type="password"
+        text={t('authForm.inputs.password')}
+        name="password"
+        register={register}
+        errors={errors}
+      ></FormInput>
     );
   }
 
@@ -227,29 +224,24 @@ const ComponentsProfile: React.FC<Props> = (props) => {
 
   return (
     <div className="form-main">
-      <p className="form-main__attention" style={{ color: 'blue' }}>
-        {statusRegistration}
+      <p className="form-main__attention">
+        {userVerified ? t('editPage.titles.currentUser') : t('editPage.titles.enterPassword')}
       </p>
-
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-main__container">
-          <div className="form-main__input-content">
-            {statusConfirmation == false ? <AuthorizationUser /> : <ChangeUser />}
-          </div>
-        </div>
+        {statusConfirmation == false ? <AuthorizationUser /> : <ChangeUser />}
         <button className="form-main__input-btn" type="submit">
-          Submit
+          {t('editPage.buttons.submit')}
         </button>
+        <div
+          style={statusConfirmation == false ? { display: 'none' } : { display: 'block' }}
+          className="form-main__input-btn form-main__delete-btn"
+          onClick={openModal}
+        >
+          {t('editPage.buttons.delete')}
+        </div>
       </form>
-      <button
-        style={statusConfirmation == false ? { display: 'none' } : { display: 'block' }}
-        className="form-main__input-btn"
-        onClick={openModal}
-      >
-        <p className="form-main__attention">Delete acaunt</p>
-      </button>
       <Modal
-        title={t('Are you sure')}
+        title={t('editPage.titles.deleteModal')}
         submitText={t('modals.buttons.deleteBoard')}
         onSubmit={onDelete}
         closeModal={closeModal}

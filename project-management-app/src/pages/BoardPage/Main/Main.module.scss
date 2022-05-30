@@ -6,8 +6,10 @@
   flex-direction: column;
 
   &_title {
+    height: 89px;
     margin-bottom: 20px;
     margin-right: 20px;
+    padding: 0 120px;
 
     font-size: 56px;
     color: var(--blue-dark);
@@ -38,3 +40,28 @@
   }
 }
 
+@media(max-width: 768px) {
+  .container {
+    &_title {
+      font-size: 44px;
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  .container {
+    &_title {
+      padding: 0 60px;
+      font-size: 40px;
+    }
+  }
+}
+
+@media(max-width: 456px) {
+  .container {
+    &_title {
+      padding: 0 40px;
+      font-size: 30px;
+    }
+  }
+}

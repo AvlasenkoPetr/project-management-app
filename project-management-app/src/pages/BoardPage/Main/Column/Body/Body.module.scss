@@ -1,6 +1,5 @@
 .tasks__wrapper{
   min-height: 10px;
-  // max-height: 60vh;
   max-height: calc(100vh - 386px);
   overflow-y: scroll;
 }
@@ -9,10 +8,8 @@
   min-height: 50px;
   width: 100%;
 
-  // border-radius: 10px;
   border-bottom: 3px solid var(--blue-dark);
   border-top: 3px solid var(--blue-dark);
-  // border: 3px solid var(--blue-dark);
 
   background-image: url(../../../../../assets/svg/add-blue-dark.svg);
   background-position: center left 25%;
@@ -30,5 +27,11 @@
     border-color: var(--orange);
     color: var(--orange);
     background-image: url(../../../../../assets/svg/add-orange.svg);
+  }
+}
+
+@media(max-width: 380px) {
+  .add_task__button {
+    background-position: center left 20%;
   }
 }

@@ -34,7 +34,6 @@ export const FormInput: React.FC<IProps> = ({
         type={type}
         defaultValue={defaultValue}
         {...register(name, { required: t('authForm.errors.empty') })}
-        data-testid={type}
       />
       <p className={styles['container__error-message']}>{errors[name] && errors[name].message}</p>
     </label>

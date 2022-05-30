@@ -12,3 +12,9 @@
   color: var(--blue-light);
 }
 
+@media(max-width: 380px) {
+  .column {
+    min-width: 88vw;
+  }
+}
+

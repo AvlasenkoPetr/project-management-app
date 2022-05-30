@@ -93,6 +93,18 @@
       "deleteTask": "Вы уверены что хотите удалить задачу?"
     }
   },
+  "editPage": {
+    "titles": {
+      "enterPassword": "Введите пароль для подтверждения пользователя",
+      "currentUser": "Текущий пользователь",
+      "deleteModal": "Удалить пользователя"
+    },
+    "buttons": {
+      "submit": "Подтвердить",
+      "delete": "Удалить аккаунт",
+      "changePassword": "Изменить пароль"
+    }
+  },
   "other": {
     "returnButton": "Назад"
   }

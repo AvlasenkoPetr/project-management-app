@@ -93,6 +93,18 @@
       "deleteTask": "Are you sure you want to delete the task?"
     }
   },
+  "editPage": {
+    "titles": {
+      "enterPassword": "Enter password to verify the user",
+      "currentUser": "Current user",
+      "deleteModal": "Delete user"
+    },
+    "buttons": {
+      "submit": "Submit",
+      "delete": "Delete account",
+      "changePassword": "Change password"
+    }
+  },
   "other": {
     "returnButton": "Return"
   }
