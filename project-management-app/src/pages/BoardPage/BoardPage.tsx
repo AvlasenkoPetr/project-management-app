@@ -27,7 +27,7 @@ const BoardPage: React.FC = () => {
     }
   }, [data]);
   useEffect(() => {
-    if (!selector.authorizeSlice.auth.token) navigation('/login');
+    if (!selector.authorizeSlice.auth.token) navigation('/welcome');
   }, [selector.authorizeSlice.auth.token]);
   return (
     <>
