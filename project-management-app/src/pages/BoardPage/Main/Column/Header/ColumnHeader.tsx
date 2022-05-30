@@ -76,12 +76,8 @@ const ColumnHeader: React.FC<Props> = (props) => {
       <div className={styles['column-header']}>
         {isTextAreaShow && (
           <div className={styles['column-header-btn__wrapper']}>
-            <button onClick={() => submitTitle()}>
-              <img src={submitChangeTitleBtnSvg} alt="" />
-            </button>
-            <button onClick={() => rejectTitle()}>
-              <img src={rejectChangeTitleBtnSvg} alt="" />
-            </button>
+            <button onClick={() => submitTitle()} />
+            <button onClick={() => rejectTitle()} />
           </div>
         )}
         {isTextAreaShow ? (
@@ -95,9 +91,7 @@ const ColumnHeader: React.FC<Props> = (props) => {
             {textareaValue}
           </p>
         )}
-        <button className={styles['deleteColumn']} onClick={openModal}>
-          <img src={closeBtnSvg} alt="" />
-        </button>
+        <button className={styles['deleteColumn']} onClick={openModal} />
       </div>
       <Modal
         title={t('modals.titles.deleteBoard')}

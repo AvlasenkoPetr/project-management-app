@@ -92,13 +92,11 @@ const Task: React.FC<Props> = (props) => {
               {...provided.draggableProps}
               ref={provided.innerRef}
               {...provided.dragHandleProps}
-              className={styles.task}
+              className={styles.container}
               onDoubleClick={openEditModal}
             >
-              <p>{props.title}</p>
-              <button className={styles['deleteColumn']} onClick={openDeleteModal}>
-                <img src={closeBtnSvg} alt="" />
-              </button>
+              <p className={styles.container__title}>{props.title}</p>
+              <button className={styles['deleteColumn']} onClick={openDeleteModal} />
             </div>
           );
         }}
