@@ -82,6 +82,7 @@
     "titles": {
       "createBoard": "Create board",
       "deleteBoard": "Delete board",
+      "editBoard": "Edit board",
       "createColumn": "Create column",
       "createTask": "Create Task",
       "deleteTask": "Delete Task",

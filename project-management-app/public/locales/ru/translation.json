@@ -82,6 +82,7 @@
     "titles": {
       "createBoard": "Создать Доску",
       "deleteBoard": "Удалить доску",
+      "editBoard": "Изменить доску",
       "createColumn": "Создать колонку",
       "createTask": "Создать задачу",
       "deleteTask": "Удалить задачу",

@@ -115,7 +115,7 @@ export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
         <h2>{t('modals.questions.deleteBoard')}</h2>
       </Modal>
       <Modal
-        title={t('modals.titles.editTask')}
+        title={t('modals.titles.editBoard')}
         submitText={t('modals.buttons.editTask')}
         onSubmit={handleSubmit(editBoardFn)}
         closeModal={closeEditModal}
