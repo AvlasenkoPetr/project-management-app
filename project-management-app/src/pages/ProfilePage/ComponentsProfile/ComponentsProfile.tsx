@@ -72,8 +72,6 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
   const navigate = useNavigate();
   const [signIn, {}] = fetchApi.useSignInMutation();
-
-  const [signIn, { error: customError }] = fetchApi.useSignInMutation();
   const getLocal = JSON.parse(localStorage.getItem('user') || '');
   const decoded: decodedType = jwt_decode(getLocal.token);
   const keyToken = getLocal.token;
