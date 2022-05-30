@@ -48,3 +48,19 @@
         color: var(--orange);
     }
 }
+
+@media(max-width: 768px) {
+    .container {
+        &__error-message {
+            font-size: 16px;
+        }
+    }
+} 
+
+@media(max-width: 425px) {
+    .container {
+        &__error-message {
+            font-size: 14px;
+        }
+    }
+} 

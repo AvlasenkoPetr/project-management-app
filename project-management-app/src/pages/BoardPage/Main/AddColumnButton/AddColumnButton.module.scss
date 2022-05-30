@@ -46,43 +46,8 @@
     }
 }
 
-// @media(max-width: 1440px) {
-//     .container {
-//         width: 30%;
-//         height: 250px;
-//     }
-// }
-
-// @media(max-width: 1024px) {
-//     .container {
-//         width: 45%;
-//         height: 200px;
-
-//         &__board_name {
-//             font-size: 28px;
-//         }
-//     }
-// }
-
-// @media(max-width: 768px) {
-//     .container {
-//         width: 80%;
-//         height: 220px;
-
-//         &__board_name {
-//             font-size: 26px;
-//             text-align: center;
-//         }
-//     }
-// }
-
-// @media(max-width: 425px) {
-//     .container {
-//         width: 90%;
-
-//         &__board_name {
-//             font-size: 22px;
-//         }
-//     }
-// }
-
+@media(max-width: 380px) {
+    .container {
+      min-width: 88vw;
+    }
+  }
