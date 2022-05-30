@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCustomDispatch } from '../../../customHooks/customHooks';
@@ -9,6 +8,7 @@ import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { FormInput } from '../../../components/FormInput/FormInput';
 import { Modal } from '../../../components/Modal/Modal';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   children?: string;
@@ -53,7 +53,10 @@ type statusTokenType = {
 };
 
 const ComponentsProfile: React.FC<Props> = (props) => {
+  const { t } = useTranslation();
   const arayTest: data[] = [];
+  const [isDataChanged, setDataChanged] = useState<boolean>(false);
+  const [isDataChangedHide, setDataChangedHide] = useState<boolean>(true);
   const [arrayConst, setarrayConst] = useState(arayTest);
   const [statusToken, setStatusToken] = useState<statusTokenType>({
     id: [''],
@@ -124,7 +127,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
 
   async function checkUser(user: Iuser) {
     const userTest = {
-      login: statusToken.login.join(''),
+      login: [statusToken.login].join(''),
       password: user.password,
     };
     try {
@@ -153,10 +156,16 @@ const ComponentsProfile: React.FC<Props> = (props) => {
       }
     );
     if (rawResponse.ok) {
-      // setStatusRegistration(`Пользователь успешно изменён`);
+      setDataChanged(true);
+      setDataChangedHide(false);
     } else {
-      // setStatusRegistration(`Internal Server Error`);
+      setDataChanged(false);
+      setDataChangedHide(false);
     }
+
+    setTimeout(() => {
+      setDataChangedHide(true);
+    }, 5000);
   }
 
   async function onSubmit(data: ISubmitData) {
@@ -243,6 +252,9 @@ const ComponentsProfile: React.FC<Props> = (props) => {
         <button className="form-main__input-btn" type="submit">
           {t('editPage.buttons.submit')}
         </button>
+        <div className={isDataChangedHide ? 'response__message_hide' : 'response__message_show'}>
+          {isDataChanged ? 'Пользователь успешно изменён' : 'Internal Server Error'}
+        </div>
         <div
           style={statusConfirmation == false ? { display: 'none' } : { display: 'block' }}
           className="form-main__input-btn form-main__delete-btn"

@@ -116,6 +116,14 @@
   margin: 10px 0px;
 }
 
+.response__message_hide{
+  opacity: 0;
+}
+
+.response__message_show{
+  opacity: 1;
+}
+
 
 @media(max-width: 1024px) {
   .form-main {
