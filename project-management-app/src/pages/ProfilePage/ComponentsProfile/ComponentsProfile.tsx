@@ -61,8 +61,6 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const keyToken = getLocal.token;
   const keyUserId = decoded.userId;
 
-  console.log(keyToken, keyUserId);
-
   const {
     register,
     formState: { errors },
@@ -101,13 +99,11 @@ const ComponentsProfile: React.FC<Props> = (props) => {
       }
     );
     if (rawResponse.ok) {
-      console.log(rawResponse.status);
       localStorage.removeItem('user');
       dispatch(logOut());
       refetch();
       navigate('/login');
     } else {
-      console.log('error', rawResponse.status);
     }
   }
 
@@ -144,7 +140,6 @@ const ComponentsProfile: React.FC<Props> = (props) => {
     if (rawResponse.ok) {
       setStatusRegistration(`Пользователь успешно изменён`);
     } else {
-      console.log('error', rawResponse.status);
       setStatusRegistration(`Internal Server Error`);
     }
   }
@@ -223,12 +218,10 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   }
 
   const openModal = () => {
-    // dispatch(setIsModalHide(false));
     setOpen(true);
   };
 
   const closeModal = () => {
-    // dispatch(setIsModalHide(true));
     setOpen(false);
   };
 

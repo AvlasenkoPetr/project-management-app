@@ -38,9 +38,7 @@ const SignUp: React.FC = () => {
       dispatch(setToken(response.token));
       dispatch(setIsLoading(true));
       localStorage.setItem('user', JSON.stringify(response));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

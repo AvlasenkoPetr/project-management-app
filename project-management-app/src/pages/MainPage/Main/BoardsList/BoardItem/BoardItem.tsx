@@ -51,12 +51,10 @@ export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
   };
 
   const openDeleteModal = () => {
-    // dispatch(setIsModalHide(false));
     setDeleteModalOpen(true);
   };
 
   const closeDeleteModal = () => {
-    // dispatch(setIsModalHide(true));
     setDeleteModalOpen(false);
   };
 

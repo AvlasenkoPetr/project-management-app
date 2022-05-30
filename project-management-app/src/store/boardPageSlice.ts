@@ -38,7 +38,6 @@ const boardPageSlice = createSlice({
     setNewOrderTasks: (state, action: PayloadAction<setNewOrderTasksType>) => {
       const column = [...state.columns.filter((item) => item.id === action.payload.columnId)];
       column[0].tasks = action.payload.tasks.sort((a, b) => a.order - b.order);
-      // state.columns = [...state.columns, ...column];
     },
   },
 });

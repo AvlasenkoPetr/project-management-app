@@ -34,12 +34,10 @@ const Main: React.FC = () => {
 
   const closeModal = () => {
     setOpen(false);
-    // dispatch(setIsModalHide(true));
   };
 
   const createColumn = async () => {
     closeModal();
-    console.log();
     try {
       const board = {
         body: {
@@ -56,7 +54,6 @@ const Main: React.FC = () => {
 
   const openModal = () => {
     setOpen(true);
-    // dispatch(setIsModalHide(false));
   };
 
   const onDragEnd = (result: DropResult) => {

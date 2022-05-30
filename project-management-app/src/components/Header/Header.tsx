@@ -38,7 +38,6 @@ const Header: React.FC = () => {
   const changeLanguage = () => {
     dispatch(toggleLanguage(selector.mainPageSlice.lang === 'en' ? 'ru' : 'en'));
     localStorage.setItem('lang', selector.mainPageSlice.lang === 'en' ? 'ru' : 'en');
-    console.log(selector.mainPageSlice.lang);
   };
 
   const logout = () => {

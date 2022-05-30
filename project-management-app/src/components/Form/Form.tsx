@@ -59,8 +59,6 @@ const Form: React.FC<Props> = (props) => {
       };
       try {
         const response = await signUp(newUser).unwrap();
-        // dispatch(setUser(response));
-        // dispatch(setPassword(newUser.password));
         dispatch(setCanLogin(true));
       } catch (err) {
         setError('login', { message: t('authForm.errors.exist') });

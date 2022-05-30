@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { ISubmitData } from '../Form/Form';
 import { FormInput } from '../FormInput/FormInput';
 import { Modal } from '../Modal/Modal';
-import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
 import { fetchApi } from '../../store/fetchApi';
 
 export interface INewBoardBody {
@@ -44,7 +43,7 @@ export const AddBoardButton: React.FC = ({ children }) => {
 
   const createBoard = async (newBoard: INewBoardBody) => {
     try {
-      const response = await addBoard(newBoard);
+      await addBoard(newBoard);
     } catch {
     } finally {
       closeModal();
