@@ -27,7 +27,7 @@ interface data {
 }
 
 interface ISubmitData {
-  [key: string]: any;
+  [key: string]: string;
 }
 interface Iuser {
   name: string;
@@ -40,10 +40,27 @@ interface IarayDecoded {
   login: string;
 }
 
+type decodedType = {
+  userId: string;
+  login: string;
+  iat: number;
+};
+
+type statusTokenType = {
+  id: readonly string[];
+  login: readonly string[];
+  name: readonly string[];
+};
+
 const ComponentsProfile: React.FC<Props> = (props) => {
   const arayTest: data[] = [];
   const [arrayConst, setarrayConst] = useState(arayTest);
-  const [statusToken, setStatusToken] = useState<any>([]);
+  const [statusToken, setStatusToken] = useState<statusTokenType>({
+    id: [''],
+    login: [''],
+    name: [''],
+  });
+  console.log(statusToken);
   const [checked, setChecked] = useState<boolean>(false);
   const [statusRegistration, setStatusRegistration] = useState(
     'Введите пароль для подтверждения пользователь'
@@ -57,7 +74,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const [signIn, {}] = fetchApi.useSignInMutation();
 
   const getLocal = JSON.parse(localStorage.getItem('user') || '');
-  const decoded = jwt_decode(getLocal.token) as any;
+  const decoded: decodedType = jwt_decode(getLocal.token);
   const keyToken = getLocal.token;
   const keyUserId = decoded.userId;
 
@@ -109,7 +126,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
 
   async function checkUser(user: Iuser) {
     const userTest = {
-      login: statusToken.login,
+      login: statusToken.login.join(''),
       password: user.password,
     };
     try {

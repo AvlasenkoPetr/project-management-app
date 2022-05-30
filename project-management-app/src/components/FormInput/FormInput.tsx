@@ -13,7 +13,9 @@ interface IProps {
 }
 
 export interface ErrorsBlock {
-  [key: string]: any;
+  [key: string]: {
+    message: string;
+  };
 }
 
 export const FormInput: React.FC<IProps> = ({

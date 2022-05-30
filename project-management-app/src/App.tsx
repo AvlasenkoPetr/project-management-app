@@ -17,6 +17,12 @@ type localStorageType = {
   token: string;
 };
 
+type decodedType = {
+  userId: string;
+  login: string;
+  iat: number;
+};
+
 const App: React.FC = () => {
   const selector = useCustomSelector((state) => state);
   const dispatch = useCustomDispatch();
@@ -25,7 +31,7 @@ const App: React.FC = () => {
   const lang = localStorage.getItem('lang') as 'ru' | 'en';
   if (lang) dispatch(toggleLanguage(lang));
   if (token) {
-    const decoded = jwt_decode(token.token) as any;
+    const decoded: decodedType = jwt_decode(token.token);
     const keyToken = token.token;
     const keyUserId = decoded.userId;
     dispatch(setToken(token.token));
