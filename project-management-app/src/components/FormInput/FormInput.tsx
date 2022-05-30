@@ -39,6 +39,7 @@ export const FormInput: React.FC<IProps> = ({
       <input
         className={styles.container__input}
         type={type}
+        autoComplete="off"
         defaultValue={defaultValue}
         {...register(name, { required: true, maxLength: max, minLength: min })}
       />

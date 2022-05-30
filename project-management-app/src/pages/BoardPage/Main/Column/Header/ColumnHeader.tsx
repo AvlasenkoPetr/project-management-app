@@ -7,12 +7,17 @@ import rejectChangeTitleBtnSvg from '../../../../../assets/svg/close-blue-dark.s
 import submitChangeTitleBtnSvg from '../../../../../assets/svg/add-blue-dark.svg';
 import { Modal } from '../../../../../components/Modal/Modal';
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
 
 type Props = {
   id: string;
   order: number;
   title: string;
 };
+
+interface ISubmitData {
+  [key: string]: string;
+}
 
 const ColumnHeader: React.FC<Props> = (props) => {
   const [isTextAreaShow, toggleTextArea] = useState(false);
@@ -34,24 +39,12 @@ const ColumnHeader: React.FC<Props> = (props) => {
     refetch();
   };
 
-  const submitTitle = async () => {
-    try {
-      const column = {
-        boardId: selector.id,
-        columnId: props.id,
-        body: {
-          title: textareaValue,
-          order: props.order,
-        },
-      };
-      setPreviousInputTitle(textareaValue);
-      await updateColumn(column);
-    } catch {
-    } finally {
-      refetch();
-      toggleTextArea(false);
-    }
-  };
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    setError,
+  } = useForm();
 
   const rejectTitle = () => {
     toggleTextArea(false);
@@ -71,6 +64,25 @@ const ColumnHeader: React.FC<Props> = (props) => {
     setTextAreaValue(event.target.value);
   };
 
+  async function submitTitle() {
+    try {
+      const column = {
+        boardId: selector.id,
+        columnId: props.id,
+        body: {
+          title: textareaValue,
+          order: props.order,
+        },
+      };
+      setPreviousInputTitle(textareaValue);
+      await updateColumn(column);
+    } catch {
+    } finally {
+      refetch();
+      toggleTextArea(false);
+    }
+  }
+
   return (
     <>
       <div className={styles['column-header']}>
@@ -83,8 +95,12 @@ const ColumnHeader: React.FC<Props> = (props) => {
         {isTextAreaShow ? (
           <input
             className={isTextAreaShow ? styles['show'] : styles['hide']}
+            defaultValue={textareaValue}
+            autoComplete="off"
+            maxLength={12}
+            minLength={1}
+            required
             onChange={changeTextAreaValue}
-            value={textareaValue}
           ></input>
         ) : (
           <p className={styles['placeholder']} onClick={() => toggleTextArea(true)}>
