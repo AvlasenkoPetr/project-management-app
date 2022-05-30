@@ -135,9 +135,10 @@ const Task: React.FC<Props> = (props) => {
             register={register}
             errors={errors}
             defaultValue={[props.description]}
+            max={40}
           />
         </form>
-        <p>Created by {data?.name}</p>
+        <h4>{data?.name ? t('other.createdBy') + ' ' + data?.name : t('other.creatorDeleted')}</h4>
       </Modal>
     </>
   );

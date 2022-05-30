@@ -188,6 +188,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
           register={register}
           errors={errors}
           defaultValue={statusToken.login}
+          max={16}
         ></FormInput>
         <FormInput
           type="text"
@@ -196,6 +197,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
           register={register}
           errors={errors}
           defaultValue={statusToken.name}
+          max={16}
         ></FormInput>
         <div className="form-main__input-container">
           <label className="form-main__input-container" htmlFor="scales">
@@ -216,6 +218,8 @@ const ComponentsProfile: React.FC<Props> = (props) => {
             name="passwordNew"
             register={register}
             errors={errors}
+            max={16}
+            min={8}
           ></FormInput>
         )}
       </>
@@ -230,6 +234,8 @@ const ComponentsProfile: React.FC<Props> = (props) => {
         name="password"
         register={register}
         errors={errors}
+        max={16}
+        min={8}
       ></FormInput>
     );
   }

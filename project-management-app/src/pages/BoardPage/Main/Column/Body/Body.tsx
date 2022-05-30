@@ -142,6 +142,7 @@ const ColumnBody: React.FC<Props> = (props) => {
             name="description"
             register={register}
             errors={errors}
+            max={40}
           ></TextArea>
         </form>
       </Modal>

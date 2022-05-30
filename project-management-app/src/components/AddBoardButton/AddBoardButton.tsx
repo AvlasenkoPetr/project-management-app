@@ -69,6 +69,7 @@ export const AddBoardButton: React.FC = ({ children }) => {
             name="title"
             register={register}
             errors={errors}
+            max={12}
           ></FormInput>
           <FormInput
             text={t('authForm.inputs.description')}
