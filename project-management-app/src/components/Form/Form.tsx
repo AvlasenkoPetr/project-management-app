@@ -1,0 +1,145 @@
+import styles from './Form.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { FormInput } from '../FormInput/FormInput';
+import { fetchApi } from '../../store/fetchApi';
+import {
+  setCanLogin,
+  setIsLoading,
+  setPassword,
+  setToken,
+  setUser,
+} from '../../store/authorizeSlice';
+import { useCustomDispatch } from '../../customHooks/customHooks';
+import ButtonBlueDark from '../ButtonBlueDark/ButtonBlueDark';
+
+type Props = {
+  children: string;
+  isSignIn?: boolean;
+  isSignUp?: boolean;
+  login: boolean;
+  name?: boolean;
+  password: boolean;
+  passwordRepeat?: boolean;
+};
+
+export interface ISubmitData {
+  [key: string]: string;
+}
+
+interface IAuthError {
+  data: {
+    statusCode: number;
+    message: string;
+  };
+  status: number;
+}
+
+const Form: React.FC<Props> = (props) => {
+  const navigate = useNavigate();
+  const [signUp, {}] = fetchApi.useSignUpMutation();
+  const [signIn, {}] = fetchApi.useSignInMutation();
+  const dispatch = useCustomDispatch();
+  const { t } = useTranslation();
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    setError,
+  } = useForm();
+
+  async function formSubmit(data: ISubmitData) {
+    if (props.isSignUp) {
+      const newUser = {
+        name: data.name,
+        login: data.login,
+        password: data.password,
+      };
+      try {
+        const response = await signUp(newUser).unwrap();
+        dispatch(setUser(response));
+        dispatch(setPassword(newUser.password));
+        dispatch(setCanLogin(true));
+      } catch (err) {
+        setError('login', { message: t('authForm.errors.exist'), type: 'exist' });
+      }
+    }
+
+    if (props.isSignIn) {
+      const user = {
+        login: data.login,
+        password: data.password,
+      };
+      try {
+        const response = await signIn(user).unwrap();
+        dispatch(setToken(response.token));
+        dispatch(setIsLoading(true));
+        localStorage.setItem('user', JSON.stringify(response));
+      } catch (err) {
+        setError('login', { message: t('authForm.errors.wrong'), type: 'wrongPassword' });
+        setError('password', { message: t('authForm.errors.wrong'), type: 'wrongPassword' });
+      }
+    }
+  }
+
+  return (
+    <div className={styles['form__container']}>
+      <div className={styles['form__wrapper']}>
+        <form onSubmit={handleSubmit(formSubmit)}>
+          {props.login && (
+            <FormInput
+              type="text"
+              text={t('authForm.inputs.login')}
+              name="login"
+              register={register}
+              errors={errors}
+              max={16}
+            />
+          )}
+          {props.name && (
+            <FormInput
+              type="text"
+              text={t('authForm.inputs.name')}
+              name="name"
+              register={register}
+              errors={errors}
+              max={16}
+            />
+          )}
+          {props.password && (
+            <FormInput
+              type="password"
+              text={t('authForm.inputs.password')}
+              name="password"
+              register={register}
+              errors={errors}
+              max={16}
+              min={8}
+            />
+          )}
+          <ButtonBlueDark>{props.children}</ButtonBlueDark>
+          {props.isSignUp && (
+            <div className={styles.question}>
+              {t('loginPage.redirect.text')}
+              <span className={styles.span} onClick={() => navigate('/login')}>
+                {t('loginPage.redirect.span')}
+              </span>
+            </div>
+          )}
+          {props.isSignIn && (
+            <div className={styles.question}>
+              {t('signUpPage.redirect.text')}
+              <span className={styles.span} onClick={() => navigate('/signup')}>
+                {t('signUpPage.redirect.span')}
+              </span>
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Form;

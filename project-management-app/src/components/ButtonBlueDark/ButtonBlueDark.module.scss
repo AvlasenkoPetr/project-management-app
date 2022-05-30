@@ -1,0 +1,28 @@
+.container {
+    margin: 5px;
+    min-width: 190px;
+    height: 50px;
+    padding: 0 15px;
+
+    border-radius: 10px;
+    background-color: var(--blue-dark);
+
+    font-family: 'Oswald';
+    font-size: 24px;
+    text-align: center;
+    color: var(--white-main);
+    
+    transition: .1s linear;
+    
+    &:hover {
+        background-color: var(--blue-dark-hover);
+        color: var(--white-hover);
+    }
+}
+
+@media(max-width: 1024px) {
+    .container {
+        width: 170px;
+        font-size: 22px;
+    }
+}

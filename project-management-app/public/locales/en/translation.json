@@ -1,0 +1,143 @@
+{
+  "components": {
+    "header":{
+      "logoutModal":{
+        "title": "Are you sure?",
+        "description": "Are you sure to logout?",
+        "submitBtn": "Submit"
+      }
+    }
+  },
+  "welcomePage": {
+    "buttons":{
+      "signUp": "Sign Up",
+      "login": "Log In",
+      "toMain": "Back to boards"
+    },
+    "titles": {
+      "course": "Course",
+      "project": "Project",
+      "team": "Team"
+    },
+    "description": {
+      "course": "RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013. Everyone can study at RS School, regardless of age, professional employment, or place of residence. The mentors and trainers of our school are front-end and javascript developers from different companies and countries.",
+      "project": "Project Management System – an application that helps an individual person in a team or group of developers achieve their goals. Work together, manage projects and take productivity to the next level!",
+      "team": "Everything done by Andrey"
+    },
+    "names": {
+      "petr": "Avlasenko Petr",
+      "andrey": "Skrinnik Andrey",
+      "vlad": "Klimashevsky Vladislav"
+    },
+    "done": {
+      "petr": "Design, layout, header, welcome page, main page, modal windows, validation",
+      "andrey": "Setting redux, adding and setting libraries, authorization, tasks page",
+      "vlad": "Edit user page, header design on scroll"
+    }
+  },
+  "mainPage":{
+    "buttons":{
+      "welcome": "Go to main",
+      "editProfile": "Edit Profile",
+      "createBoard": "Create Board",
+      "language": "ENG",
+      "logout": "Logout"
+    },
+    "board":{
+      "title": "Create board"
+    }
+  },
+  "authForm":{
+    "inputs":{
+      "login": "Login",
+      "password": "Password",
+      "name": "Name",
+      "passwordRepeat": "Password (repeat)",
+      "title": "Title",
+      "description": "Description"
+    },
+    "errors":{
+      "empty": "field must be filled",
+      "wrong": "incorrect data",
+      "exist": "user already exist",
+      "short": "mininmum allowed length:",
+      "long": "maximum allowed length:"
+    }
+  },
+  "loginPage":{
+    "buttons":{
+      "login": "Login"
+    },
+    "redirect": {
+      "text": "Already have an account?",
+      "span": "Login"
+    }
+  },
+  "signUpPage":{
+    "buttons":{
+      "signUp": "Sign Up"
+    },
+    "redirect": {
+      "text": "Don't have an account?",
+      "span": "Create"
+    }
+  },
+  "boardPage":{
+    "buttons":{
+      "returnToMainPage": "Return",
+      "addNewColumn": "+ Add new column "
+    },
+    "column":{
+      "title": "Create column",
+      "task":{
+        "addTaskBtn": "Add new task"
+      }
+    }
+  },
+  "modals": {
+    "buttons": {
+      "createBoard": "Create",
+      "deleteBoard": "Delete",
+      "cancel": "Cancel",
+      "createColumn": "Create",
+      "createTask": "Create",
+      "deleteTask": "Delete",
+      "editTask": "Edit",
+      "logout": "Submit"
+    },
+    "titles": {
+      "createBoard": "Create board",
+      "deleteBoard": "Delete board",
+      "editBoard": "Edit board",
+      "createColumn": "Create column",
+      "createTask": "Create Task",
+      "deleteTask": "Delete Task",
+      "editTask": "Edit Task",
+      "logout": "Logout"
+    },
+    "questions": {
+      "deleteBoard": "Are you sure you want to delete the board?",
+      "deleteTask": "Are you sure you want to delete the task?",
+      "logout": "Are you sure you want to logout?"
+    }
+  },
+  "editPage": {
+    "titles": {
+      "enterPassword": "Enter password to verify the user",
+      "currentUser": "Current user",
+      "deleteModal": "Delete user"
+    },
+    "buttons": {
+      "submit": "Submit",
+      "delete": "Delete account",
+      "changePassword": "Change password"
+    }
+  },
+  "other": {
+    "returnButton": "Return",
+    "createdBy": "Task created by",
+    "creatorDeleted": "Task creator deleted",
+    "responseStatusDone": "User successful edited",
+    "responseStatusReject": "Internal Server Error"
+  }
+}

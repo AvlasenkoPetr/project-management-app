@@ -1,0 +1,39 @@
+@media (max-width: 1024px) {
+    .wrapper {
+        button {
+            min-width: 160px;
+            width: 120px;
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width: 870px) {
+    .wrapper {
+        &:hover {
+            background-color: var(--blue-dark-hover);
+        }
+
+        button {
+            background-color: transparent;
+            min-width: 80px;
+            width: 80px;
+            font-size: 18px;
+            color: transparent;
+
+            &:hover {
+                background-color: transparent;
+                color: transparent;
+            }
+        }
+    }
+}
+
+@media (max-width: 470px) {
+    .wrapper {
+        button {
+            min-width: 50px;
+            width: 50px;
+        }
+    }
+}

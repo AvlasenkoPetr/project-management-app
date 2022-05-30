@@ -1,0 +1,14 @@
+.profile-page {
+    .container {
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__content {
+        margin-top: 60px;
+        flex: 1;
+    }
+}

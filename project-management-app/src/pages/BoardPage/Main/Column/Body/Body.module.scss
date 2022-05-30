@@ -1,0 +1,37 @@
+.tasks__wrapper{
+  min-height: 10px;
+  max-height: calc(100vh - 386px);
+  overflow-y: scroll;
+}
+
+.add_task__button {
+  min-height: 50px;
+  width: 100%;
+
+  border-bottom: 3px solid var(--blue-dark);
+  border-top: 3px solid var(--blue-dark);
+
+  background-image: url(../../../../../assets/svg/add-blue-dark.svg);
+  background-position: center left 25%;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+
+  color: var(--blue-dark);
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Oswald";
+
+  transition: .1s linear;
+
+  &:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    background-image: url(../../../../../assets/svg/add-orange.svg);
+  }
+}
+
+@media(max-width: 380px) {
+  .add_task__button {
+    background-position: center left 20%;
+  }
+}

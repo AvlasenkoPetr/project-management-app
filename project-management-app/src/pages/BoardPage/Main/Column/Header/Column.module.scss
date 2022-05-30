@@ -1,0 +1,135 @@
+.column-header {
+  position: relative;
+
+  height: 6%;
+  min-height: 35px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 4px solid var(--blue-light);
+
+  font-size: 28px;
+  font-weight: 500;
+  font-family: "Oswald";
+
+  overflow: hidden;
+
+  p {
+    margin-bottom: 2px;
+  }
+
+  &-btn__wrapper {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    z-index: 20;
+
+    padding: 5px;
+
+    display: flex;
+
+    background-color: var(--white-hover);
+
+    button {
+      max-width: 30px;
+      max-height: 30px;
+      border-radius: 5px;
+      padding: 5px;
+
+      &:first-child {
+        height: 20px;
+        width: 20px;
+
+        margin-right: 15px;
+        background-image: url(../../../../../assets/svg/accept-blue-dark.svg);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        transition: .1s linear;
+
+        &:hover {
+          background-image: url(../../../../../assets/svg/accept-orange.svg);
+        }
+      }
+      
+      &:last-child {
+        height: 20px;
+        width: 20px;
+        
+        background-image: url(../../../../../assets/svg/close-blue-dark.svg);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        transition: .1s linear;
+
+        &:hover {
+          background-image: url(../../../../../assets/svg/close-orange.svg);
+        }
+      }
+    }
+  }
+
+  .placeholder {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  input {
+    height: 32px;
+    padding: 0 10px;
+    resize: none;
+
+    font-size: 28px;
+    font-family: "Oswald";
+    box-shadow: none;
+
+    outline: none;
+    border: none;
+    
+    &.show {
+      position: absolute;
+      left: 0;
+      z-index: 10;
+
+      width: 77%;
+      margin-bottom: -2px;
+
+      border-bottom: 3px solid var(--blue-dark);
+
+      &:focus {
+        border-bottom: 3px solid var(--orange);
+      }
+    }
+
+    &.hide {
+      width: 90%;
+      box-shadow: none;
+    }
+  }
+  .deleteColumn {
+    position: absolute;
+    top: 30%;
+    right: 2%;
+
+    height: 20px;
+    width: 20px;
+    padding: 0;
+
+    background-image: url(../../../../../assets/svg/close-blue-light.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    transition: 0.1s linear;
+    
+    &:hover {
+      background-image: url(../../../../../assets/svg/close-orange.svg);
+    }
+  }
+}
