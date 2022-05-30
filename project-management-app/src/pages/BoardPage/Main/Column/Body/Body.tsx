@@ -116,7 +116,9 @@ const ColumnBody: React.FC<Props> = (props) => {
           </div>
         )}
       </Droppable>
-      <button onClick={openModal}>Add new Task</button>
+      <button className={styles.add_task__button} onClick={openModal}>
+        Add new Task
+      </button>
       <Modal
         title={t('modals.titles.createTask')}
         submitText={t('modals.buttons.createTask')}

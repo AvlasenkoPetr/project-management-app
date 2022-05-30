@@ -1,19 +1,15 @@
-import { CloseOutlined } from '@ant-design/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../components/Button/Button';
-import { Modal } from '../../../components/Modal/Modal';
 import { useCustomDispatch, useCustomSelector } from '../../../customHooks/customHooks';
 import { fetchApi } from '../../../store/fetchApi';
-import { setIsModalHide } from '../../../store/mainPageSlice';
 import Column from './Column/Column';
 import styles from './Main.module.scss';
 import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react-beautiful-dnd';
 import { GetColumnByIdType, TaskType, UpdateTaskRequestType } from '../../../store/fetchApiTypes';
 import { setNewOrderColumns, setNewOrderTasks } from '../../../store/boardPageSlice';
-import { fireEvent } from '@testing-library/react';
 import { AddColumnButton } from './AddColumnButton/AddColumnButton';
+import { ReturnButton } from '../../../components/ReturnButton/ReturnButton';
 
 const Main: React.FC = () => {
   const { t } = useTranslation();
@@ -181,13 +177,9 @@ const Main: React.FC = () => {
   };
 
   return (
-    <main className={styles.main}>
-      <div className={styles['return-btn__wrapper']}>
-        <Button onClick={returnToMainPage} type="button">
-          {t('boardPage.buttons.returnToMainPage')}
-        </Button>
-      </div>
-      <h2>{selector.title}</h2>
+    <main className={styles.container}>
+      <ReturnButton />
+      <h2 className={styles.container_title}>{selector.title}</h2>
       <div className={styles['board-wrapper']}>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="all-columns" direction="horizontal" type="column">
