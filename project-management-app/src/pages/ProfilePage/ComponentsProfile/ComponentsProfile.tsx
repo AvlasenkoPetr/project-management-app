@@ -84,10 +84,6 @@ const ComponentsProfile: React.FC<Props> = (props) => {
     reValidateMode: 'onBlur',
   });
 
-  // useEffect(() => {
-  //   setStatusRegistration(t('editPage.titles.checkPassword'))
-  // }, [])
-
   async function getUser() {
     const rawResponse = await fetch(
       `https://powerful-tundra-27687.herokuapp.com/users/${keyUserId}`,
@@ -136,7 +132,6 @@ const ComponentsProfile: React.FC<Props> = (props) => {
       dispatch(setToken(response.token));
       dispatch(setIsLoading(true));
       localStorage.setItem('user', JSON.stringify(response));
-      // setStatusRegistration(`Tекущий пользователь`);
       setUserVerified(true);
       setStatusConfirmation(true);
     } catch (err) {
