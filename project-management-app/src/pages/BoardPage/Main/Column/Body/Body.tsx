@@ -108,6 +108,7 @@ const ColumnBody: React.FC<Props> = (props) => {
                   id={task.id}
                   title={task.title}
                   description={task.description}
+                  taskUserId={task.userId}
                   userId={UserId}
                 />
               );
