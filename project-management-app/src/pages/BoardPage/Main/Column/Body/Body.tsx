@@ -108,6 +108,7 @@ const ColumnBody: React.FC<Props> = (props) => {
                   id={task.id}
                   title={task.title}
                   description={task.description}
+                  taskUserId={task.userId}
                   userId={UserId}
                 />
               );
@@ -117,7 +118,7 @@ const ColumnBody: React.FC<Props> = (props) => {
         )}
       </Droppable>
       <button className={styles.add_task__button} onClick={openModal}>
-        Add new Task
+        {t('boardPage.column.task.addTaskBtn')}
       </button>
       <Modal
         title={t('modals.titles.createTask')}

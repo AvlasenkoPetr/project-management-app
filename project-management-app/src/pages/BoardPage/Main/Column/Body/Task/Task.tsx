@@ -19,6 +19,7 @@ type Props = {
   boardId: string;
   description: string;
   order: number;
+  taskUserId: string;
   userId: string;
 };
 const Task: React.FC<Props> = (props) => {
@@ -28,6 +29,7 @@ const Task: React.FC<Props> = (props) => {
   const [deleteTask, {}] = fetchApi.useDeleteTaskMutation();
   const [updateTask, {}] = fetchApi.useUpdateTaskMutation();
   const { refetch } = fetchApi.useGetBoardByIdQuery(props.boardId);
+  const { data } = fetchApi.useGetUserByIdQuery(props.taskUserId);
   const {
     register,
     formState: { errors },
@@ -135,6 +137,7 @@ const Task: React.FC<Props> = (props) => {
             defaultValue={[props.description]}
           />
         </form>
+        <p>Created by {data?.name}</p>
       </Modal>
     </>
   );

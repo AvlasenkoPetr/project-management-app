@@ -25,7 +25,7 @@ type Props = {
 };
 
 export interface ISubmitData {
-  [key: string]: any;
+  [key: string]: string;
 }
 
 interface IAuthError {
