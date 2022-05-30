@@ -16,3 +16,41 @@
     display: flex;
   }
 }
+
+@media(max-width: 870px) {
+  .container {
+    &__buttons_group {
+      div {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 25px 25px;
+      }
+    }
+
+    &__buttons_group:first-of-type {
+      div:first-child {
+        background-image: url(../../assets/svg/to-main.svg);
+      }
+      
+      div:nth-child(2) {
+        background-image: url(../../assets/svg/profile.svg);
+      }
+
+      div:last-child {
+        background-image: url(../../assets/svg/create-board.svg);
+      }
+    }
+
+    &__buttons_group:last-of-type {
+      div:first-child {
+        background-image: url(../../assets/svg/language.svg);
+        background-size: 25px 25px;
+      }
+
+      div:last-child {
+        background-image: url(../../assets/svg/logout.svg);
+        background-size: 25px 25px;
+      }
+    }
+  }
+}

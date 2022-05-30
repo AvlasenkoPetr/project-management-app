@@ -49,6 +49,10 @@ const Header: React.FC = () => {
     navigation('/welcome');
   };
 
+  const welcomePage = () => {
+    navigation('/welcome');
+  };
+
   const profilePage = () => {
     navigation('/editprofile');
   };
@@ -65,6 +69,7 @@ const Header: React.FC = () => {
     <>
       <header className={styles.container} style={{ opacity: scroll }}>
         <div className={styles.container__buttons_group}>
+          <HeaderButton cb={welcomePage}>{t('mainPage.buttons.welcome')}</HeaderButton>
           <HeaderButton cb={profilePage}>{t('mainPage.buttons.editProfile')}</HeaderButton>
           <AddBoardButton>
             <HeaderButton>{t('mainPage.buttons.createBoard')}</HeaderButton>
@@ -76,13 +81,13 @@ const Header: React.FC = () => {
         </div>
       </header>
       <Modal
-        title={t('components.header.logoutModal.title')}
-        submitText={t('components.header.logoutModal.submitBtn')}
+        title={t('modals.titles.logout')}
+        submitText={t('modals.buttons.logout')}
         onSubmit={logout}
         closeModal={closeEditModal}
         isOpen={isLogoutModalOpen}
       >
-        <h2>{t('components.header.logoutModal.description')}</h2>
+        <h2>{t('modals.questions.logout')}</h2>
       </Modal>
     </>
   );
