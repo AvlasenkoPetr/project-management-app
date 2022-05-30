@@ -1,4 +1,13 @@
 {
+  "components": {
+    "header":{
+      "logoutModal":{
+        "title": "Are you sure?",
+        "description": "Are you sure to logout?",
+        "submitBtn": "Submit"
+      }
+    }
+  },
   "welcomePage": {
     "buttons":{
       "signUp": "Sign Up",
@@ -66,7 +75,10 @@
       "addNewColumn": "+ Add new column "
     },
     "column":{
-      "title": "Create column"
+      "title": "Create column",
+      "task":{
+        "addTaskBtn": "Add new task"
+      }
     }
   },
   "modals": {

@@ -21,6 +21,7 @@ const Header: React.FC = () => {
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
   const [addBoard, {}] = fetchApi.useCreateNewBoardMutation();
   const [scroll, setScroll] = useState(dark);
+  const [isLogoutModalOpen, setLogoutModalOpen] = useState<boolean>(false);
 
   const listenScrollEvent = () => {
     if (window.scrollY > 100) {
@@ -52,19 +53,38 @@ const Header: React.FC = () => {
     navigation('/editprofile');
   };
 
+  const openEditModal = () => {
+    setLogoutModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setLogoutModalOpen(false);
+  };
+
   return (
-    <header className={styles.container} style={{ opacity: scroll }}>
-      <div className={styles.container__buttons_group}>
-        <HeaderButton cb={profilePage}>{t('mainPage.buttons.editProfile')}</HeaderButton>
-        <AddBoardButton>
-          <HeaderButton>{t('mainPage.buttons.createBoard')}</HeaderButton>
-        </AddBoardButton>
-      </div>
-      <div className={styles.container__buttons_group}>
-        <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
-        <HeaderButton cb={logout}>{t('mainPage.buttons.logout')}</HeaderButton>
-      </div>
-    </header>
+    <>
+      <header className={styles.container} style={{ opacity: scroll }}>
+        <div className={styles.container__buttons_group}>
+          <HeaderButton cb={profilePage}>{t('mainPage.buttons.editProfile')}</HeaderButton>
+          <AddBoardButton>
+            <HeaderButton>{t('mainPage.buttons.createBoard')}</HeaderButton>
+          </AddBoardButton>
+        </div>
+        <div className={styles.container__buttons_group}>
+          <HeaderButton cb={changeLanguage}>{t('mainPage.buttons.language')}</HeaderButton>
+          <HeaderButton cb={openEditModal}>{t('mainPage.buttons.logout')}</HeaderButton>
+        </div>
+      </header>
+      <Modal
+        title={t('components.header.logoutModal.title')}
+        submitText={t('components.header.logoutModal.submitBtn')}
+        onSubmit={logout}
+        closeModal={closeEditModal}
+        isOpen={isLogoutModalOpen}
+      >
+        <h2>{t('components.header.logoutModal.description')}</h2>
+      </Modal>
+    </>
   );
 };
 

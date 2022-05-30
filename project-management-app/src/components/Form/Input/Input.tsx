@@ -9,7 +9,7 @@ type Props = {
 const CustomInput: React.FC<Props> = (props) => {
   const [title, setTitle] = useState('');
   const isValid = title != null && title.trim().length > 0;
-  function IsDisabled(): JSX.Element | undefined | any {
+  function IsDisabled(): JSX.Element | undefined {
     if (!isValid) {
       return <div className="button-false">Поля обязательно к заполнению</div>;
     }
@@ -28,7 +28,7 @@ const CustomInput: React.FC<Props> = (props) => {
         type={props.type}
         onChange={(event) => setTitle(event.target.value)}
       />
-      <IsDisabled />
+      {IsDisabled()}
     </label>
   );
 };

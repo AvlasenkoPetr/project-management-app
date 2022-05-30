@@ -11,6 +11,7 @@ import Task from './Task/Task';
 import { useForm } from 'react-hook-form';
 import { FormInput } from '../../../../../components/FormInput/FormInput';
 import { ISubmitData } from '../../../../../components/Form/Form';
+import { TextArea } from './Task/TextArea/TextArea';
 
 interface INewBoardBody {
   title: string;
@@ -108,6 +109,7 @@ const ColumnBody: React.FC<Props> = (props) => {
                   id={task.id}
                   title={task.title}
                   description={task.description}
+                  taskUserId={task.userId}
                   userId={UserId}
                 />
               );
@@ -117,7 +119,7 @@ const ColumnBody: React.FC<Props> = (props) => {
         )}
       </Droppable>
       <button className={styles.add_task__button} onClick={openModal}>
-        Add new Task
+        {t('boardPage.column.task.addTaskBtn')}
       </button>
       <Modal
         title={t('modals.titles.createTask')}
@@ -134,13 +136,13 @@ const ColumnBody: React.FC<Props> = (props) => {
             register={register}
             errors={errors}
           ></FormInput>
-          <FormInput
+          <TextArea
             text={t('authForm.inputs.description')}
             type="text"
             name="description"
             register={register}
             errors={errors}
-          ></FormInput>
+          ></TextArea>
         </form>
       </Modal>
     </>

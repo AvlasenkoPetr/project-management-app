@@ -13,7 +13,9 @@ interface IProps {
 }
 
 export interface ErrorsBlock {
-  [key: string]: any;
+  [key: string]: {
+    message: string;
+  };
 }
 
 export const FormInput: React.FC<IProps> = ({
@@ -30,6 +32,7 @@ export const FormInput: React.FC<IProps> = ({
     <label className={styles.container}>
       <p className={styles.container__description}>{text}</p>
       <input
+        maxLength={20}
         className={styles.container__input}
         type={type}
         defaultValue={defaultValue}
