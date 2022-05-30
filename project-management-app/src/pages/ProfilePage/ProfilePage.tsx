@@ -9,13 +9,19 @@ import '../ProfilePage/ProfilePageStyle.scss';
 import ComponentsProfile from './ComponentsProfile/ComponentsProfile';
 
 const ProfilePage: React.FC = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem('user')) navigate('/');
+  }, [localStorage.getItem('user')]);
+
   return (
     <div className="profile-page">
       <div className="container">
         <Header />
         <div className="profile-page__content">
           <ReturnButton />
-          <ComponentsProfile />
+          {localStorage.getItem('user') && <ComponentsProfile />}
         </div>
         <Footer />
       </div>

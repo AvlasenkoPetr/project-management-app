@@ -52,6 +52,10 @@ type statusTokenType = {
   name: readonly string[];
 };
 
+type localStorageType = {
+  token: string;
+};
+
 const ComponentsProfile: React.FC<Props> = (props) => {
   const { t } = useTranslation();
   const arayTest: data[] = [];
@@ -72,7 +76,7 @@ const ComponentsProfile: React.FC<Props> = (props) => {
   const { refetch } = fetchApi.useGetAllBoardsQuery('');
   const navigate = useNavigate();
   const [signIn, {}] = fetchApi.useSignInMutation();
-  const getLocal = JSON.parse(localStorage.getItem('user') || '');
+  const getLocal: localStorageType = JSON.parse(localStorage.getItem('user') as string);
   const decoded: decodedType = jwt_decode(getLocal.token);
   const keyToken = getLocal.token;
   const keyUserId = decoded.userId;
