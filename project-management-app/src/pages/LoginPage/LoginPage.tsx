@@ -6,6 +6,7 @@ import { setIsLoading, setToken } from '../../store/authorizeSlice';
 import { fetchApi } from '../../store/fetchApi';
 import Form from '../../components/Form/Form';
 import styles from './LoginPage.module.scss';
+import Footer from '../../components/Footer/Footer';
 
 export interface ILoginBody {
   login: string;
@@ -31,6 +32,7 @@ const LoginPage: React.FC = () => {
       <Form login password isSignIn>
         {t('loginPage.buttons.login')}
       </Form>
+      <Footer />
     </div>
   );
 };

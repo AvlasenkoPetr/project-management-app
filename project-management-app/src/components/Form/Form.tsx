@@ -85,57 +85,59 @@ const Form: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className={styles['form__wrapper']}>
-      <form onSubmit={handleSubmit(formSubmit)}>
-        {props.login && (
-          <FormInput
-            type="text"
-            text={t('authForm.inputs.login')}
-            name="login"
-            register={register}
-            errors={errors}
-            max={16}
-          />
-        )}
-        {props.name && (
-          <FormInput
-            type="text"
-            text={t('authForm.inputs.name')}
-            name="name"
-            register={register}
-            errors={errors}
-            max={16}
-          />
-        )}
-        {props.password && (
-          <FormInput
-            type="password"
-            text={t('authForm.inputs.password')}
-            name="password"
-            register={register}
-            errors={errors}
-            max={16}
-            min={8}
-          />
-        )}
-        <ButtonBlueDark>{props.children}</ButtonBlueDark>
-        {props.isSignUp && (
-          <div className={styles.question}>
-            {t('loginPage.redirect.text')}
-            <span className={styles.span} onClick={() => navigate('/login')}>
-              {t('loginPage.redirect.span')}
-            </span>
-          </div>
-        )}
-        {props.isSignIn && (
-          <div className={styles.question}>
-            {t('signUpPage.redirect.text')}
-            <span className={styles.span} onClick={() => navigate('/signup')}>
-              {t('signUpPage.redirect.span')}
-            </span>
-          </div>
-        )}
-      </form>
+    <div className={styles['form__container']}>
+      <div className={styles['form__wrapper']}>
+        <form onSubmit={handleSubmit(formSubmit)}>
+          {props.login && (
+            <FormInput
+              type="text"
+              text={t('authForm.inputs.login')}
+              name="login"
+              register={register}
+              errors={errors}
+              max={16}
+            />
+          )}
+          {props.name && (
+            <FormInput
+              type="text"
+              text={t('authForm.inputs.name')}
+              name="name"
+              register={register}
+              errors={errors}
+              max={16}
+            />
+          )}
+          {props.password && (
+            <FormInput
+              type="password"
+              text={t('authForm.inputs.password')}
+              name="password"
+              register={register}
+              errors={errors}
+              max={16}
+              min={8}
+            />
+          )}
+          <ButtonBlueDark>{props.children}</ButtonBlueDark>
+          {props.isSignUp && (
+            <div className={styles.question}>
+              {t('loginPage.redirect.text')}
+              <span className={styles.span} onClick={() => navigate('/login')}>
+                {t('loginPage.redirect.span')}
+              </span>
+            </div>
+          )}
+          {props.isSignIn && (
+            <div className={styles.question}>
+              {t('signUpPage.redirect.text')}
+              <span className={styles.span} onClick={() => navigate('/signup')}>
+                {t('signUpPage.redirect.span')}
+              </span>
+            </div>
+          )}
+        </form>
+      </div>
     </div>
   );
 };
