@@ -27,7 +27,7 @@ const WelcomePage: React.FC = () => {
           <div className={styles.content_section__title}>{t('welcomePage.titles.team')}</div>
           <div className={styles.content_section__description}>
             <div className={styles.content_section__team_container}>
-              <img src={require('../../assets/img/img.jpg')} alt="petr" />
+              <img src={require('../../assets/img/petr.jpg')} alt="petr" />
               <div className={styles.content_section__team_container__content}>
                 <h2>{t('welcomePage.names.petr')}</h2>
                 <p>{t('welcomePage.done.petr')}</p>

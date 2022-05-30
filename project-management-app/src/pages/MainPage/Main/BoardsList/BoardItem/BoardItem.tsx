@@ -84,26 +84,22 @@ export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
       <div className={styles.container} onClick={openBoardPage}>
         <h2 className={styles.container__board_name}>{title}</h2>
         <p className={styles.container__board_description}>{description}</p>
-        {isLoading ? (
-          <p className={styles.container__loader}>лоадер))</p>
-        ) : (
-          <>
-            <div
-              className={styles.container__edit_button}
-              onClick={(e: React.MouseEvent) => {
-                e.stopPropagation();
-                openEditModal();
-              }}
-            ></div>
-            <div
-              className={styles.container__delete_button}
-              onClick={(e: React.MouseEvent) => {
-                e.stopPropagation();
-                openDeleteModal();
-              }}
-            ></div>
-          </>
-        )}
+        <>
+          <div
+            className={styles.container__edit_button}
+            onClick={(e: React.MouseEvent) => {
+              e.stopPropagation();
+              openEditModal();
+            }}
+          ></div>
+          <div
+            className={styles.container__delete_button}
+            onClick={(e: React.MouseEvent) => {
+              e.stopPropagation();
+              openDeleteModal();
+            }}
+          ></div>
+        </>
       </div>
       <Modal
         title={t('modals.titles.deleteBoard')}
