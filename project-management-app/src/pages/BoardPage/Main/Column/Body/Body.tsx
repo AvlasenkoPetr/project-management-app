@@ -57,12 +57,10 @@ const ColumnBody: React.FC<Props> = (props) => {
   };
 
   const openModal = () => {
-    // dispatch(setIsModalHide(false));
     setOpen(true);
   };
 
   const closeModal = () => {
-    // dispatch(setIsModalHide(true));
     setOpen(false);
   };
 
@@ -118,7 +116,9 @@ const ColumnBody: React.FC<Props> = (props) => {
           </div>
         )}
       </Droppable>
-      <button onClick={openModal}>Add new Task</button>
+      <button className={styles.add_task__button} onClick={openModal}>
+        Add new Task
+      </button>
       <Modal
         title={t('modals.titles.createTask')}
         submitText={t('modals.buttons.createTask')}

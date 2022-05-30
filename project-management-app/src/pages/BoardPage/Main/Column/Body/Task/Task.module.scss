@@ -1,17 +1,42 @@
-.task{
+.container {
   min-height: 50px;
-  border: 1px solid var(--blue-light);
   margin-bottom: 10px;
-  border-radius: 10px;
-  background: white;
+  // margin: 0 10px 10px;
+
   align-items: center;
   display: flex;
   padding: 10px;
   justify-content: space-between;
-  button{
-    max-width: 30px;
-    max-height: 30px;
-    border-radius: 5px;
-    padding: 5px;
+  
+  background: white;
+
+  border-top: 3px solid var(--blue-light);
+  border-bottom: 3px solid var(--blue-light);
+  // border: 3px solid var(--blue-light);
+  // border-radius: 10px;
+
+  
+  &__title {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Oswald";
+
+  }
+
+  button {
+    width: 15px;
+    height: 15px;
+    // padding: 5px;
+
+    background-image: url(../../../../../../assets/svg/close-blue-light.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    transition: .1s linear;
+    
+    &:hover {
+      background-image: url(../../../../../../assets/svg/close-orange.svg);
+    }
   }
 }
