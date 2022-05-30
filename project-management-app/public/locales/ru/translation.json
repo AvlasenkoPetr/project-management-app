@@ -134,6 +134,8 @@
     }
   },
   "other": {
-    "returnButton": "Назад"
+    "returnButton": "Назад",
+    "createdBy": "Задачу создал",
+    "creatorDeleted": "Создатель задачи удален"
   }
 }

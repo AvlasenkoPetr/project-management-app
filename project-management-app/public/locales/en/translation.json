@@ -134,6 +134,8 @@
     }
   },
   "other": {
-    "returnButton": "Return"
+    "returnButton": "Return",
+    "createdBy": "Task created by",
+    "creatorDeleted": "Task creator deleted"
   }
 }

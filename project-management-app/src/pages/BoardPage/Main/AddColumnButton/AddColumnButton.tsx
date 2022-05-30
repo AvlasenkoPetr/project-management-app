@@ -79,6 +79,7 @@ export const AddColumnButton: React.FC = () => {
             name="title"
             register={register}
             errors={errors}
+            max={12}
           ></FormInput>
         </form>
       </Modal>

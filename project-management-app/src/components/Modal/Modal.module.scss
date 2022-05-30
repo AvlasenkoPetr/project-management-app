@@ -32,9 +32,16 @@
     h2 {
         color: var(--black);
     }
-
+    
     h3 {
         color: var(--blue-dark);
+    }
+    
+    h4 {
+        color: var(--black);
+        font-size: 24px;
+        font-weight: 300;
+        text-align: center;
     }
 
     form {
@@ -126,6 +133,10 @@
 
         form {
             width: 100%;
+        }
+
+        h4 {
+            font-size: 20px;
         }
 
         &__main_buttons {

@@ -28,8 +28,8 @@ export const FormInput: React.FC<IProps> = ({
   defaultValue,
   register,
   errors,
-  max,
-  min,
+  max = 12,
+  min = 1,
 }) => {
   const { t } = useTranslation();
 
@@ -40,20 +40,18 @@ export const FormInput: React.FC<IProps> = ({
         className={styles.container__input}
         type={type}
         defaultValue={defaultValue}
-        {...register(name, { required: true, maxLength: max || 12, minLength: min || 4 })}
+        {...register(name, { required: true, maxLength: max, minLength: min })}
       />
       <p className={styles['container__error-message']}>
         {errors[name] && errors[name].type === 'required' && t('authForm.errors.empty')}
       </p>
       <p className={styles['container__error-message']}>
-        {errors[name] &&
-          errors[name].type === 'maxLength' &&
-          `${t('authForm.errors.long')} ${max || 12}`}
+        {errors[name] && errors[name].type === 'maxLength' && `${t('authForm.errors.long')} ${max}`}
       </p>
       <p className={styles['container__error-message']}>
         {errors[name] &&
           errors[name].type === 'minLength' &&
-          `${t('authForm.errors.short')} ${min || 4}`}
+          `${t('authForm.errors.short')} ${min}`}
       </p>
     </label>
   );

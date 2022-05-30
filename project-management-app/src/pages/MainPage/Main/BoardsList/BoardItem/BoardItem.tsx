@@ -129,6 +129,7 @@ export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
             register={register}
             errors={errors}
             defaultValue={[title]}
+            max={12}
           ></FormInput>
           <TextArea
             text={t('authForm.inputs.description')}
@@ -137,6 +138,7 @@ export const BoardItem: React.FC<BoardType> = ({ id, title, description }) => {
             register={register}
             errors={errors}
             defaultValue={[description]}
+            max={40}
           />
         </form>
       </Modal>
