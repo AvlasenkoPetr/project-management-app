@@ -6,7 +6,7 @@
 }
 
 .content_container {
-  margin: 80px 0;
+  margin: 60px 0;
   width: 100%;
   flex: 1;
 
@@ -75,8 +75,8 @@
     display: flex;
 
     img {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       padding-right: 20px;
       border-right: 4px solid var(--blue-dark);
       object-fit: cover;
